@@ -1,0 +1,10 @@
+Sitemap
+=======
+
+.. toctree::
+   :maxdepth: 1
+
+   2016/09/23/learning_prometheus_instrumentation
+   pages/tuts
+   pages/aboutme
+
