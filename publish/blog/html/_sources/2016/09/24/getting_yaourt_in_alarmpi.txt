@@ -1,0 +1,151 @@
+=========================
+getting yaourt in alarmpi
+=========================
+
+.. author:: thapakazi
+.. categories:: 
+.. tags:: archlinux, pi
+.. comments::
+
+
+Motivation
+----------
+
+::
+
+    one simple tool to pull everything
+
+Intro
+-----
+
+Assuming you know arch repo/package distribution system. I will
+remind the fullform for **YAOURT**: **Yet AnOther User Repository Tool**. I know you know rest of story.
+
+For newbies
+~~~~~~~~~~~
+
+I have pulled man page head; please learn to read it.  
+
+::
+
+    NAME
+         yaourt - more than a frontend to pacman
+
+    DESCRIPTION
+
+    Yaourt is a pacman frontend with a lot of features.
+
+    AUR/ABS support, colorized output, interactive
+    search/install, save/restore Alpm database, orphans
+    detection, manage .pac\* files, ...
+
+Best part, I can pull the latest package, as: ``emacs-git`` or
+``tmux-git`` direct from github/src. I am planning pulling ``linux-git``
+in near future, need to add few modules before compiling the src. 🙈
+
+Before you begin ⚠️
+------------------
+
+Before installing yaourt, bare minimum stuffs we would need are
+pulled as:
+
+.. code-block:: sh
+
+   sudo pacman -S --needed base-devel git wget yajl
+
+&& ``#pacmanit`` : **this means you need to pacman(eat) the package** 📦
+
+build yaourt from source 🚬
+---------------------------
+
+Lets check what yaourts depends on.
+
+.. code-block:: sh
+
+   yaourt -Qi yaourt | grep -i 'depends on'
+
+Depends On      : diffutils  pacman>=5.0  package-query>=1.8  gettext
+
+That means we need those pacakges pulled pre-hand
+compiling/installing yaourt 🛐.
+
+Starting with diffutils & pacman
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: sh
+
+    yaourt -Ss diffutils
+
+core/diffutils 3.5-1 (base) [installed]
+    Utility programs used for creating patch files
+
+Nice pacakage is core 😄. #pacmanit
+
+Next is pacakge-query
+~~~~~~~~~~~~~~~~~~~~~
+
+My obvious guess is; its in AUR.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: sh
+
+    yaourt -Ss package-query
+
+aur/package-query 1.8-2 [installed] (1127) (7.56)
+    Query ALPM and AUR
+
+Yeah, I remeber it pulling from src in old days. Lets redo the stuff. first thing first, check its deps
+
+.. code-block:: sh
+
+    yaourt -Qi package-query | grep -i 'depends on'
+
+Depends On      : pacman>=5.0  yajl>=2.0
+
+🙊 **yajl** yet another package... goodthing its in extra. #pacmanit
+
+Building/Installing the package-query
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Now we pull/build/install the ``PKGBUILD`` form `AUR <https://aur.archlinux.org/package-query.git>`_
+
+.. code-block:: sh
+
+    git clone https://aur.archlinux.org/package-query.git
+    cd package-query && makepkg -si
+
+next is gettext
+~~~~~~~~~~~~~~~
+
+.. code-block:: sh
+
+    yaourt -Ss gettext
+
+core/gettext 0.19.8.1-2 (base base-devel) [installed]
+    GNU internationalization library
+
+Nice its also is core. #pacmanit
+
+Yaourt, final call
+------------------
+
+Lets pull the ``PKGBUILD`` first. Oh you are getting hang of it 😃
+
+.. code-block:: sh
+
+
+    git clone https://aur.archlinux.org/yaourt.git 
+    cd yaourt && makepkg -si
+
+Coda
+----
+
+This post is just a walk through on building pacakge from AUR,
+though after **yaourt** you won't use it...hehe 
+
+thanksto
+--------
+
+- the mighty arch wiki #motherofwiki
+
+- `this blog <http://www.ostechnix.com/install-yaourt-arch-linux/>`_ I was missing deps building package-query 😸

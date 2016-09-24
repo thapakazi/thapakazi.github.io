@@ -1,0 +1,51 @@
+=======
+aboutme
+=======
+
+:Author: Milan Thapa
+:Date:   Friday, Mar 25 2016
+
+    Be the change you want to see in the world -- Gandi
+
+It will be fun... 😁
+
+.. code:: ruby
+
+    ---
+    name: Milan Thapa
+    they_call_me: devops
+    details:
+      📫: milans.thapa78@gmail.com
+      📱:  +977 9841 715 750
+    handles:
+       twitter: milanthapa_
+       github: zerOnepal
+       telegram: thapakazi
+       skype: ceasors
+    i_use:
+       editor: emacs
+       browser: firefox
+       os: Archlinux
+    addicted_to:
+       - linux
+       - org-mode
+       - tmux
+       - crontabs
+       - typo
+    i_love:
+       - terminals 
+       - automation
+       - visualising
+       - debuging
+       - tinkering pi/arudino
+       - playing futsal
+
+    education:
+      - BE in computer from Kathmandu University
+
+    recent_hangovers:
+      - prometheus
+      - mongodb
+      - blogging
+
+Link to my `old cv <https://zeronepal.github.io/docs/milan.pdf>`__

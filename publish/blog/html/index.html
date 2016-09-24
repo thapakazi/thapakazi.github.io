@@ -1,0 +1,248 @@
+<!DOCTYPE html><!--[if lt IE 7]>      <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="publishing orgs to web">
+        <meta name="viewport" content="width=device-width">
+        <title>blog &mdash; 200 OK</title>
+            <link rel="stylesheet" href="_static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="_static/sphinx.css" type="text/css">
+            <link rel="stylesheet" href="_static/main.css" type="text/css">
+            <link rel="stylesheet" href="_static/flat.css" type="text/css">
+            <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="_static/font-awesome.min.css" type="text/css">
+        <link rel="shortcut icon" href="_static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="_static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="_static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="_static/plugins.js"></script>
+        <script src="_static/main.js"></script>
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script><script type="text/javascript" src="_static/underscore.js"></script><script type="text/javascript" src="_static/doctools.js"></script><script type="text/javascript" src="_static/disqus.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
+            }
+        });
+    </script></head>
+    <body role="document">
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><header role="banner">
+            <hgroup>
+              <h1><a href="#">200 OK</a></h1><h2>publishing orgs to web</h2></hgroup>
+          </header>
+      <nav role="navigation">
+            <ul><li class="main-nav">
+                  <a href="#">blog</a>
+                </li>
+              <li class="main-nav">
+                  <a href="pages/tuts.html">~/.tuts</a>
+                </li>
+              <li class="main-nav">
+                  <a href="pages/aboutme.html">aboutme</a>
+                </li>
+              </ul>
+          </nav><div class="main-container" role="main"><div class="main wrapper body clearfix"><article><div class="timestamp postmeta">
+            <span>September 24, 2016</span>
+        </div>
+        <div class="section">
+            <h1><a href="2016/09/24/getting_yaourt_in_alarmpi.html">getting yaourt in alarmpi</a></h1>
+<div class="section" id="motivation">
+<h2>Motivation</h2>
+<div class="highlight-default"><div class="highlight"><pre><span/><span class="n">one</span> <span class="n">simple</span> <span class="n">tool</span> <span class="n">to</span> <span class="n">pull</span> <span class="n">everything</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="intro">
+<h2>Intro</h2>
+<p>Assuming you know arch repo/package distribution system. I will
+remind the fullform for <strong>YAOURT</strong>: <strong>Yet AnOther User Repository Tool</strong>. I know you know rest of story.</p>
+<div class="section" id="for-newbies">
+<h3>For newbies</h3>
+<p>I have pulled man page head; please learn to read it.</p>
+<div class="highlight-default"><div class="highlight"><pre><span/><span class="n">NAME</span>
+     <span class="n">yaourt</span> <span class="o">-</span> <span class="n">more</span> <span class="n">than</span> <span class="n">a</span> <span class="n">frontend</span> <span class="n">to</span> <span class="n">pacman</span>
+
+<span class="n">DESCRIPTION</span>
+
+<span class="n">Yaourt</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">pacman</span> <span class="n">frontend</span> <span class="k">with</span> <span class="n">a</span> <span class="n">lot</span> <span class="n">of</span> <span class="n">features</span><span class="o">.</span>
+
+<span class="n">AUR</span><span class="o">/</span><span class="n">ABS</span> <span class="n">support</span><span class="p">,</span> <span class="n">colorized</span> <span class="n">output</span><span class="p">,</span> <span class="n">interactive</span>
+<span class="n">search</span><span class="o">/</span><span class="n">install</span><span class="p">,</span> <span class="n">save</span><span class="o">/</span><span class="n">restore</span> <span class="n">Alpm</span> <span class="n">database</span><span class="p">,</span> <span class="n">orphans</span>
+<span class="n">detection</span><span class="p">,</span> <span class="n">manage</span> <span class="o">.</span><span class="n">pac</span>\<span class="o">*</span> <span class="n">files</span><span class="p">,</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>Best part, I can pull the latest package, as: <span class="docutils literal"><span class="pre">emacs-git</span></span> or
+<span class="docutils literal"><span class="pre">tmux-git</span></span> direct from github/src. I am planning pulling <span class="docutils literal"><span class="pre">linux-git</span></span>
+in near future, need to add few modules before compiling the src. 🙈</p>
+</div>
+</div>
+<div class="section" id="before-you-begin">
+<h2>Before you begin ⚠️</h2>
+<p>Before installing yaourt, bare minimum stuffs we would need are
+pulled as:</p>
+<div class="highlight-sh"><div class="highlight"><pre><span/>sudo pacman -S --needed base-devel git wget yajl
+</pre></div>
+</div>
+<p>&amp;&amp; <span class="docutils literal"><span class="pre">#pacmanit</span></span> : <strong>this means you need to pacman(eat) the package</strong> 📦</p>
+</div>
+<div class="section" id="build-yaourt-from-source">
+<h2>build yaourt from source 🚬</h2>
+<p>Lets check what yaourts depends on.</p>
+<div class="highlight-sh"><div class="highlight"><pre><span/>yaourt -Qi yaourt <span class="p">|</span> grep -i <span class="s1">'depends on'</span>
+</pre></div>
+</div>
+<p>Depends On      : diffutils  pacman&gt;=5.0  package-query&gt;=1.8  gettext</p>
+<p>That means we need those pacakges pulled pre-hand
+compiling/installing yaourt 🛐.</p>
+<div class="section" id="starting-with-diffutils-pacman">
+<h3>Starting with diffutils &amp; pacman</h3>
+<div class="highlight-sh"><div class="highlight"><pre><span/>yaourt -Ss diffutils
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>core/diffutils 3.5-1 (base) [installed]</dt>
+<dd>Utility programs used for creating patch files</dd>
+</dl>
+<p>Nice pacakage is core 😄. #pacmanit</p>
+</div>
+<div class="section" id="next-is-pacakge-query">
+<h3>Next is pacakge-query</h3>
+<div class="section" id="my-obvious-guess-is-its-in-aur">
+<h4>My obvious guess is; its in AUR.</h4>
+<div class="highlight-sh"><div class="highlight"><pre><span/>yaourt -Ss package-query
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>aur/package-query 1.8-2 [installed] (1127) (7.56)</dt>
+<dd>Query ALPM and AUR</dd>
+</dl>
+<p>Yeah, I remeber it pulling from src in old days. Lets redo the stuff. first thing first, check its deps</p>
+<div class="highlight-sh"><div class="highlight"><pre><span/>yaourt -Qi package-query <span class="p">|</span> grep -i <span class="s1">'depends on'</span>
+</pre></div>
+</div>
+<p>Depends On      : pacman&gt;=5.0  yajl&gt;=2.0</p>
+<p>🙊 <strong>yajl</strong> yet another package... goodthing its in extra. #pacmanit</p>
+</div>
+<div class="section" id="building-installing-the-package-query">
+<h4>Building/Installing the package-query</h4>
+<p>Now we pull/build/install the <span class="docutils literal"><span class="pre">PKGBUILD</span></span> form <a class="reference external" href="https://aur.archlinux.org/package-query.git">AUR</a></p>
+<div class="highlight-sh"><div class="highlight"><pre><span/>git clone https://aur.archlinux.org/package-query.git
+<span class="nb">cd</span> package-query <span class="o">&amp;&amp;</span> makepkg -si
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="next-is-gettext">
+<h3>next is gettext</h3>
+<div class="highlight-sh"><div class="highlight"><pre><span/>yaourt -Ss gettext
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>core/gettext 0.19.8.1-2 (base base-devel) [installed]</dt>
+<dd>GNU internationalization library</dd>
+</dl>
+<p>Nice its also is core. #pacmanit</p>
+</div>
+</div>
+<div class="section" id="yaourt-final-call">
+<h2>Yaourt, final call</h2>
+<p>Lets pull the <span class="docutils literal"><span class="pre">PKGBUILD</span></span> first. Oh you are getting hang of it 😃</p>
+<div class="highlight-sh"><div class="highlight"><pre><span/>git clone https://aur.archlinux.org/yaourt.git
+<span class="nb">cd</span> yaourt <span class="o">&amp;&amp;</span> makepkg -si
+</pre></div>
+</div>
+</div>
+<div class="section" id="coda">
+<h2>Coda</h2>
+<p>This post is just a walk through on building pacakge from AUR,
+though after <strong>yaourt</strong> you won’t use it...hehe</p>
+</div>
+<div class="section" id="thanksto">
+<h2>thanksto</h2>
+<ul class="simple">
+<li>the mighty arch wiki #motherofwiki</li>
+<li><a class="reference external" href="http://www.ostechnix.com/install-yaourt-arch-linux/">this blog</a> I was missing deps building package-query 😸</li>
+</ul>
+</div>
+
+        </div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by thapakazi</span>
+        </div>
+        
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/archlinux.html">archlinux</a>, <a href="tags/pi.html">pi</a></span>
+        </div>
+        <div class="comments">
+            <a href="https://zeronepal.github.io/2016/09/24/getting_yaourt_in_alarmpi.html#disqus_thread" data-disqus-identifier="2016/09/24/getting_yaourt_in_alarmpi">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
+            <span>September 23, 2016</span>
+        </div>
+        <div class="section">
+            <h1><a href="2016/09/23/learning_prometheus_instrumentation.html">Learning Prometheus Instrumentation</a></h1>
+<p>Prometheus is yet another awesome instrumentaion tool free for all to use 😄</p>
+
+        </div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by thapakazi</span>
+        </div>
+        
+        
+        <div class="comments">
+            <a href="https://zeronepal.github.io/2016/09/23/learning_prometheus_instrumentation.html#disqus_thread" data-disqus-identifier="2016/09/23/learning_prometheus_instrumentation">Leave a comment</a>
+        </div></div><div class="archive_link">
+        <a href="archive.html"> &mdash; Blog Archive &mdash; </a>
+    </div></article><aside class="sidebar"><section><div class="widget">
+    <h1>Recent Posts</h1>
+    <ul><li>
+            <a href="2016/09/24/getting_yaourt_in_alarmpi.html">getting yaourt in alarmpi</a>
+        </li><li>
+            <a href="2016/09/23/learning_prometheus_instrumentation.html">Learning Prometheus Instrumentation</a>
+        </li></ul>
+</div>
+</section><section><div class="widget" id="searchbox" role="search">
+    <h1><a href="#searchbox">Search</a></h1>
+    <form action="search.html" method="get">
+        <input type="text" name="q" />
+        <button type="submit"><span class="fa fa-search"></span></button>
+    </form>
+</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 2016, thapakazi. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+
+      </div> <!--! end of #container --><script type="text/javascript">    var disqus_shortname = "zeronepal";    disqus_count();</script><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
+</html>
