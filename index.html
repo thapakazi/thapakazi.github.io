@@ -16,18 +16,18 @@
         <meta name="description" content="publishing orgs to web">
         <meta name="viewport" content="width=device-width">
         <title>blog &mdash; 200 OK</title>
-            <link rel="stylesheet" href="./static/normalize.css" type="text/css">
-            <link rel="stylesheet" href="./static/sphinx.css" type="text/css">
-            <link rel="stylesheet" href="./static/main.css" type="text/css">
-            <link rel="stylesheet" href="./static/flat.css" type="text/css">
-            <link rel="stylesheet" href="./static/pygments.css" type="text/css" />
-            <link rel="stylesheet" href="./static/font-awesome.min.css" type="text/css">
-        <link rel="shortcut icon" href="./static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
-        <script src="./static/vendor/modernizr-2.6.2.min.js"></script>
+            <link rel="stylesheet" href="static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="static/sphinx.css" type="text/css">
+            <link rel="stylesheet" href="static/main.css" type="text/css">
+            <link rel="stylesheet" href="static/flat.css" type="text/css">
+            <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="static/font-awesome.min.css" type="text/css">
+        <link rel="shortcut icon" href="static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="static/vendor/modernizr-2.6.2.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="./static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
-        <script src="./static/plugins.js"></script>
-        <script src="./static/main.js"></script>
+        <script>window.jQuery || document.write('<script src="static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="static/plugins.js"></script>
+        <script src="static/main.js"></script>
         <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.html" /><script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
@@ -36,7 +36,7 @@
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
-    </script><script type="text/javascript" src="./static/underscore.js"></script><script type="text/javascript" src="./static/doctools.js"></script><script type="text/javascript" src="./static/disqus.js"></script>
+    </script><script type="text/javascript" src="static/underscore.js"></script><script type="text/javascript" src="static/doctools.js"></script><script type="text/javascript" src="static/disqus.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -68,6 +68,122 @@
                 </li>
               </ul>
           </nav><div class="main-container" role="main"><div class="main wrapper body clearfix"><article><div class="timestamp postmeta">
+            <span>October 04, 2016</span>
+        </div>
+        <div class="section">
+            <h1><a href="2016/10/04/intro_to_auth_ion_with_mongodb.html">Intro to auth.*ion with mongodb</a></h1>
+<div class="section" id="agenda">
+<h2>Agenda</h2>
+<ul class="simple">
+<li>how to start with auth*s in mongod</li>
+<li>just presenting the steps I followed</li>
+</ul>
+</div>
+<div class="section" id="you-have-been-warned">
+<h2>You have been warned ⚠️</h2>
+<div class="highlight-default"><div class="highlight"><pre><span/><span class="n">do</span> <span class="k">try</span> <span class="n">this</span> <span class="n">at</span> <span class="n">home</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="following-the-path">
+<h2>Following the path</h2>
+<p>Guidelines: <a class="reference external" href="https://docs.mongodb.com/manual/tutorial/enable-authentication/">from mongodb</a></p>
+<ul>
+<li><dl class="first docutils">
+<dt>connect to server, <a class="reference external" href="https://docs.mongodb.com/manual/tutorial/enable-authentication/#create-the-user-administrator">create an admin user</a></dt>
+<dd><p class="first last">make sure <span class="docutils literal"><span class="pre">role:</span> <span class="pre">userAdminAnyDatabase</span></span> in <span class="docutils literal"><span class="pre">db:</span> <span class="pre">admin</span></span></p>
+</dd>
+</dl>
+</li>
+<li><p class="first">restart server with auth enabled with config like:</p>
+<p>&amp; start the server</p>
+</li>
+<li><p class="first">adduser necessary users afterwards first</p>
+<div class="highlight-default"><div class="highlight"><pre><span/><span class="n">use</span> <span class="n">hellworld</span><span class="p">;</span>
+<span class="n">switched</span> <span class="n">to</span> <span class="n">db</span> <span class="n">hellworld</span>
+<span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">createUser</span><span class="p">(</span>
+<span class="o">&gt;</span>
+  <span class="n">db</span><span class="o">.</span><span class="n">createUser</span><span class="p">(</span>
+  <span class="n">db</span><span class="o">.</span><span class="n">createUser</span><span class="p">(</span>
+<span class="o">...</span> <span class="p">{</span>
+<span class="o">...</span> <span class="n">user</span><span class="p">:</span> <span class="s2">"eliot"</span><span class="p">,</span>
+<span class="o">...</span> <span class="n">pwd</span><span class="p">:</span> <span class="s2">"abc123"</span><span class="p">,</span>
+<span class="o">...</span> <span class="n">roles</span><span class="p">:</span> <span class="p">[{</span><span class="n">role</span><span class="p">:</span> <span class="s2">"readWrite"</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="s2">"hellworld"</span><span class="p">}]</span>
+<span class="o">...</span> <span class="p">}</span>
+<span class="o">...</span> <span class="p">)</span>
+<span class="n">Successfully</span> <span class="n">added</span> <span class="n">user</span><span class="p">:</span> <span class="p">{</span>
+  <span class="s2">"user"</span><span class="p">:</span> <span class="s2">"eliot"</span><span class="p">,</span>
+  <span class="s2">"roles"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"role"</span><span class="p">:</span> <span class="s2">"readWrite"</span><span class="p">,</span>
+      <span class="s2">"db"</span><span class="p">:</span> <span class="s2">"hellworld"</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="things-to-read-slow-and-understand">
+<h2>Things to read slow and understand</h2>
+<div class="section" id="note-1-user-s-authentication-db-doesn-t-limit-user-s-previliges">
+<h3>Note #1: User’s authentication db doesn’t limit user’s previliges</h3>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span/>Note
+The database where you create the user (in this example, test) is that user’s authentication database.
+Although the user would authenticate to this database, the user can have roles in other databases;
+i.e. the user’s authentication database does not limit the user’s privileges.
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="note-2-don-t-panic-if-error">
+<h3>Note #2: Don’t panic if error</h3>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span/><span class="n">May</span> <span class="n">it</span> <span class="n">be</span> <span class="n">you</span> <span class="n">don</span><span class="s1">'t have enough previlege for that user.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="quick-links">
+<h2>Quick links</h2>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/humingchun/MongoDB.University/blob/master/M202.MongoDB.Advanced.Deployment.and.Operations.md#chapter-7-security-authentication-and-authorization">MongoUniversity</a>  <a class="reference external" href="https://university.mongodb.com/courses/M202/about">official</a><ul>
+<li><a class="reference external" href="https://www.youtube.com/watch?v=yLQf6KuwudM">7.10. Authorization: Concepts</a></li>
+<li><a class="reference external" href="https://www.youtube.com/watch?v=fOIElCEo4eg">7.11. Authorization: Roles</a></li>
+<li><a class="reference external" href="https://www.youtube.com/watch?v=HYiR_ygEJbI">7.12. Authorization: Demo</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="https://docs.mongodb.com/manual/tutorial/enable-authentication/#enable-auth">Enable auth</a></li>
+<li><a class="reference external" href="https://docs.mongodb.com/manual/tutorial/create-users/#add-users">Add User</a></li>
+</ul>
+</div>
+<div class="section" id="final-words">
+<h2>Final words</h2>
+<p>Things to explore:</p>
+<ul class="simple">
+<li>roles{inbuilt &amp;&amp; custom}</li>
+<li>replication roles {for replica set configuration}</li>
+<li>fine tuening over the roles, previliges, resources, actions</li>
+</ul>
+</div>
+
+        </div>
+        <div class="postmeta">
+        <div class="author">
+            <span>Posted by Milan Thapa</span>
+        </div>
+        
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="tags/mongo.html">mongo</a>, <a href="tags/database.html">database</a></span>
+        </div>
+        <div class="comments">
+            <a href="https://zeronepal.github.io/2016/10/04/intro_to_auth_ion_with_mongodb.html#disqus_thread" data-disqus-identifier="2016/10/04/intro_to_auth_ion_with_mongodb">Leave a comment</a>
+        </div></div><div class="separator post_separator"></div><div class="timestamp postmeta">
             <span>September 24, 2016</span>
         </div>
         <div class="section">
@@ -225,6 +341,8 @@ though after <strong>yaourt</strong> you won’t use it...hehe</p>
     </div></article><aside class="sidebar"><section><div class="widget">
     <h1>Recent Posts</h1>
     <ul><li>
+            <a href="2016/10/04/intro_to_auth_ion_with_mongodb.html">Intro to auth.*ion with mongodb</a>
+        </li><li>
             <a href="2016/09/24/getting_yaourt_in_alarmpi.html">getting yaourt in alarmpi</a>
         </li><li>
             <a href="2016/09/23/learning_prometheus_instrumentation.html">Learning Prometheus Instrumentation</a>

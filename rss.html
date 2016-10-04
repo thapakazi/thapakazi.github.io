@@ -5,8 +5,114 @@
         <link>https://zeronepal.github.io/</link>
         <description>publishing orgs to web</description>
         <language>en-us</language>
-        <pubDate>Sat, 24 Sep 2016 00:00:00 +0545</pubDate>
+        <pubDate>Tue, 04 Oct 2016 00:00:00 +0545</pubDate>
         
+        <item>
+            <link>https://zeronepal.github.io/2016/10/04/intro_to_auth_ion_with_mongodb.html</link>
+            <guid>https://zeronepal.github.io/2016/10/04/intro_to_auth_ion_with_mongodb.html</guid>
+            <title><![CDATA[Intro to auth.*ion with mongodb]]></title>
+            <description><![CDATA[<h1>Intro to auth.*ion with mongodb</h1>
+<div class="section" id="agenda">
+<h2>Agenda</h2>
+<ul class="simple">
+<li>how to start with auth*s in mongod</li>
+<li>just presenting the steps I followed</li>
+</ul>
+</div>
+<div class="section" id="you-have-been-warned">
+<h2>You have been warned ⚠️</h2>
+<div class="highlight-default"><div class="highlight"><pre><span/><span class="n">do</span> <span class="k">try</span> <span class="n">this</span> <span class="n">at</span> <span class="n">home</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="following-the-path">
+<h2>Following the path</h2>
+<p>Guidelines: <a class="reference external" href="https://docs.mongodb.com/manual/tutorial/enable-authentication/">from mongodb</a></p>
+<ul>
+<li><dl class="first docutils">
+<dt>connect to server, <a class="reference external" href="https://docs.mongodb.com/manual/tutorial/enable-authentication/#create-the-user-administrator">create an admin user</a></dt>
+<dd><p class="first last">make sure <span class="docutils literal"><span class="pre">role:</span> <span class="pre">userAdminAnyDatabase</span></span> in <span class="docutils literal"><span class="pre">db:</span> <span class="pre">admin</span></span></p>
+</dd>
+</dl>
+</li>
+<li><p class="first">restart server with auth enabled with config like:</p>
+<p>&amp; start the server</p>
+</li>
+<li><p class="first">adduser necessary users afterwards first</p>
+<div class="highlight-default"><div class="highlight"><pre><span/><span class="n">use</span> <span class="n">hellworld</span><span class="p">;</span>
+<span class="n">switched</span> <span class="n">to</span> <span class="n">db</span> <span class="n">hellworld</span>
+<span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">createUser</span><span class="p">(</span>
+<span class="o">&gt;</span>
+  <span class="n">db</span><span class="o">.</span><span class="n">createUser</span><span class="p">(</span>
+  <span class="n">db</span><span class="o">.</span><span class="n">createUser</span><span class="p">(</span>
+<span class="o">...</span> <span class="p">{</span>
+<span class="o">...</span> <span class="n">user</span><span class="p">:</span> <span class="s2">"eliot"</span><span class="p">,</span>
+<span class="o">...</span> <span class="n">pwd</span><span class="p">:</span> <span class="s2">"abc123"</span><span class="p">,</span>
+<span class="o">...</span> <span class="n">roles</span><span class="p">:</span> <span class="p">[{</span><span class="n">role</span><span class="p">:</span> <span class="s2">"readWrite"</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="s2">"hellworld"</span><span class="p">}]</span>
+<span class="o">...</span> <span class="p">}</span>
+<span class="o">...</span> <span class="p">)</span>
+<span class="n">Successfully</span> <span class="n">added</span> <span class="n">user</span><span class="p">:</span> <span class="p">{</span>
+  <span class="s2">"user"</span><span class="p">:</span> <span class="s2">"eliot"</span><span class="p">,</span>
+  <span class="s2">"roles"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"role"</span><span class="p">:</span> <span class="s2">"readWrite"</span><span class="p">,</span>
+      <span class="s2">"db"</span><span class="p">:</span> <span class="s2">"hellworld"</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="things-to-read-slow-and-understand">
+<h2>Things to read slow and understand</h2>
+<div class="section" id="note-1-user-s-authentication-db-doesn-t-limit-user-s-previliges">
+<h3>Note #1: User’s authentication db doesn’t limit user’s previliges</h3>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span/>Note
+The database where you create the user (in this example, test) is that user’s authentication database.
+Although the user would authenticate to this database, the user can have roles in other databases;
+i.e. the user’s authentication database does not limit the user’s privileges.
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="note-2-don-t-panic-if-error">
+<h3>Note #2: Don’t panic if error</h3>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span/><span class="n">May</span> <span class="n">it</span> <span class="n">be</span> <span class="n">you</span> <span class="n">don</span><span class="s1">'t have enough previlege for that user.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="quick-links">
+<h2>Quick links</h2>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/humingchun/MongoDB.University/blob/master/M202.MongoDB.Advanced.Deployment.and.Operations.md#chapter-7-security-authentication-and-authorization">MongoUniversity</a>  <a class="reference external" href="https://university.mongodb.com/courses/M202/about">official</a><ul>
+<li><a class="reference external" href="https://www.youtube.com/watch?v=yLQf6KuwudM">7.10. Authorization: Concepts</a></li>
+<li><a class="reference external" href="https://www.youtube.com/watch?v=fOIElCEo4eg">7.11. Authorization: Roles</a></li>
+<li><a class="reference external" href="https://www.youtube.com/watch?v=HYiR_ygEJbI">7.12. Authorization: Demo</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="https://docs.mongodb.com/manual/tutorial/enable-authentication/#enable-auth">Enable auth</a></li>
+<li><a class="reference external" href="https://docs.mongodb.com/manual/tutorial/create-users/#add-users">Add User</a></li>
+</ul>
+</div>
+<div class="section" id="final-words">
+<h2>Final words</h2>
+<p>Things to explore:</p>
+<ul class="simple">
+<li>roles{inbuilt &amp;&amp; custom}</li>
+<li>replication roles {for replica set configuration}</li>
+<li>fine tuening over the roles, previliges, resources, actions</li>
+</ul>
+</div>
+]]></description>
+             <pubDate>Tue, 04 Oct 2016 00:00:00 +0545</pubDate>
+        </item>
+    
         <item>
             <link>https://zeronepal.github.io/2016/09/24/getting_yaourt_in_alarmpi.html</link>
             <guid>https://zeronepal.github.io/2016/09/24/getting_yaourt_in_alarmpi.html</guid>

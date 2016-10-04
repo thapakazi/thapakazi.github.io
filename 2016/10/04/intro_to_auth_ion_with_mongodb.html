@@ -1,0 +1,212 @@
+<!DOCTYPE html><!--[if lt IE 7]>      <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:og="http://ogp.me/ns#"
+    xmlns:fb="https://www.facebook.com/2008/fbml" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="publishing orgs to web">
+        <meta name="viewport" content="width=device-width">
+        <title>Intro to auth.*ion with mongodb &mdash; 200 OK</title>
+            <link rel="stylesheet" href="../../../static/normalize.css" type="text/css">
+            <link rel="stylesheet" href="../../../static/sphinx.css" type="text/css">
+            <link rel="stylesheet" href="../../../static/main.css" type="text/css">
+            <link rel="stylesheet" href="../../../static/flat.css" type="text/css">
+            <link rel="stylesheet" href="../../../static/pygments.css" type="text/css" />
+            <link rel="stylesheet" href="../../../static/font-awesome.min.css" type="text/css">
+        <link rel="shortcut icon" href="../../../static/tinkerer.ico" /><!-- Load modernizr and JQuery -->
+        <script src="../../../static/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../../static/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script src="../../../static/plugins.js"></script>
+        <script src="../../../static/main.js"></script>
+        <link rel="next" title="getting yaourt in alarmpi" href="../../09/24/getting_yaourt_in_alarmpi.html" /><link rel="alternate" type="application/rss+xml" title="RSS" href="../../../rss.html" /><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.5',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script><script type="text/javascript" src="../../../static/underscore.js"></script><script type="text/javascript" src="../../../static/doctools.js"></script><script type="text/javascript" src="../../../static/disqus.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Scroll to content if on small screen
+            if (screen.width < 480)
+            {
+                $(document).scrollTop(document.getElementsByTagName("article")[0].offsetTop - 44);
+            }
+        });
+    </script></head>
+    <body role="document">
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+      <div id="container"><header role="banner">
+            <hgroup>
+              <h1><a href="../../../index.html">200 OK</a></h1><h2>publishing orgs to web</h2></hgroup>
+          </header>
+      <nav role="navigation">
+            <ul><li class="main-nav">
+                  <a href="../../../index.html">blog</a>
+                </li>
+              <li class="main-nav">
+                  <a href="../../../pages/tuts.html">~/.tuts</a>
+                </li>
+              <li class="main-nav">
+                  <a href="../../../pages/aboutme.html">aboutme</a>
+                </li>
+              </ul>
+          </nav><div class="main-container" role="main"><div class="main wrapper body clearfix"><article><div class="timestamp postmeta">
+            <span>October 04, 2016</span>
+        </div>
+    <div class="section" id="intro-to-auth-ion-with-mongodb">
+<h1>Intro to auth.*ion with mongodb</h1>
+<div class="section" id="agenda">
+<h2>Agenda</h2>
+<ul class="simple">
+<li>how to start with auth*s in mongod</li>
+<li>just presenting the steps I followed</li>
+</ul>
+</div>
+<div class="section" id="you-have-been-warned">
+<h2>You have been warned ⚠️</h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">do</span> <span class="k">try</span> <span class="n">this</span> <span class="n">at</span> <span class="n">home</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="following-the-path">
+<h2>Following the path</h2>
+<p>Guidelines: <a class="reference external" href="https://docs.mongodb.com/manual/tutorial/enable-authentication/">from mongodb</a></p>
+<ul>
+<li><dl class="first docutils">
+<dt>connect to server, <a class="reference external" href="https://docs.mongodb.com/manual/tutorial/enable-authentication/#create-the-user-administrator">create an admin user</a></dt>
+<dd><p class="first last">make sure <span class="docutils literal"><span class="pre">role:</span> <span class="pre">userAdminAnyDatabase</span></span> in <span class="docutils literal"><span class="pre">db:</span> <span class="pre">admin</span></span></p>
+</dd>
+</dl>
+</li>
+<li><p class="first">restart server with auth enabled with config like:</p>
+<p>&amp; start the server</p>
+</li>
+<li><p class="first">adduser necessary users afterwards first</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">use</span> <span class="n">hellworld</span><span class="p">;</span>
+<span class="n">switched</span> <span class="n">to</span> <span class="n">db</span> <span class="n">hellworld</span>
+<span class="o">&gt;</span> <span class="n">db</span><span class="o">.</span><span class="n">createUser</span><span class="p">(</span>
+<span class="o">&gt;</span>
+  <span class="n">db</span><span class="o">.</span><span class="n">createUser</span><span class="p">(</span>
+  <span class="n">db</span><span class="o">.</span><span class="n">createUser</span><span class="p">(</span>
+<span class="o">...</span> <span class="p">{</span>
+<span class="o">...</span> <span class="n">user</span><span class="p">:</span> <span class="s2">&quot;eliot&quot;</span><span class="p">,</span>
+<span class="o">...</span> <span class="n">pwd</span><span class="p">:</span> <span class="s2">&quot;abc123&quot;</span><span class="p">,</span>
+<span class="o">...</span> <span class="n">roles</span><span class="p">:</span> <span class="p">[{</span><span class="n">role</span><span class="p">:</span> <span class="s2">&quot;readWrite&quot;</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="s2">&quot;hellworld&quot;</span><span class="p">}]</span>
+<span class="o">...</span> <span class="p">}</span>
+<span class="o">...</span> <span class="p">)</span>
+<span class="n">Successfully</span> <span class="n">added</span> <span class="n">user</span><span class="p">:</span> <span class="p">{</span>
+  <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;eliot&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;roles&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;readWrite&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;db&quot;</span><span class="p">:</span> <span class="s2">&quot;hellworld&quot;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="things-to-read-slow-and-understand">
+<h2>Things to read slow and understand</h2>
+<div class="section" id="note-1-user-s-authentication-db-doesn-t-limit-user-s-previliges">
+<h3>Note #1: User&#8217;s authentication db doesn&#8217;t limit user&#8217;s previliges</h3>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span>Note
+The database where you create the user (in this example, test) is that user’s authentication database.
+Although the user would authenticate to this database, the user can have roles in other databases;
+i.e. the user’s authentication database does not limit the user’s privileges.
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="note-2-don-t-panic-if-error">
+<h3>Note #2: Don&#8217;t panic if error</h3>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">May</span> <span class="n">it</span> <span class="n">be</span> <span class="n">you</span> <span class="n">don</span><span class="s1">&#39;t have enough previlege for that user.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="quick-links">
+<h2>Quick links</h2>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/humingchun/MongoDB.University/blob/master/M202.MongoDB.Advanced.Deployment.and.Operations.md#chapter-7-security-authentication-and-authorization">MongoUniversity</a>  <a class="reference external" href="https://university.mongodb.com/courses/M202/about">official</a><ul>
+<li><a class="reference external" href="https://www.youtube.com/watch?v=yLQf6KuwudM">7.10. Authorization: Concepts</a></li>
+<li><a class="reference external" href="https://www.youtube.com/watch?v=fOIElCEo4eg">7.11. Authorization: Roles</a></li>
+<li><a class="reference external" href="https://www.youtube.com/watch?v=HYiR_ygEJbI">7.12. Authorization: Demo</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="https://docs.mongodb.com/manual/tutorial/enable-authentication/#enable-auth">Enable auth</a></li>
+<li><a class="reference external" href="https://docs.mongodb.com/manual/tutorial/create-users/#add-users">Add User</a></li>
+</ul>
+</div>
+<div class="section" id="final-words">
+<h2>Final words</h2>
+<p>Things to explore:</p>
+<ul class="simple">
+<li>roles{inbuilt &amp;&amp; custom}</li>
+<li>replication roles {for replica set configuration}</li>
+<li>fine tuening over the roles, previliges, resources, actions</li>
+</ul>
+</div>
+</div>
+
+    <div class="postmeta">
+        <div class="author">
+            <span>Posted by Milan Thapa</span>
+        </div>
+        
+        <div class="tags">
+            <span>
+                Tags:
+                <a href="../../../tags/mongo.html">mongo</a>, <a href="../../../tags/database.html">database</a></span>
+        </div>
+        </div><ul class="related clearfix">
+            <li class="left"></li>
+            <li class="right"><a href="../../09/24/getting_yaourt_in_alarmpi.html">getting yaourt in alarmpi</a> &raquo; </li>
+        </ul><div id="disqus_thread"></div><script type="text/javascript">    var disqus_shortname = "zeronepal";    var disqus_identifier = "2016/10/04/intro_to_auth_ion_with_mongodb";    disqus_thread();</script><noscript>Please enable JavaScript to view the    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></article><aside class="sidebar"><section><div class="widget">
+    <h1>Recent Posts</h1>
+    <ul><li>
+            <a href="#">Intro to auth.*ion with mongodb</a>
+        </li><li>
+            <a href="../../09/24/getting_yaourt_in_alarmpi.html">getting yaourt in alarmpi</a>
+        </li><li>
+            <a href="../../09/23/learning_prometheus_instrumentation.html">Learning Prometheus Instrumentation</a>
+        </li></ul>
+</div>
+</section><section><div class="widget" id="searchbox" role="search">
+    <h1><a href="#searchbox">Search</a></h1>
+    <form action="../../../search.html" method="get">
+        <input type="text" name="q" />
+        <button type="submit"><span class="fa fa-search"></span></button>
+    </form>
+</div></section></aside></div> <!-- #main --></div> <!-- #main-container -->
+
+        <div class="footer-container" role="contentinfo"><footer class="wrapper">&copy; Copyright 2016, thapakazi. Powered by <a href="http://www.tinkerer.me/">Tinkerer</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.</footer></div> <!-- footer-container -->
+
+      </div> <!--! end of #container --><!--[if lt IE 7 ]>
+          <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+          <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+        <![endif]-->
+    </body>
+</html>

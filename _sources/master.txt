@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2016/10/04/intro_to_auth_ion_with_mongodb
    2016/09/24/getting_yaourt_in_alarmpi
    2016/09/23/learning_prometheus_instrumentation
    pages/tuts

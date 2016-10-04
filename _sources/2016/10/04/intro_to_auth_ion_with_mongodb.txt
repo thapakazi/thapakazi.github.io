@@ -1,0 +1,113 @@
+Intro to auth.*ion with mongodb
+===============================
+
+.. author:: Milan Thapa
+.. date:: Tuesday, Oct 04 2016
+.. categories:: none
+.. tags:: mongo, database
+.. comments::
+
+Agenda
+------
+
+- how to start with auth\*s in mongod
+
+- just presenting the steps I followed
+
+You have been warned ⚠️
+----------------------
+
+::
+
+    do try this at home
+
+Following the path
+------------------
+
+Guidelines: `from mongodb <https://docs.mongodb.com/manual/tutorial/enable-authentication/>`_
+
+- connect to server, `create an admin user <https://docs.mongodb.com/manual/tutorial/enable-authentication/#create-the-user-administrator>`_
+      make sure ``role: userAdminAnyDatabase`` in ``db: admin``
+
+- restart server with auth enabled with config like:
+
+  .. code-block:: yaml
+      security:
+        authorization: enabled
+
+  & start the server
+
+  .. code-block:: sh
+      mongod -f mongodb_with_auth_enabled.conf
+
+- adduser necessary users afterwards first
+
+  ::
+
+      use hellworld;
+      switched to db hellworld
+      > db.createUser(
+      > 
+        db.createUser(
+        db.createUser(
+      ... {
+      ... user: "eliot",
+      ... pwd: "abc123",
+      ... roles: [{role: "readWrite", db: "hellworld"}]
+      ... }
+      ... )
+      Successfully added user: {
+        "user": "eliot",
+        "roles": [
+          {
+            "role": "readWrite",
+            "db": "hellworld"
+          }
+        ]
+      }
+
+Things to read slow and understand
+----------------------------------
+
+Note #1: User's authentication db doesn't limit user's previliges
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  ::
+
+    Note
+    The database where you create the user (in this example, test) is that user’s authentication database.
+    Although the user would authenticate to this database, the user can have roles in other databases;
+    i.e. the user’s authentication database does not limit the user’s privileges.
+
+Note #2: Don't panic if error
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  ::
+
+    May it be you don't have enough previlege for that user.
+
+Quick links
+-----------
+
+- `MongoUniversity <https://github.com/humingchun/MongoDB.University/blob/master/M202.MongoDB.Advanced.Deployment.and.Operations.md#chapter-7-security-authentication-and-authorization>`_  `official <https://university.mongodb.com/courses/M202/about>`_
+
+  - `7.10. Authorization: Concepts <https://www.youtube.com/watch?v=yLQf6KuwudM>`_
+
+  - `7.11. Authorization: Roles <https://www.youtube.com/watch?v=fOIElCEo4eg>`_
+
+  - `7.12. Authorization: Demo <https://www.youtube.com/watch?v=HYiR_ygEJbI>`_
+
+- `Enable auth <https://docs.mongodb.com/manual/tutorial/enable-authentication/#enable-auth>`_
+
+- `Add User <https://docs.mongodb.com/manual/tutorial/create-users/#add-users>`_
+
+Final words
+-----------
+
+Things to explore:
+
+- roles{inbuilt && custom}
+
+- replication roles {for replica set configuration}
+
+- fine tuening over the roles, previliges, resources, actions
