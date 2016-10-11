@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>org to web</title>
+    <link>zeronepal.github.io/tags/emacs/index.xml</link>
+    <description>Recent content on org to web</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="zeronepal.github.io/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Partial publish blog</title>
+      <link>/zeronepal.github.io/post/partial_publish/</link>
+      <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/zeronepal.github.io/post/partial_publish/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;Define content dir&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;The next two functions care that all needed property drawers exist&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;Github flavoured markdown&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;Hugo function to blog all the things&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;Binding the key&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;define-content-dir-a-id-orgheadline1-a&#34;&gt;Define content dir&lt;a id=&#34;orgheadline1&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-emacs-lisp&#34;&gt;;; This is GPLv2. If you still don&#39;t know the details, read
+;; http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+
+(defvar hugo-content-dir &amp;quot;~/github/zerOnepal/blog/org2blog/content/post/&amp;quot;
+  &amp;quot;Path to Hugo&#39;s content directory&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;the-next-two-functions-care-that-all-needed-property-drawers-exist-a-id-orgheadline2-a&#34;&gt;The next two functions care that all needed property drawers exist&lt;a id=&#34;orgheadline2&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-emacs-lisp&#34;&gt;;; This is GPLv2. If you still don&#39;t know the details, read
+;; http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+
+(defun hugo-ensure-property (property)
+  &amp;quot;Make sure that a property exists. If not, it will be created.
+
+Returns the property name if the property has been created,
+otherwise nil.&amp;quot;
+  (if (org-entry-get nil property)
+      nil
+    (progn (org-entry-put nil property &amp;quot;&amp;quot;)
+           property)))
+
+(defun hugo-ensure-properties ()
+  &amp;quot;This ensures that several properties exists. If not, these
+properties will be created in an empty form. In this case, the
+drawer will also be opened and the cursor will be positioned
+at the first element that needs to be filled.
+
+Returns list of properties that still must be filled in&amp;quot;
+  (require &#39;dash)
+  (let ((current-time (format-time-string (org-time-stamp-format t t) (org-current-time)))
+        first)
+    (save-excursion
+      (unless (org-entry-get nil &amp;quot;TITLE&amp;quot;)
+        (org-entry-put nil &amp;quot;TITLE&amp;quot; (nth 4 (org-heading-components))))
+      (setq first (--first it (mapcar #&#39;hugo-ensure-property &#39;(&amp;quot;HUGO_TAGS&amp;quot; &amp;quot;HUGO_TOPICS&amp;quot; &amp;quot;HUGO_FILE&amp;quot;))))
+      (unless (org-entry-get nil &amp;quot;HUGO_DATE&amp;quot;)
+        (org-entry-put nil &amp;quot;HUGO_DATE&amp;quot; current-time)))
+    (when first
+      (goto-char (org-entry-beginning-position))
+      ;; The following opens the drawer
+      (forward-line 1)
+      (beginning-of-line 1)
+      (when (looking-at org-drawer-regexp)
+        (org-flag-drawer nil))
+      ;; And now move to the drawer property
+      (search-forward (concat &amp;quot;:&amp;quot; first &amp;quot;:&amp;quot;))
+      (end-of-line))
+    first))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;github-flavoured-markdown-a-id-orgheadline3-a&#34;&gt;Github flavoured markdown&lt;a id=&#34;orgheadline3&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-emacs-lisp&#34;&gt;(use-package ox-gfm
+  :config
+  (require &#39;ox-gfm))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;hugo-function-to-blog-all-the-things-a-id-orgheadline4-a&#34;&gt;Hugo function to blog all the things&lt;a id=&#34;orgheadline4&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-emacs-lisp&#34;&gt;;; This is GPLv2. If you still don&#39;t know the details, read
+;; http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+
+(defun hugo ()
+  (interactive)
+  (unless (hugo-ensure-properties)
+    (let* ((title    (concat &amp;quot;title = \&amp;quot;&amp;quot; (org-entry-get nil &amp;quot;TITLE&amp;quot;) &amp;quot;\&amp;quot;\n&amp;quot;))
+           (date     (concat &amp;quot;date = \&amp;quot;&amp;quot; (format-time-string &amp;quot;%Y-%m-%d&amp;quot; (apply &#39;encode-time (org-parse-time-string (org-entry-get nil &amp;quot;HUGO_DATE&amp;quot;))) t) &amp;quot;\&amp;quot;\n&amp;quot;))
+           (topics   (concat &amp;quot;topics = [ \&amp;quot;&amp;quot; (mapconcat &#39;identity (split-string (org-entry-get nil &amp;quot;HUGO_TOPICS&amp;quot;) &amp;quot;\\( *, *\\)&amp;quot; t) &amp;quot;\&amp;quot;, \&amp;quot;&amp;quot;) &amp;quot;\&amp;quot; ]\n&amp;quot;))
+           (tags     (concat &amp;quot;tags = [ \&amp;quot;&amp;quot; (mapconcat &#39;identity (split-string (org-entry-get nil &amp;quot;HUGO_TAGS&amp;quot;) &amp;quot;\\( *, *\\)&amp;quot; t) &amp;quot;\&amp;quot;, \&amp;quot;&amp;quot;) &amp;quot;\&amp;quot; ]\n&amp;quot;))
+           (fm (concat &amp;quot;+++\n&amp;quot;
+                       title
+                       date
+                       tags
+                       topics
+                       &amp;quot;+++\n\n&amp;quot;))
+           (file     (org-entry-get nil &amp;quot;HUGO_FILE&amp;quot;))
+           (coding-system-for-write buffer-file-coding-system)
+           (backend  &#39;md)
+           (blog))
+      ;; try to load org-mode/contrib/lisp/ox-gfm.el and use it as backend
+      (if (require &#39;ox-gfm nil t)
+          (setq backend &#39;gfm)
+        (require &#39;ox-md))
+      (setq blog (org-export-as backend t))
+      ;; Normalize save file path
+      (unless (string-match &amp;quot;^[/~]&amp;quot; file)
+        (setq file (concat hugo-content-dir file))
+        (unless (string-match &amp;quot;\\.md$&amp;quot; file)
+          (setq file (concat file &amp;quot;.md&amp;quot;)))
+        ;; save markdown
+        (with-temp-buffer
+          (insert fm)
+          (insert blog)
+          (untabify (point-min) (point-max))
+          (write-file file)
+          (message &amp;quot;Exported to %s&amp;quot; file))
+        ))))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;binding-the-key-a-id-orgheadline5-a&#34;&gt;Binding the key&lt;a id=&#34;orgheadline5&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-emacs-lisp&#34;&gt;(bind-key &amp;quot;M-g h&amp;quot; #&#39;hugo)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

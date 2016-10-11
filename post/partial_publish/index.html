@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title> Partial publish blog &middot; org to web </title>
+
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.13" />
+
+
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="zeronepal.github.io/css/nix.css">
+
+ 
+<link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Roboto|Montserrat|Concert+One" rel="stylesheet">
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'your_google_analytics_id', 'auto');
+	  ga('send', 'pageview');
+
+</script>
+
+
+	</head>
+
+	<body>
+		<header>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse font-header">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" id="green-terminal" href=/zeronepal.github.io>thapakazi@zeronepal ~ $</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="/zeronepal.github.io">/home/thapakazi</a>
+				</li>
+				
+				
+				<li >
+					<a href="/zeronepal.github.io/post">~/posts</a>
+				</li>
+				
+				
+				<li >
+					<a href="/zeronepal.github.io/aboutme">~/ℹ️</a>
+				</li>
+				
+
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+		<div class="container wrapper">
+			<h1><a href="/zeronepal.github.io/post/partial_publish/">Partial publish blog</a></h1>
+			<span class="post-date">Oct 10, 2016 </span>
+			<div class="post-content">
+				
+
+<ul>
+<li><a href="#orgheadline1">Define content dir</a>
+
+<ul>
+<li><a href="#orgheadline2">The next two functions care that all needed property drawers exist</a></li>
+<li><a href="#orgheadline3">Github flavoured markdown</a></li>
+<li><a href="#orgheadline4">Hugo function to blog all the things</a></li>
+<li><a href="#orgheadline5">Binding the key</a></li>
+</ul></li>
+</ul>
+
+<h1 id="define-content-dir-a-id-orgheadline1-a">Define content dir<a id="orgheadline1"></a></h1>
+
+<pre><code class="language-emacs-lisp">;; This is GPLv2. If you still don't know the details, read
+;; http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+
+(defvar hugo-content-dir &quot;~/github/zerOnepal/blog/org2blog/content/post/&quot;
+  &quot;Path to Hugo's content directory&quot;)
+</code></pre>
+
+<h1 id="the-next-two-functions-care-that-all-needed-property-drawers-exist-a-id-orgheadline2-a">The next two functions care that all needed property drawers exist<a id="orgheadline2"></a></h1>
+
+<pre><code class="language-emacs-lisp">;; This is GPLv2. If you still don't know the details, read
+;; http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+
+(defun hugo-ensure-property (property)
+  &quot;Make sure that a property exists. If not, it will be created.
+
+Returns the property name if the property has been created,
+otherwise nil.&quot;
+  (if (org-entry-get nil property)
+      nil
+    (progn (org-entry-put nil property &quot;&quot;)
+           property)))
+
+(defun hugo-ensure-properties ()
+  &quot;This ensures that several properties exists. If not, these
+properties will be created in an empty form. In this case, the
+drawer will also be opened and the cursor will be positioned
+at the first element that needs to be filled.
+
+Returns list of properties that still must be filled in&quot;
+  (require 'dash)
+  (let ((current-time (format-time-string (org-time-stamp-format t t) (org-current-time)))
+        first)
+    (save-excursion
+      (unless (org-entry-get nil &quot;TITLE&quot;)
+        (org-entry-put nil &quot;TITLE&quot; (nth 4 (org-heading-components))))
+      (setq first (--first it (mapcar #'hugo-ensure-property '(&quot;HUGO_TAGS&quot; &quot;HUGO_TOPICS&quot; &quot;HUGO_FILE&quot;))))
+      (unless (org-entry-get nil &quot;HUGO_DATE&quot;)
+        (org-entry-put nil &quot;HUGO_DATE&quot; current-time)))
+    (when first
+      (goto-char (org-entry-beginning-position))
+      ;; The following opens the drawer
+      (forward-line 1)
+      (beginning-of-line 1)
+      (when (looking-at org-drawer-regexp)
+        (org-flag-drawer nil))
+      ;; And now move to the drawer property
+      (search-forward (concat &quot;:&quot; first &quot;:&quot;))
+      (end-of-line))
+    first))
+</code></pre>
+
+<h1 id="github-flavoured-markdown-a-id-orgheadline3-a">Github flavoured markdown<a id="orgheadline3"></a></h1>
+
+<pre><code class="language-emacs-lisp">(use-package ox-gfm
+  :config
+  (require 'ox-gfm))
+</code></pre>
+
+<h1 id="hugo-function-to-blog-all-the-things-a-id-orgheadline4-a">Hugo function to blog all the things<a id="orgheadline4"></a></h1>
+
+<pre><code class="language-emacs-lisp">;; This is GPLv2. If you still don't know the details, read
+;; http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+
+(defun hugo ()
+  (interactive)
+  (unless (hugo-ensure-properties)
+    (let* ((title    (concat &quot;title = \&quot;&quot; (org-entry-get nil &quot;TITLE&quot;) &quot;\&quot;\n&quot;))
+           (date     (concat &quot;date = \&quot;&quot; (format-time-string &quot;%Y-%m-%d&quot; (apply 'encode-time (org-parse-time-string (org-entry-get nil &quot;HUGO_DATE&quot;))) t) &quot;\&quot;\n&quot;))
+           (topics   (concat &quot;topics = [ \&quot;&quot; (mapconcat 'identity (split-string (org-entry-get nil &quot;HUGO_TOPICS&quot;) &quot;\\( *, *\\)&quot; t) &quot;\&quot;, \&quot;&quot;) &quot;\&quot; ]\n&quot;))
+           (tags     (concat &quot;tags = [ \&quot;&quot; (mapconcat 'identity (split-string (org-entry-get nil &quot;HUGO_TAGS&quot;) &quot;\\( *, *\\)&quot; t) &quot;\&quot;, \&quot;&quot;) &quot;\&quot; ]\n&quot;))
+           (fm (concat &quot;+++\n&quot;
+                       title
+                       date
+                       tags
+                       topics
+                       &quot;+++\n\n&quot;))
+           (file     (org-entry-get nil &quot;HUGO_FILE&quot;))
+           (coding-system-for-write buffer-file-coding-system)
+           (backend  'md)
+           (blog))
+      ;; try to load org-mode/contrib/lisp/ox-gfm.el and use it as backend
+      (if (require 'ox-gfm nil t)
+          (setq backend 'gfm)
+        (require 'ox-md))
+      (setq blog (org-export-as backend t))
+      ;; Normalize save file path
+      (unless (string-match &quot;^[/~]&quot; file)
+        (setq file (concat hugo-content-dir file))
+        (unless (string-match &quot;\\.md$&quot; file)
+          (setq file (concat file &quot;.md&quot;)))
+        ;; save markdown
+        (with-temp-buffer
+          (insert fm)
+          (insert blog)
+          (untabify (point-min) (point-max))
+          (write-file file)
+          (message &quot;Exported to %s&quot; file))
+        ))))
+</code></pre>
+
+<h1 id="binding-the-key-a-id-orgheadline5-a">Binding the key<a id="orgheadline5"></a></h1>
+
+<pre><code class="language-emacs-lisp">(bind-key &quot;M-g h&quot; #'hugo)
+</code></pre>
+
+			</div>
+			<div class="post-comments">
+				
+			</div>
+			<div class="push"></div>
+		</div>
+		<footer class="footer text-center">
+<p>Copyright &copy; 2016  -
+<span class="credit">
+	Powered by 
+	<a target="_blank" href="https://gohugo.io">Hugo</a>
+	and 
+	<a target="_blank" href="https://github.com/LordMathis/hugo-theme-nix/">Nix</a> theme.
+</span>
+</p>
+</footer>
+
+	</body>

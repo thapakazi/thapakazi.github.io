@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>org to web</title>
+    <link>zeronepal.github.io/categories/info/index.xml</link>
+    <description>Recent content on org to web</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="zeronepal.github.io/categories/info/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>my_config.yml</title>
+      <link>/zeronepal.github.io/aboutme/</link>
+      <pubDate>Sat, 08 Oct 2016 23:18:30 +0545</pubDate>
+      
+      <guid>/zeronepal.github.io/aboutme/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Be the change you want to see in the world &amp;ndash; Gandi&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It will be fun&amp;hellip; 😁
+&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;---&lt;/span&gt;
+name: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;Milan&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;Thapa&amp;#39;&lt;/span&gt;
+they_call_me: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;devops&amp;#39;&lt;/span&gt;
+details:
+  📫: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;milans.thapa78@gmail.com&amp;#39;&lt;/span&gt;
+  📱:  &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;+977&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;9841&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;715&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;750&amp;#39;&lt;/span&gt;
+
+i_use:
+  editor: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;emacs&amp;#39;&lt;/span&gt;
+  browser: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;firefox&amp;#39;&lt;/span&gt;
+  os: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;Archlinux&amp;#39;&lt;/span&gt;
+
+addicted_to:
+  - &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;linux&amp;#39;&lt;/span&gt;
+  - &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;org-mode&amp;#39;&lt;/span&gt;
+  - &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;tmux&amp;#39;&lt;/span&gt;
+  - &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;crontabs&amp;#39;&lt;/span&gt;
+  - &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;typo&amp;#39;&lt;/span&gt;
+
+i_love:
+  - &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;terminals&amp;#39;&lt;/span&gt;
+  - &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;automation&amp;#39;&lt;/span&gt;
+  - &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;visualising&amp;#39;&lt;/span&gt;
+  - &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;debuging&amp;#39;&lt;/span&gt;
+  - &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;tinkering&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;pi/arudino&amp;#39;&lt;/span&gt;
+  - &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;playing&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;futsal&amp;#39;&lt;/span&gt;
+
+education:
+  - &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;BE&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;in&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;computer&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;from&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;Kathmandu&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;University&amp;#39;&lt;/span&gt;
+
+jobs_engaged:
+  - &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;cloudfactory.com&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;(since&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;2013)&amp;#39;&lt;/span&gt;
+
+old_good_memories:
+  - &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;Team&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;Lipi&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;#tourism&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;Ncell&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;App&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;Challanges&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;2015&amp;#39;&lt;/span&gt;
+  - &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;Team&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;Haude&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;#osm2threejs&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;Leapfrog&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;Hackathon&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;2015&amp;#39;&lt;/span&gt;
+
+recent_hangovers:
+  - &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;prometheus&amp;#39;&lt;/span&gt;
+  - &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;mongodb&amp;#39;&lt;/span&gt;
+  - &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;blogging&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;del&gt;Link to my &lt;a href=&#34;https://zeronepal.github.io/docs/milan.pdf&#34;&gt;old cv&lt;/a&gt;&lt;/del&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

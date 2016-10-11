@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>/zeronepal.github.io/</loc>
+    <lastmod>2016-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/zeronepal.github.io/post/partial_publish/</loc>
+    <lastmod>2016-10-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/zeronepal.github.io/aboutme/</loc>
+    <lastmod>2016-10-08T23:18:30+05:45</lastmod>
+  </url>
+  
+  <url>
+    <loc>/zeronepal.github.io/changing_from_tinker_to_hugo/</loc>
+  </url>
+  
+  <url>
+    <loc>/zeronepal.github.io/test/</loc>
+  </url>
+  
+</urlset>
