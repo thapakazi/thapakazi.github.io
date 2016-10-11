@@ -1,0 +1,9 @@
+#+TITLE: This is all generated stufss
+#+DATE: Tuesday, Oct 11 2016
+#+DESCRIPTION: inside hugo basedir, hugot -t <mytheme>
+
+** TODO Future
+   I will soon intergrate the emacs with sth like `deploy.sh` explained
+   [[https://gohugo.io/tutorials/github-pages-blog/#hosting-personal-organization-pages][here]].
+
+

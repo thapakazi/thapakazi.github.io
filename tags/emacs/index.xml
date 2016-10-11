@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>org to web</title>
-    <link>zeronepal.github.io/tags/emacs/index.xml</link>
+    <link>https://zeronepal.github.io/tags/emacs/index.xml</link>
     <description>Recent content on org to web</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="zeronepal.github.io/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://zeronepal.github.io/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Partial publish blog</title>
-      <link>/zeronepal.github.io/post/partial_publish/</link>
+      <link>https://zeronepal.github.io/post/partial_publish/</link>
       <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>/zeronepal.github.io/post/partial_publish/</guid>
+      <guid>https://zeronepal.github.io/post/partial_publish/</guid>
       <description>
 
 &lt;ul&gt;
@@ -25,6 +25,28 @@
 &lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;Hugo function to blog all the things&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;Binding the key&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Before &lt;code&gt;hugo&lt;/code&gt; i was like:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;days spent saying &amp;ldquo;I will blog soon&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;since org mode is soo adivtive, I need to find sth that floats with it&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://rhoit.com&#34;&gt;@rhoit&lt;/a&gt; dai started making &lt;a href=&#34;https://github.com/rhoit/bekar-static-gen&#34;&gt;bekar-static-gen&lt;/a&gt;, but i no nothing about html/css stuffs, so i stay in shadow&lt;/li&gt;
+&lt;li&gt;again after month, I started publishing org to html, it was ok, but I guessed I couldn&amp;rsquo;t scale, so again stopped&lt;/li&gt;
+&lt;li&gt;again, found a &lt;a href=&#34;http://yagnesh.org/2015/02/19/elisp_wrapper_for_tinkerer.html&#34;&gt;emacs guy&lt;/a&gt; using &lt;a href=&#34;http://www.tinkerer.me/&#34;&gt;tikerer&lt;/a&gt; to publish his blog; got exicited 😃 and started tinkerering myself. It was like :feelsgoodman: feeling. But static stuffs broke, and I felt 😞 again&amp;#x2026; still was pushing some orgs&amp;#x2026; reached upto 3 posts and kinda stopped.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;then &lt;code&gt;HUGO&lt;/code&gt; happened&amp;#x2026; Not sure, but its what I was looking for&amp;#x2026; I was having +ve intutions. &lt;a href=&#34;https://github.com/gilesp/vurtcouk/issues/1&#34;&gt;#few stories&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;After few hrs, i tried this &lt;a href=&#34;http://www.holgerschurig.de/en/emacs-blog-from-org-to-hugo/&#34;&gt;blog&lt;/a&gt;. And here I am, semi-ready to publish this post 😥.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;few helps from hugo, making the &lt;a href=&#34;https://gohugo.io/tutorials/github-pages-blog/#hosting-personal-organization-pages&#34;&gt;org2blog2github&lt;/a&gt; workflow easier.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Thanks to all for sharing your knowledge on this thing called internet and obviously the makers of HUGO. 🤗&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Rest of story on how to make emacs, a blog generator. Everything is copied blindly from &lt;a href=&#34;http://www.holgerschurig.de/en/emacs-blog-from-org-to-hugo/&#34;&gt;Holger Schurig&amp;rsquo;s Blog&lt;/a&gt;. ☕ for him.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h1 id=&#34;define-content-dir-a-id-orgheadline1-a&#34;&gt;Define content dir&lt;a id=&#34;orgheadline1&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
@@ -131,7 +153,7 @@ Returns list of properties that still must be filled in&amp;quot;
 
 &lt;h1 id=&#34;binding-the-key-a-id-orgheadline5-a&#34;&gt;Binding the key&lt;a id=&#34;orgheadline5&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-emacs-lisp&#34;&gt;(bind-key &amp;quot;M-g h&amp;quot; #&#39;hugo)
+&lt;pre&gt;&lt;code class=&#34;language-emacs-lisp&#34;&gt;   (bind-key &amp;quot;M-g h&amp;quot; #&#39;hugo)
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
