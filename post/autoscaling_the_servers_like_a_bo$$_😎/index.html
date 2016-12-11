@@ -119,49 +119,33 @@ ga('create', 'your_google_analytics_id', 'auto');
 
 <h1 id="why-i-did-it-a-id-orgheadline2-a">Why I did it ?<a id="orgheadline2"></a></h1>
 
-<p>At the time of massive ddos: <a href="https://en.wikipedia.org/wiki/2016_Dyn_cyberattack">2016 Dyn cyberattack</a> our auto-scaling strategy was failing too. Reason: <code>Unable to resolve github.com</code>, since the bootstrap process involved cloning the latest deployed codebase from the <a href="https://github.com/cloudfactory">github</a>. We used to bake <a href="https://en.wikipedia.org/wiki/Amazon_Machine_Image">AMIS</a> (its like an pre-configured virtual disk file on aws ready to turn on and operate with). That means we have much of things hard-coded in those frozen drives. Although the boot-up process used to configure the new machines with <code>ansible</code> hooked up from rc.local scripts, the whole process was its-self statically trapped inside. So as the our auto-scaling metrics started triggering the launch process of new machines, all useless as they were chocking at clone failure, since resolving github to their ips was not working and yes our machines were mostly there.</p>
+<p><img src="/images/github_down.png#floatright" alt="img" title="some captions" /></p>
+
+<p>At the time of massive ddos: <a href="https://en.wikipedia.org/wiki/2016_Dyn_cyberattack">2016 Dyn cyberattack</a> our auto-scaling strategy was failing too. Reason: <code>Unable to resolve github.com</code>, since the bootstrap process involved cloning the latest deployed codebase from the <a href="https://github.com/cloudfactory">github</a>.</p>
+
+<p>We used to bake <a href="https://en.wikipedia.org/wiki/Amazon_Machine_Image">AMIS</a> (its like an pre-configured virtual disk file on aws ready to turn on and operate with). That means we have much of things hard-coded in those frozen drives. Although the boot-up process used to configure the new machines with <code>ansible</code> hooked up from rc.local scripts, the whole process was its-self statically trapped inside. So as the our auto-scaling metrics started triggering the launch process of new machines, all useless as they were chocking at clone failure, since resolving github to their ips was not working and yes our machines were mostly there.</p>
 
 <p>I was thinking of hardcoding the ips into poor-man&rsquo;s-dns 😅 entry.</p>
 
 <pre><code class="language-bash">dig github.com
 </code></pre>
 
-<pre><code>; &lt;&lt;&gt;&gt; DiG 9.11.0-P1 &lt;&lt;&gt;&gt; github.com
-;; global options: +cmd
-;; Got answer:
-;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 63293
-;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
-
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; udp: 512
-;; QUESTION SECTION:
-;github.com.                    IN      A
-
-;; ANSWER SECTION:
-github.com.             126     IN      A       192.30.253.113
-github.com.             126     IN      A       192.30.253.112
-
-;; Query time: 60 msec
-;; SERVER: 8.8.8.8#53(8.8.8.8)
-;; WHEN: Sat Dec 10 13:10:53 NPT 2016
-;; MSG SIZE  rcvd: 71
+<pre><code>...
+ ;; ANSWER SECTION:
+ github.com. 126 IN  A  192.30.253.113
+ github.com. 126 IN  A  192.30.253.112
+...
 </code></pre>
 
 <p>But the scale-up and scale-down was a dynamic, and I need to ansible it every time a new machine wakes up. (At the time, i was not aware of user-data section of autoscaling 🤔, we could have sed in changes dns changes, but /etc/hosts gets dynamically updated with yet another script running for other necessary reasons&#x2026;). We knew bunch of automation stuffs, still we could not sleep well that night, and next workday at office was like 😴 , hehe.</p>
 
-<p>Feeling retarded, googling the possibilities, then i got routed to this awesome <a href="https://rbgeek.wordpress.com/2016/05/15/autoscaling-with-aws-instances-using-ansible-pull/">blog</a> and i heard of <code>ansible-pull</code>. Blazed with the stuffs/steps by the <a href="https://github.com/arbabnazar">Lazy Geek</a> on that post, shared it with my team and pinned it like this is what we need. Period. <code>===========================</code> <code>===========================</code></p>
+<p>Feeling retarded, googling the possibilities, then i got routed to this awesome <a href="https://rbgeek.wordpress.com/2016/05/15/autoscaling-with-aws-instances-using-ansible-pull/">blog</a> and i heard of <code>ansible-pull</code>. Blazed with the stuffs/steps by the <a href="https://github.com/arbabnazar">Lazy Geek</a> on that post, shared it with my team and pinned it like this is what we need. Period.</p>
+
+<p><img src="/images/found_the_autoscaling_blog_link.png" alt="img" title="found awesome autosclaing blog" /></p>
 
 <p>And yesterday&#x2026; this came true and I am writing this post on my rooftop 😄</p>
 
-<pre><code>
-<figure >
-    
-        <img src="https://cloud.githubusercontent.com/assets/1695906/21072365/d82eaca4-bee7-11e6-8398-0032566f880f.png" />
-    
-    
-</figure>
-
-</code></pre>
+<p><img src="/images/autoscaling_worfklow.png#floatright" alt="img" title="some captions" /></p>
 
 <h1 id="assumptions-a-id-orgheadline4-a">Assumptions<a id="orgheadline4"></a></h1>
 

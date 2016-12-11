@@ -133,3 +133,29 @@ div p {
 td {
 	margin: 0 20px 0 20px;
 }
+
+img[src$='#center']
+{
+    display: block;
+    margin: 0.7rem auto; /* you can replace the vertical '0.7rem' by
+                            whatever floats your boat, but keep the
+                            horizontal 'auto' for this to work */
+    /* whatever else styles you fancy here */
+}
+
+img[src$='#floatleft']
+{
+    float:left;
+    margin: 2rem;
+    /* margin-right: 2rem;      /\* this margin is totally up to you *\/ */
+    /* margin-top: 2rem;      /\* this margin is totally up to you *\/ */
+    /* margin-bottom: 2rem;      /\* this margin  */is totally up to you */
+    /* whatever else styles you fancy here */
+}
+
+img[src$='#floatright']
+{
+    float:right;
+    margin: 2rem;      /* this margin is totally up to you */
+    /* whatever else styles you fancy here */
+}

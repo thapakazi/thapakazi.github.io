@@ -50,49 +50,33 @@
 
 &lt;h1 id=&#34;why-i-did-it-a-id-orgheadline2-a&#34;&gt;Why I did it ?&lt;a id=&#34;orgheadline2&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
 
-&lt;p&gt;At the time of massive ddos: &lt;a href=&#34;https://en.wikipedia.org/wiki/2016_Dyn_cyberattack&#34;&gt;2016 Dyn cyberattack&lt;/a&gt; our auto-scaling strategy was failing too. Reason: &lt;code&gt;Unable to resolve github.com&lt;/code&gt;, since the bootstrap process involved cloning the latest deployed codebase from the &lt;a href=&#34;https://github.com/cloudfactory&#34;&gt;github&lt;/a&gt;. We used to bake &lt;a href=&#34;https://en.wikipedia.org/wiki/Amazon_Machine_Image&#34;&gt;AMIS&lt;/a&gt; (its like an pre-configured virtual disk file on aws ready to turn on and operate with). That means we have much of things hard-coded in those frozen drives. Although the boot-up process used to configure the new machines with &lt;code&gt;ansible&lt;/code&gt; hooked up from rc.local scripts, the whole process was its-self statically trapped inside. So as the our auto-scaling metrics started triggering the launch process of new machines, all useless as they were chocking at clone failure, since resolving github to their ips was not working and yes our machines were mostly there.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zeronepal.github.io/images/github_down.png#floatright&#34; alt=&#34;img&#34; title=&#34;some captions&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;At the time of massive ddos: &lt;a href=&#34;https://en.wikipedia.org/wiki/2016_Dyn_cyberattack&#34;&gt;2016 Dyn cyberattack&lt;/a&gt; our auto-scaling strategy was failing too. Reason: &lt;code&gt;Unable to resolve github.com&lt;/code&gt;, since the bootstrap process involved cloning the latest deployed codebase from the &lt;a href=&#34;https://github.com/cloudfactory&#34;&gt;github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We used to bake &lt;a href=&#34;https://en.wikipedia.org/wiki/Amazon_Machine_Image&#34;&gt;AMIS&lt;/a&gt; (its like an pre-configured virtual disk file on aws ready to turn on and operate with). That means we have much of things hard-coded in those frozen drives. Although the boot-up process used to configure the new machines with &lt;code&gt;ansible&lt;/code&gt; hooked up from rc.local scripts, the whole process was its-self statically trapped inside. So as the our auto-scaling metrics started triggering the launch process of new machines, all useless as they were chocking at clone failure, since resolving github to their ips was not working and yes our machines were mostly there.&lt;/p&gt;
 
 &lt;p&gt;I was thinking of hardcoding the ips into poor-man&amp;rsquo;s-dns 😅 entry.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;dig github.com
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre&gt;&lt;code&gt;; &amp;lt;&amp;lt;&amp;gt;&amp;gt; DiG 9.11.0-P1 &amp;lt;&amp;lt;&amp;gt;&amp;gt; github.com
-;; global options: +cmd
-;; Got answer:
-;; -&amp;gt;&amp;gt;HEADER&amp;lt;&amp;lt;- opcode: QUERY, status: NOERROR, id: 63293
-;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
-
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; udp: 512
-;; QUESTION SECTION:
-;github.com.                    IN      A
-
-;; ANSWER SECTION:
-github.com.             126     IN      A       192.30.253.113
-github.com.             126     IN      A       192.30.253.112
-
-;; Query time: 60 msec
-;; SERVER: 8.8.8.8#53(8.8.8.8)
-;; WHEN: Sat Dec 10 13:10:53 NPT 2016
-;; MSG SIZE  rcvd: 71
+&lt;pre&gt;&lt;code&gt;...
+ ;; ANSWER SECTION:
+ github.com. 126 IN  A  192.30.253.113
+ github.com. 126 IN  A  192.30.253.112
+...
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;But the scale-up and scale-down was a dynamic, and I need to ansible it every time a new machine wakes up. (At the time, i was not aware of user-data section of autoscaling 🤔, we could have sed in changes dns changes, but /etc/hosts gets dynamically updated with yet another script running for other necessary reasons&amp;#x2026;). We knew bunch of automation stuffs, still we could not sleep well that night, and next workday at office was like 😴 , hehe.&lt;/p&gt;
 
-&lt;p&gt;Feeling retarded, googling the possibilities, then i got routed to this awesome &lt;a href=&#34;https://rbgeek.wordpress.com/2016/05/15/autoscaling-with-aws-instances-using-ansible-pull/&#34;&gt;blog&lt;/a&gt; and i heard of &lt;code&gt;ansible-pull&lt;/code&gt;. Blazed with the stuffs/steps by the &lt;a href=&#34;https://github.com/arbabnazar&#34;&gt;Lazy Geek&lt;/a&gt; on that post, shared it with my team and pinned it like this is what we need. Period. &lt;code&gt;===========================&lt;/code&gt; &lt;code&gt;===========================&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Feeling retarded, googling the possibilities, then i got routed to this awesome &lt;a href=&#34;https://rbgeek.wordpress.com/2016/05/15/autoscaling-with-aws-instances-using-ansible-pull/&#34;&gt;blog&lt;/a&gt; and i heard of &lt;code&gt;ansible-pull&lt;/code&gt;. Blazed with the stuffs/steps by the &lt;a href=&#34;https://github.com/arbabnazar&#34;&gt;Lazy Geek&lt;/a&gt; on that post, shared it with my team and pinned it like this is what we need. Period.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://zeronepal.github.io/images/found_the_autoscaling_blog_link.png&#34; alt=&#34;img&#34; title=&#34;found awesome autosclaing blog&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;And yesterday&amp;#x2026; this came true and I am writing this post on my rooftop 😄&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://cloud.githubusercontent.com/assets/1695906/21072365/d82eaca4-bee7-11e6-8398-0032566f880f.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://zeronepal.github.io/images/autoscaling_worfklow.png#floatright&#34; alt=&#34;img&#34; title=&#34;some captions&#34; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;assumptions-a-id-orgheadline4-a&#34;&gt;Assumptions&lt;a id=&#34;orgheadline4&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
 
