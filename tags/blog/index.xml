@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>org to web</title>
-    <link>https://zeronepal.github.io/tags/blog/index.xml</link>
+    <link>https://thapakazi.github.io/tags/blog/index.xml</link>
     <description>Recent content on org to web</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://zeronepal.github.io/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://thapakazi.github.io/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Partial publish blog</title>
-      <link>https://zeronepal.github.io/post/partial_publish/</link>
+      <link>https://thapakazi.github.io/post/partial_publish/</link>
       <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://zeronepal.github.io/post/partial_publish/</guid>
+      <guid>https://thapakazi.github.io/post/partial_publish/</guid>
       <description>
 
 &lt;ul&gt;

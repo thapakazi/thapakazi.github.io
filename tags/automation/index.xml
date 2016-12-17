@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>org to web</title>
-    <link>https://zeronepal.github.io/tags/automation/index.xml</link>
+    <link>https://thapakazi.github.io/tags/automation/index.xml</link>
     <description>Recent content on org to web</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://zeronepal.github.io/tags/automation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://thapakazi.github.io/tags/automation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Lets spin the server inside vpc</title>
-      <link>https://zeronepal.github.io/post/ansible_bools_are_awesome/</link>
+      <link>https://thapakazi.github.io/post/ansible_bools_are_awesome/</link>
       <pubDate>Fri, 14 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://zeronepal.github.io/post/ansible_bools_are_awesome/</guid>
+      <guid>https://thapakazi.github.io/post/ansible_bools_are_awesome/</guid>
       <description>&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;- name: test boolean
   hosts: all
   vars:
@@ -30,10 +30,10 @@
     
     <item>
       <title>Playing with bots for some serious damage 😏</title>
-      <link>https://zeronepal.github.io/post/tinkering%20hubot%20in%20old%20days/</link>
+      <link>https://thapakazi.github.io/post/tinkering%20hubot%20in%20old%20days/</link>
       <pubDate>Tue, 08 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://zeronepal.github.io/post/tinkering%20hubot%20in%20old%20days/</guid>
+      <guid>https://thapakazi.github.io/post/tinkering%20hubot%20in%20old%20days/</guid>
       <description>
 
 &lt;ul&gt;

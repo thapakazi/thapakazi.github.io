@@ -6,4 +6,6 @@
    I will soon intergrate the emacs with sth like `deploy.sh` explained
    [[https://gohugo.io/tutorials/github-pages-blog/#hosting-personal-organization-pages][here]].
 
-
+* changelogs:
+  - profile rename +zerOnepal+ => *thapakazi*
+    #+DATE: Saturday, Dec 17 2016

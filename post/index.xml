@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Post-rsses on org to web</title>
-    <link>https://zeronepal.github.io/post/index.xml</link>
+    <link>https://thapakazi.github.io/post/index.xml</link>
     <description>Recent content in Post-rsses on org to web</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 10 Dec 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://zeronepal.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://thapakazi.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Autoscaling the servers like a BO$$ 😎</title>
-      <link>https://zeronepal.github.io/post/autoscaling_the_servers_like_a_bo$$_%F0%9F%98%8E/</link>
+      <link>https://thapakazi.github.io/post/autoscaling_the_servers_like_a_bo$$_%F0%9F%98%8E/</link>
       <pubDate>Sat, 10 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://zeronepal.github.io/post/autoscaling_the_servers_like_a_bo$$_%F0%9F%98%8E/</guid>
+      <guid>https://thapakazi.github.io/post/autoscaling_the_servers_like_a_bo$$_%F0%9F%98%8E/</guid>
       <description>
 
 &lt;ul&gt;
@@ -51,7 +51,7 @@
 
 &lt;h1 id=&#34;why-i-did-it-a-id-orgheadline2-a&#34;&gt;Why I did it ?&lt;a id=&#34;orgheadline2&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://zeronepal.github.io/images/github_down.png#floatright&#34; alt=&#34;img&#34; title=&#34;some captions&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://thapakazi.github.io/images/github_down.png#floatright&#34; alt=&#34;img&#34; title=&#34;some captions&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;At the time of massive ddos: &lt;a href=&#34;https://en.wikipedia.org/wiki/2016_Dyn_cyberattack&#34;&gt;2016 Dyn cyberattack&lt;/a&gt; our auto-scaling strategy was failing too. Reason: &lt;code&gt;Unable to resolve github.com&lt;/code&gt;, since the bootstrap process involved cloning the latest deployed codebase from the &lt;a href=&#34;https://github.com/cloudfactory&#34;&gt;github&lt;/a&gt;.&lt;/p&gt;
 
@@ -73,11 +73,11 @@
 
 &lt;p&gt;Feeling retarded, googling the possibilities, then i got routed to this awesome &lt;a href=&#34;https://rbgeek.wordpress.com/2016/05/15/autoscaling-with-aws-instances-using-ansible-pull/&#34;&gt;blog&lt;/a&gt; and i heard of &lt;code&gt;ansible-pull&lt;/code&gt;. Blazed with the stuffs/steps by the &lt;a href=&#34;https://github.com/arbabnazar&#34;&gt;Lazy Geek&lt;/a&gt; on that post, shared it with my team and pinned it like this is what we need. Period.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://zeronepal.github.io/images/found_the_autoscaling_blog_link.png&#34; alt=&#34;img&#34; title=&#34;found awesome autosclaing blog&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://thapakazi.github.io/images/found_the_autoscaling_blog_link.png&#34; alt=&#34;img&#34; title=&#34;found awesome autosclaing blog&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;And yesterday&amp;#x2026; this came true and I am writing this post on my rooftop 😄&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://zeronepal.github.io/images/autoscaling_worfklow.png#floatright&#34; alt=&#34;img&#34; title=&#34;some captions&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://thapakazi.github.io/images/autoscaling_worfklow.png#floatright&#34; alt=&#34;img&#34; title=&#34;some captions&#34; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;assumptions-a-id-orgheadline4-a&#34;&gt;Assumptions&lt;a id=&#34;orgheadline4&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
 
@@ -153,10 +153,10 @@
     
     <item>
       <title>lvm kungfu</title>
-      <link>https://zeronepal.github.io/post/lvm_with_raid_basics/</link>
+      <link>https://thapakazi.github.io/post/lvm_with_raid_basics/</link>
       <pubDate>Tue, 08 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://zeronepal.github.io/post/lvm_with_raid_basics/</guid>
+      <guid>https://thapakazi.github.io/post/lvm_with_raid_basics/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;[X] involves the lvm stuffs&lt;/p&gt;
 
@@ -214,10 +214,10 @@ dd if=/dev/urandom | pv | dd of=/data/data.zero
     
     <item>
       <title>Lets spin the server inside vpc</title>
-      <link>https://zeronepal.github.io/post/ansible_bools_are_awesome/</link>
+      <link>https://thapakazi.github.io/post/ansible_bools_are_awesome/</link>
       <pubDate>Fri, 14 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://zeronepal.github.io/post/ansible_bools_are_awesome/</guid>
+      <guid>https://thapakazi.github.io/post/ansible_bools_are_awesome/</guid>
       <description>&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;- name: test boolean
   hosts: all
   vars:
@@ -234,10 +234,10 @@ dd if=/dev/urandom | pv | dd of=/data/data.zero
     
     <item>
       <title>Random Ideas in my head I want to puddle</title>
-      <link>https://zeronepal.github.io/post/projects_list/</link>
+      <link>https://thapakazi.github.io/post/projects_list/</link>
       <pubDate>Fri, 14 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://zeronepal.github.io/post/projects_list/</guid>
+      <guid>https://thapakazi.github.io/post/projects_list/</guid>
       <description>
 
 &lt;h1 id=&#34;utility-a-id-orgheadline1-a&#34;&gt;Utility&lt;a id=&#34;orgheadline1&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
@@ -311,10 +311,10 @@ dd if=/dev/urandom | pv | dd of=/data/data.zero
     
     <item>
       <title>Partial publish blog</title>
-      <link>https://zeronepal.github.io/post/partial_publish/</link>
+      <link>https://thapakazi.github.io/post/partial_publish/</link>
       <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://zeronepal.github.io/post/partial_publish/</guid>
+      <guid>https://thapakazi.github.io/post/partial_publish/</guid>
       <description>
 
 &lt;ul&gt;
@@ -461,10 +461,10 @@ Returns list of properties that still must be filled in&amp;quot;
     
     <item>
       <title>Playing with bots for some serious damage 😏</title>
-      <link>https://zeronepal.github.io/post/tinkering%20hubot%20in%20old%20days/</link>
+      <link>https://thapakazi.github.io/post/tinkering%20hubot%20in%20old%20days/</link>
       <pubDate>Tue, 08 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://zeronepal.github.io/post/tinkering%20hubot%20in%20old%20days/</guid>
+      <guid>https://thapakazi.github.io/post/tinkering%20hubot%20in%20old%20days/</guid>
       <description>
 
 &lt;ul&gt;
