@@ -2,7 +2,7 @@
 <html>
 
 	<head>
-		<title> lvm kungfu &middot; org to web </title>
+		<title> Lets spin the server inside vpc &middot; org to web </title>
 
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -52,7 +52,7 @@ ga('create', 'your_google_analytics_id', 'auto');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" id="green-terminal" href=https://thapakazi.github.io>thapakazi@thapakazi ~ $</a>
+			<a class="navbar-brand" id="green-terminal" href=https://thapakazi.github.io>thapakazi@virtualcosmos ~ $</a>
 		</div>
 
 		
@@ -64,7 +64,7 @@ ga('create', 'your_google_analytics_id', 'auto');
 				
 				
 				<li >
-					<a href="/post">~/posts</a>
+					<a href="/posts">~/posts</a>
 				</li>
 				
 				
@@ -80,70 +80,29 @@ ga('create', 'your_google_analytics_id', 'auto');
 </header>
 
 		<div class="container wrapper">
-			<h1><a href="https://thapakazi.github.io/post/lvm_with_raid_basics/">lvm kungfu</a></h1>
-			<span class="post-date">Nov 8, 2016 </span>
+			<h1><a href="https://thapakazi.github.io/posts/ansible_bools_are_awesome/">Lets spin the server inside vpc</a></h1>
+			<span class="post-date">Oct 14, 2016 </span>
 			<div class="post-content">
-				<ul>
-<li><p>[X] involves the lvm stuffs</p>
-
-<ul>
-<li><p>[X] mdadm setup and command</p>
-
-<pre><code class="language-bash">mdadm -v --create -c 256 /dev/md0 --level=0 --raid-devices=2 /dev/xvdf /dev/xvdg
-mdadm: chunk size defaults to 512K
-mdadm: Defaulting to version 1.2 metadata
-mdadm: array /dev/md0 started.
-</code></pre></li>
-
-<li><p>[X] next is physical volume</p>
-
-<pre><code class="language-bash">pvcreate /dev/md0
-Physical volume &quot;/dev/md0&quot; successfully created
-</code></pre></li>
-
-<li><p>[X] Next is volume group</p>
-
-<pre><code class="language-bash">vgcreate vg0 /dev/md0
-Volume group &quot;vg0&quot; successfully created
-</code></pre></li>
-
-<li><p>[X] Next is logical volume</p>
-
-<pre><code class="language-bash">lvcreate -n data -l 100%FREE /dev/vg0 
-Logical volume &quot;data&quot; created
-</code></pre></li>
-
-<li><p>[X] format the disk, before using it</p>
-
-<pre><code class="language-bash">mkfs.xfs /dev/vg0/data 
-log stripe unit (524288 bytes) is too large (maximum is 256KiB)
-log stripe unit adjusted to 32KiB
-meta-data=/dev/vg0/data          isize=256    agcount=16, agsize=8388480 blks
-=                       sectsz=512   attr=2, projid32bit=0
-data     =                       bsize=4096   blocks=134215680, imaxpct=25
-=                       sunit=128    swidth=256 blks
-naming   =version 2              bsize=4096   ascii-ci=0
-log      =internal log           bsize=4096   blocks=65536, version=2
-=                       sectsz=512   sunit=8 blks, lazy-count=1
-realtime =none                   extsz=4096   blocks=0, rtextents=0
-</code></pre></li>
-
-<li><p>[X] mount, fix permission and enjoy(warm up disk)</p>
-
-<pre><code class="language-bash">mount /dev/vg0/data /data/
-dd if=/dev/urandom | pv | dd of=/data/data.zero
-</code></pre></li>
-</ul></li>
-</ul>
+				<pre><code class="language-yaml">- name: test boolean
+  hosts: all
+  vars:
+    SPIN_IN_VPC: false
+  connection: local
+  tasks:
+    - shell: xcowsay 'spinnning in vpc'
+      when: SPIN_IN_VPC|bool
+    - shell: xcowsay 'spinnning in classic world :('
+      when: not SPIN_IN_VPC|bool
+</code></pre>
 
 			</div>
 			<div class="post-comments">
 				<div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'thapakazi';
-    var disqus_identifier = 'https:\/\/thapakazi.github.io\/post\/lvm_with_raid_basics\/';
-    var disqus_title = 'lvm kungfu';
-    var disqus_url = 'https:\/\/thapakazi.github.io\/post\/lvm_with_raid_basics\/';
+    var disqus_identifier = 'https:\/\/thapakazi.github.io\/posts\/ansible_bools_are_awesome\/';
+    var disqus_title = 'Lets spin the server inside vpc';
+    var disqus_url = 'https:\/\/thapakazi.github.io\/posts\/ansible_bools_are_awesome\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

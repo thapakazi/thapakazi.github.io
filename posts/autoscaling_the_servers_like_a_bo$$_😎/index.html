@@ -52,7 +52,7 @@ ga('create', 'your_google_analytics_id', 'auto');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" id="green-terminal" href=https://thapakazi.github.io>thapakazi@thapakazi ~ $</a>
+			<a class="navbar-brand" id="green-terminal" href=https://thapakazi.github.io>thapakazi@virtualcosmos ~ $</a>
 		</div>
 
 		
@@ -64,7 +64,7 @@ ga('create', 'your_google_analytics_id', 'auto');
 				
 				
 				<li >
-					<a href="/post">~/posts</a>
+					<a href="/posts">~/posts</a>
 				</li>
 				
 				
@@ -80,7 +80,7 @@ ga('create', 'your_google_analytics_id', 'auto');
 </header>
 
 		<div class="container wrapper">
-			<h1><a href="https://thapakazi.github.io/post/autoscaling_the_servers_like_a_bo$$_%F0%9F%98%8E/">Autoscaling the servers like a BO$$ 😎</a></h1>
+			<h1><a href="https://thapakazi.github.io/posts/autoscaling_the_servers_like_a_bo$$_%F0%9F%98%8E/">Autoscaling the servers like a BO$$ 😎</a></h1>
 			<span class="post-date">Dec 10, 2016 </span>
 			<div class="post-content">
 				
@@ -145,7 +145,7 @@ ga('create', 'your_google_analytics_id', 'auto');
 
 <p>And yesterday&#x2026; this came true and I am writing this post on my rooftop 😄</p>
 
-<p><img src="/images/autoscaling_worfklow.png#floatright" alt="img" title="some captions" /></p>
+<p><img src="/images/autoscaling_worfklow.png" alt="img" title="some captions" /></p>
 
 <h1 id="assumptions-a-id-orgheadline4-a">Assumptions<a id="orgheadline4"></a></h1>
 
@@ -183,15 +183,15 @@ ga('create', 'your_google_analytics_id', 'auto');
 <ul>
 <li><p>[X] push private to bucket and public key to github</p>
 
-<script src="//gist.github.com/zerOnepal/5096867c650006ef61c670453a2c00f9.js?file=generate_ssh_keys.sh"></script></li>
+<script src="//gist.github.com/thapakazi/5096867c650006ef61c670453a2c00f9.js?file=generate_ssh_keys.sh"></script></li>
 
 <li><p>[X] use dedicated ssh-config for github</p>
 
-<script src="//gist.github.com/zerOnepal/5096867c650006ef61c670453a2c00f9.js?file=config"></script></li>
+<script src="//gist.github.com/thapakazi/5096867c650006ef61c670453a2c00f9.js?file=config"></script></li>
 
 <li><p>[X] create new policy and attach it to your IAM role that is to be attached to instance</p>
 
-<script src="//gist.github.com/zerOnepal/5096867c650006ef61c670453a2c00f9.js?file=autoscale_s3_access_iam_policy.json"></script></li>
+<script src="//gist.github.com/thapakazi/5096867c650006ef61c670453a2c00f9.js?file=autoscale_s3_access_iam_policy.json"></script></li>
 </ul></li>
 
 <li><p>now we create a launch config for autoscaling scaling lucky we are, we have an idempotent ansible module 😌 So lets define few artificats we need as our arsenal:</p>
@@ -199,15 +199,15 @@ ga('create', 'your_google_analytics_id', 'auto');
 <ul>
 <li><p>[X] we need a playbook like:</p>
 
-<script src="//gist.github.com/zerOnepal/ce94c2d994d2d845c5512ef5010400ba.js?file=ec2_auto_scaling_launch_gen_with_ansible.yml"></script></li>
+<script src="//gist.github.com/thapakazi/ce94c2d994d2d845c5512ef5010400ba.js?file=ec2_auto_scaling_launch_gen_with_ansible.yml"></script></li>
 
 <li><p>[X] and the vars file</p>
 
-<script src="//gist.github.com/zerOnepal/ce94c2d994d2d845c5512ef5010400ba.js?file=vars_bg_worker.yml"></script></li>
+<script src="//gist.github.com/thapakazi/ce94c2d994d2d845c5512ef5010400ba.js?file=vars_bg_worker.yml"></script></li>
 
 <li><p>[X] with user<sub>data</sub></p>
 
-<script src="//gist.github.com/zerOnepal/ce94c2d994d2d845c5512ef5010400ba.js?file=user_data.sh"></script></li>
+<script src="//gist.github.com/thapakazi/ce94c2d994d2d845c5512ef5010400ba.js?file=user_data.sh"></script></li>
 </ul></li>
 
 <li><p>And yes, I have skipped the AutoScaling Groups Config definitions, which we are going manual this time(hope could be ansiblize too&#x2026; but that&rsquo;s for future)</p></li>
@@ -222,9 +222,9 @@ ga('create', 'your_google_analytics_id', 'auto');
 				<div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'thapakazi';
-    var disqus_identifier = 'https:\/\/thapakazi.github.io\/post\/autoscaling_the_servers_like_a_bo$$_%F0%9F%98%8E\/';
+    var disqus_identifier = 'https:\/\/thapakazi.github.io\/posts\/autoscaling_the_servers_like_a_bo$$_%F0%9F%98%8E\/';
     var disqus_title = 'Autoscaling the servers like a BO$$ 😎';
-    var disqus_url = 'https:\/\/thapakazi.github.io\/post\/autoscaling_the_servers_like_a_bo$$_%F0%9F%98%8E\/';
+    var disqus_url = 'https:\/\/thapakazi.github.io\/posts\/autoscaling_the_servers_like_a_bo$$_%F0%9F%98%8E\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

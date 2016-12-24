@@ -2,7 +2,7 @@
 <html>
 
 	<head>
-		<title> Random Ideas in my head I want to puddle &middot; org to web </title>
+		<title> lvm kungfu &middot; org to web </title>
 
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -52,7 +52,7 @@ ga('create', 'your_google_analytics_id', 'auto');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" id="green-terminal" href=https://thapakazi.github.io>thapakazi@thapakazi ~ $</a>
+			<a class="navbar-brand" id="green-terminal" href=https://thapakazi.github.io>thapakazi@virtualcosmos ~ $</a>
 		</div>
 
 		
@@ -64,7 +64,7 @@ ga('create', 'your_google_analytics_id', 'auto');
 				
 				
 				<li >
-					<a href="/post">~/posts</a>
+					<a href="/posts">~/posts</a>
 				</li>
 				
 				
@@ -80,86 +80,70 @@ ga('create', 'your_google_analytics_id', 'auto');
 </header>
 
 		<div class="container wrapper">
-			<h1><a href="https://thapakazi.github.io/post/projects_list/">Random Ideas in my head I want to puddle</a></h1>
-			<span class="post-date">Oct 14, 2016 </span>
+			<h1><a href="https://thapakazi.github.io/posts/lvm_with_raid_basics/">lvm kungfu</a></h1>
+			<span class="post-date">Nov 8, 2016 </span>
 			<div class="post-content">
-				
+				<ul>
+<li><p>[X] involves the lvm stuffs</p>
 
-<h1 id="utility-a-id-orgheadline1-a">Utility<a id="orgheadline1"></a></h1>
+<ul>
+<li><p>[X] mdadm setup and command</p>
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<pre><code class="language-bash">mdadm -v --create -c 256 /dev/md0 --level=0 --raid-devices=2 /dev/xvdf /dev/xvdg
+mdadm: chunk size defaults to 512K
+mdadm: Defaulting to version 1.2 metadata
+mdadm: array /dev/md0 started.
+</code></pre></li>
 
+<li><p>[X] next is physical volume</p>
 
-<colgroup>
-<col  class="org-left" />
+<pre><code class="language-bash">pvcreate /dev/md0
+Physical volume &quot;/dev/md0&quot; successfully created
+</code></pre></li>
 
-<col  class="org-left" />
+<li><p>[X] Next is volume group</p>
 
-<col  class="org-left" />
+<pre><code class="language-bash">vgcreate vg0 /dev/md0
+Volume group &quot;vg0&quot; successfully created
+</code></pre></li>
 
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">project</th>
-<th scope="col" class="org-left">descriptions</th>
-<th scope="col" class="org-left">Purpose</th>
-<th scope="col" class="org-left">ideaof</th>
-</tr>
-</thead>
+<li><p>[X] Next is logical volume</p>
 
-<tbody>
-<tr>
-<td class="org-left">battigo</td>
-<td class="org-left">batti in go (<del>no bash</del>)</td>
-<td class="org-left">learning go the hard way</td>
-<td class="org-left">&#xa0;</td>
-</tr>
+<pre><code class="language-bash">lvcreate -n data -l 100%FREE /dev/vg0 
+Logical volume &quot;data&quot; created
+</code></pre></li>
 
+<li><p>[X] format the disk, before using it</p>
 
-<tr>
-<td class="org-left">api.anubad.io</td>
-<td class="org-left">anubad api version</td>
-<td class="org-left">collaboration, scaling up words</td>
-<td class="org-left">&#xa0;</td>
-</tr>
+<pre><code class="language-bash">mkfs.xfs /dev/vg0/data 
+log stripe unit (524288 bytes) is too large (maximum is 256KiB)
+log stripe unit adjusted to 32KiB
+meta-data=/dev/vg0/data          isize=256    agcount=16, agsize=8388480 blks
+=                       sectsz=512   attr=2, projid32bit=0
+data     =                       bsize=4096   blocks=134215680, imaxpct=25
+=                       sunit=128    swidth=256 blks
+naming   =version 2              bsize=4096   ascii-ci=0
+log      =internal log           bsize=4096   blocks=65536, version=2
+=                       sectsz=512   sunit=8 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+</code></pre></li>
 
+<li><p>[X] mount, fix permission and enjoy(warm up disk)</p>
 
-<tr>
-<td class="org-left">paledai</td>
-<td class="org-left">a rest api listening to fire ansible</td>
-<td class="org-left">for autoscaling</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-
-<tr>
-<td class="org-left">codetree</td>
-<td class="org-left">a tree view generator of a ROR app</td>
-<td class="org-left">tree for code, #livepreview</td>
-<td class="org-left">javanux</td>
-</tr>
-
-
-<tr>
-<td class="org-left">whoisshe</td>
-<td class="org-left">a contact book manager</td>
-<td class="org-left">a contact list manager</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-</tbody>
-</table>
-
-<h1 id="a-id-orgheadline2-a"><a id="orgheadline2"></a></h1>
+<pre><code class="language-bash">mount /dev/vg0/data /data/
+dd if=/dev/urandom | pv | dd of=/data/data.zero
+</code></pre></li>
+</ul></li>
+</ul>
 
 			</div>
 			<div class="post-comments">
 				<div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'thapakazi';
-    var disqus_identifier = 'https:\/\/thapakazi.github.io\/post\/projects_list\/';
-    var disqus_title = 'Random Ideas in my head I want to puddle';
-    var disqus_url = 'https:\/\/thapakazi.github.io\/post\/projects_list\/';
+    var disqus_identifier = 'https:\/\/thapakazi.github.io\/posts\/lvm_with_raid_basics\/';
+    var disqus_title = 'lvm kungfu';
+    var disqus_url = 'https:\/\/thapakazi.github.io\/posts\/lvm_with_raid_basics\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

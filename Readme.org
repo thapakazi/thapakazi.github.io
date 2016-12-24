@@ -8,4 +8,5 @@
 
 * changelogs:
   - profile rename +zerOnepal+ => *thapakazi*
+    new_url: https://thapakazi.github.io/post/
     #+DATE: Saturday, Dec 17 2016

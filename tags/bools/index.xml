@@ -10,10 +10,10 @@
     
     <item>
       <title>Lets spin the server inside vpc</title>
-      <link>https://thapakazi.github.io/post/ansible_bools_are_awesome/</link>
+      <link>https://thapakazi.github.io/posts/ansible_bools_are_awesome/</link>
       <pubDate>Fri, 14 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://thapakazi.github.io/post/ansible_bools_are_awesome/</guid>
+      <guid>https://thapakazi.github.io/posts/ansible_bools_are_awesome/</guid>
       <description>&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;- name: test boolean
   hosts: all
   vars:
