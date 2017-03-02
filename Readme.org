@@ -7,6 +7,7 @@
    [[https://gohugo.io/tutorials/github-pages-blog/#hosting-personal-organization-pages][here]].
 
 * changelogs:
+  - added reflections about on digital traces
   - profile rename +zerOnepal+ => *thapakazi*
     new_url: https://thapakazi.github.io/post/
     #+DATE: Saturday, Dec 17 2016

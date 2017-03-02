@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>org to web</title>
+    <link>https://thapakazi.github.io/tags/logging/index.xml</link>
+    <description>Recent content on org to web</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="https://thapakazi.github.io/tags/logging/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Tracking Digital Traces(self)</title>
+      <link>https://thapakazi.github.io/posts/tracking_the_digital_traces/</link>
+      <pubDate>Thu, 02 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thapakazi.github.io/posts/tracking_the_digital_traces/</guid>
+      <description>
+
+&lt;h1 id=&#34;contribs&#34;&gt;Contribs&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Issue: Memory check in % rather than fixed value &lt;a href=&#34;https://github.com/sensu-plugins/sensu-plugins-redis/issues/11&#34;&gt;issue#11&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Needed a feature, asked for it, nobody cared, so made it and shared it 😅&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It&amp;rsquo;s so funny to create a issue first and address your own issue with a &lt;a href=&#34;https://github.com/sensu-plugins/sensu-plugins-redis/pull/12&#34;&gt;PR&lt;/a&gt; 😌 afterwards.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Issue: EC2 inventory script (ec2.py) needs better error messages &amp;amp; guidance &lt;a href=&#34;https://github.com/ansible/ansible/issues/10840&#34;&gt;issue#10840&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Stucked with a problem, googled it, found the solution, felt bad nobody cared about it before. Asked if could write PR, rejected. Tried again but enhancing the docs, finally made it through.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Moral of story, try try until you get it merged 😀&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;swag&#34;&gt;Swag&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Merge conflict resolve in EMACS &amp;#x2026;surprisingly exicited to get my tweet🐦 featured in in Irreal’s blog: &lt;a href=&#34;http://irreal.org/blog/?p=5651&#34;&gt;Merging with smerge&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
