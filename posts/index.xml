@@ -618,15 +618,79 @@ dd if=/dev/urandom | pv | dd of=/data/data.zero
       <description>
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;Define content dir&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;#orgac72cf4&#34;&gt;Recovering my broken blog gen&lt;/a&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;The next two functions care that all needed property drawers exist&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;Github flavoured markdown&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;Hugo function to blog all the things&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;Binding the key&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#org85703f5&#34;&gt;History of it all&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#orge7e1e00&#34;&gt;Define content dir&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#orgc713ccb&#34;&gt;The next two functions care that all needed property drawers exist&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#orgc75fbdc&#34;&gt;Github flavoured markdown&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#orgd5edd5d&#34;&gt;Hugo function to blog all the things&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#org94a7991&#34;&gt;Binding the key&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;a id=&#34;orgac72cf4&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;recovering-my-broken-blog-gen&#34;&gt;Recovering my broken blog gen&lt;/h1&gt;
+
+&lt;p&gt;As time passed by, I was left with my broken emacs configs. &lt;a href=&#34;https://github.com/bnaysakya&#34;&gt;bnaysakya&lt;/a&gt; was asking me to push my configs, sadly it was not that easy, until I had this idea to re-do my configs once again from scratch. By scratch, I mean from fresh emacs setup, I used to compile it earlier, that how it all started to crash.&lt;/p&gt;
+
+&lt;p&gt;Today I am here, using this &lt;a href=&#34;https://hub.docker.com/r/jare/emacs/builds/&#34;&gt;ubuntu:emacs from jare&lt;/a&gt; and able to get my configs back. No longer are the worries of stale configs and broken setup. Yes, I am composing this small post from a random container &lt;code&gt;bff6ea8dc91c&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you are wondering how I got this far, here are my steps&amp;#x2026;anyone can reproduce it with ease:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;clone &lt;a href=&#34;https://github.com/thapakazi/.emacs.d/tree/re_iterate&#34;&gt;my configs :re&lt;sub&gt;iterate&lt;/sub&gt; branch&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;start your container: I am heavily depending on &lt;a href=&#34;https://hub.docker.com/r/jare/emacs/builds/&#34;&gt;jare&amp;rsquo;s container&lt;/a&gt; images here&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;emacs_me(){
+    EMACS_I_WANT_TO_USE=${EMACS_DOCKER_IMAGE:-jare/emacs}
+    BLOG_CONTENTS_INSIDE_EMACS=/home/emacs/blog_contents/
+    docker run -ti --rm \
+       --name $(echo ${EMACS_I_WANT_TO_USE}|shasum |cut -d&#39; &#39; -f1) \
+       -e HUGO_CONTENT_PROJECT_DIR=$BLOG_CONTENTS_INSIDE_EMACS/ \
+           -e DISPLAY=&amp;quot;unix$DISPLAY&amp;quot;\
+           -e UNAME=&amp;quot;emacser&amp;quot;\
+           -e GNAME=&amp;quot;emacsers&amp;quot;\
+           -e UID=&amp;quot;1000&amp;quot;\
+           -e GID=&amp;quot;1000&amp;quot;\
+       -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+           -v ~/.emacs.docker:/home/emacs/.emacs.d \
+           -v ~/.gitconfig:/home/emacs/.gitconfig \
+       -v $MY_HUGO_CONTENT_PROJECT_DIR:$BLOG_CONTENTS_INSIDE_EMACS \
+       &amp;quot;$EMACS_I_WANT_TO_USE&amp;quot; emacs ${DEBUG_FLAG}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;export your hugo project dir, where your markdown resides&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;export HUGO_CONTENT_PROJECT_DIR=/path_to_my/hugo/markdown_files/content/
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;start your function&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;export EMACS_DOCKER_IMAGE=jare/emacs:latest DEBUG_FLAG=&#39;--debug-init&#39;; emacs_me
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I am assuming you have few things here:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;you have played with docker earlier, good internet bandwidth&lt;/li&gt;
+&lt;li&gt;you know how to modify the &lt;code&gt;emacs_me&lt;/code&gt; script above&lt;/li&gt;
+&lt;li&gt;you know the debug &lt;a href=&#34;https://github.com/JAremko/docker-emacs#gnulinux&#34;&gt;steps&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;yes, you are in linux machine ;) else good luck figuring out the way to share you X resource&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a id=&#34;org85703f5&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;history-of-it-all&#34;&gt;History of it all&lt;/h1&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;my old posts, where I found hugo and learnt to glue it with org-mode.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;Before &lt;code&gt;hugo&lt;/code&gt; i was like:&lt;/p&gt;
 
@@ -650,18 +714,23 @@ dd if=/dev/urandom | pv | dd of=/data/data.zero
 &lt;p&gt;Rest of story on how to make emacs, a blog generator. Everything is copied blindly from &lt;a href=&#34;http://www.holgerschurig.de/en/emacs-blog-from-org-to-hugo/&#34;&gt;Holger Schurig&amp;rsquo;s Blog&lt;/a&gt;. ☕ for him.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;define-content-dir-a-id-orgheadline1-a&#34;&gt;Define content dir&lt;a id=&#34;orgheadline1&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;a id=&#34;orge7e1e00&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;define-content-dir&#34;&gt;Define content dir&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-emacs-lisp&#34;&gt;;; This is GPLv2. If you still don&#39;t know the details, read
 ;; http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
 
-(defvar hugo-content-dir &amp;quot;~/github/zerOnepal/blog/org2blog/content/post/&amp;quot;
+(defvar hugo-content-dir (getenv &amp;quot;HUGO_CONTENT_PROJECT_DIR&amp;quot;)
   &amp;quot;Path to Hugo&#39;s content directory&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;the-next-two-functions-care-that-all-needed-property-drawers-exist-a-id-orgheadline2-a&#34;&gt;The next two functions care that all needed property drawers exist&lt;a id=&#34;orgheadline2&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;a id=&#34;orgc713ccb&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-emacs-lisp&#34;&gt;;; This is GPLv2. If you still don&#39;t know the details, read
+&lt;h2 id=&#34;the-next-two-functions-care-that-all-needed-property-drawers-exist&#34;&gt;The next two functions care that all needed property drawers exist&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-emacs-lisp&#34;&gt;
+;; This is GPLv2. If you still don&#39;t know the details, read
 ;; http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
 
 (defun hugo-ensure-property (property)
@@ -703,14 +772,18 @@ Returns list of properties that still must be filled in&amp;quot;
     first))
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;github-flavoured-markdown-a-id-orgheadline3-a&#34;&gt;Github flavoured markdown&lt;a id=&#34;orgheadline3&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;a id=&#34;orgc75fbdc&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;github-flavoured-markdown&#34;&gt;Github flavoured markdown&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-emacs-lisp&#34;&gt;(use-package ox-gfm
   :config
   (require &#39;ox-gfm))
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;hugo-function-to-blog-all-the-things-a-id-orgheadline4-a&#34;&gt;Hugo function to blog all the things&lt;a id=&#34;orgheadline4&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;a id=&#34;orgd5edd5d&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;hugo-function-to-blog-all-the-things&#34;&gt;Hugo function to blog all the things&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-emacs-lisp&#34;&gt;;; This is GPLv2. If you still don&#39;t know the details, read
 ;; http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
@@ -752,7 +825,9 @@ Returns list of properties that still must be filled in&amp;quot;
         ))))
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;binding-the-key-a-id-orgheadline5-a&#34;&gt;Binding the key&lt;a id=&#34;orgheadline5&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;a id=&#34;org94a7991&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;binding-the-key&#34;&gt;Binding the key&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-emacs-lisp&#34;&gt;   (bind-key &amp;quot;M-g h&amp;quot; #&#39;hugo)
 &lt;/code&gt;&lt;/pre&gt;

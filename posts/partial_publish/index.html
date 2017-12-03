@@ -86,15 +86,79 @@ ga('create', 'your_google_analytics_id', 'auto');
 				
 
 <ul>
-<li><a href="#orgheadline1">Define content dir</a>
+<li><a href="#orgac72cf4">Recovering my broken blog gen</a>
 
 <ul>
-<li><a href="#orgheadline2">The next two functions care that all needed property drawers exist</a></li>
-<li><a href="#orgheadline3">Github flavoured markdown</a></li>
-<li><a href="#orgheadline4">Hugo function to blog all the things</a></li>
-<li><a href="#orgheadline5">Binding the key</a></li>
+<li><a href="#org85703f5">History of it all</a></li>
+<li><a href="#orge7e1e00">Define content dir</a></li>
+<li><a href="#orgc713ccb">The next two functions care that all needed property drawers exist</a></li>
+<li><a href="#orgc75fbdc">Github flavoured markdown</a></li>
+<li><a href="#orgd5edd5d">Hugo function to blog all the things</a></li>
+<li><a href="#org94a7991">Binding the key</a></li>
 </ul></li>
 </ul>
+
+<p><a id="orgac72cf4"></a></p>
+
+<h1 id="recovering-my-broken-blog-gen">Recovering my broken blog gen</h1>
+
+<p>As time passed by, I was left with my broken emacs configs. <a href="https://github.com/bnaysakya">bnaysakya</a> was asking me to push my configs, sadly it was not that easy, until I had this idea to re-do my configs once again from scratch. By scratch, I mean from fresh emacs setup, I used to compile it earlier, that how it all started to crash.</p>
+
+<p>Today I am here, using this <a href="https://hub.docker.com/r/jare/emacs/builds/">ubuntu:emacs from jare</a> and able to get my configs back. No longer are the worries of stale configs and broken setup. Yes, I am composing this small post from a random container <code>bff6ea8dc91c</code></p>
+
+<p>If you are wondering how I got this far, here are my steps&#x2026;anyone can reproduce it with ease:</p>
+
+<ul>
+<li>clone <a href="https://github.com/thapakazi/.emacs.d/tree/re_iterate">my configs :re<sub>iterate</sub> branch</a></li>
+
+<li><p>start your container: I am heavily depending on <a href="https://hub.docker.com/r/jare/emacs/builds/">jare&rsquo;s container</a> images here</p>
+
+<pre><code class="language-bash">emacs_me(){
+    EMACS_I_WANT_TO_USE=${EMACS_DOCKER_IMAGE:-jare/emacs}
+    BLOG_CONTENTS_INSIDE_EMACS=/home/emacs/blog_contents/
+    docker run -ti --rm \
+       --name $(echo ${EMACS_I_WANT_TO_USE}|shasum |cut -d' ' -f1) \
+       -e HUGO_CONTENT_PROJECT_DIR=$BLOG_CONTENTS_INSIDE_EMACS/ \
+           -e DISPLAY=&quot;unix$DISPLAY&quot;\
+           -e UNAME=&quot;emacser&quot;\
+           -e GNAME=&quot;emacsers&quot;\
+           -e UID=&quot;1000&quot;\
+           -e GID=&quot;1000&quot;\
+       -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+           -v ~/.emacs.docker:/home/emacs/.emacs.d \
+           -v ~/.gitconfig:/home/emacs/.gitconfig \
+       -v $MY_HUGO_CONTENT_PROJECT_DIR:$BLOG_CONTENTS_INSIDE_EMACS \
+       &quot;$EMACS_I_WANT_TO_USE&quot; emacs ${DEBUG_FLAG}
+}
+</code></pre></li>
+
+<li><p>export your hugo project dir, where your markdown resides</p>
+
+<pre><code class="language-bash">export HUGO_CONTENT_PROJECT_DIR=/path_to_my/hugo/markdown_files/content/
+</code></pre></li>
+
+<li><p>start your function</p>
+
+<pre><code class="language-bash">export EMACS_DOCKER_IMAGE=jare/emacs:latest DEBUG_FLAG='--debug-init'; emacs_me
+</code></pre>
+
+<p>I am assuming you have few things here:</p>
+
+<ul>
+<li>you have played with docker earlier, good internet bandwidth</li>
+<li>you know how to modify the <code>emacs_me</code> script above</li>
+<li>you know the debug <a href="https://github.com/JAremko/docker-emacs#gnulinux">steps</a></li>
+<li>yes, you are in linux machine ;) else good luck figuring out the way to share you X resource</li>
+</ul></li>
+</ul>
+
+<p><a id="org85703f5"></a></p>
+
+<h1 id="history-of-it-all">History of it all</h1>
+
+<blockquote>
+<p>my old posts, where I found hugo and learnt to glue it with org-mode.</p>
+</blockquote>
 
 <p>Before <code>hugo</code> i was like:</p>
 
@@ -118,18 +182,23 @@ ga('create', 'your_google_analytics_id', 'auto');
 <p>Rest of story on how to make emacs, a blog generator. Everything is copied blindly from <a href="http://www.holgerschurig.de/en/emacs-blog-from-org-to-hugo/">Holger Schurig&rsquo;s Blog</a>. ☕ for him.</p></li>
 </ul>
 
-<h1 id="define-content-dir-a-id-orgheadline1-a">Define content dir<a id="orgheadline1"></a></h1>
+<p><a id="orge7e1e00"></a></p>
+
+<h2 id="define-content-dir">Define content dir</h2>
 
 <pre><code class="language-emacs-lisp">;; This is GPLv2. If you still don't know the details, read
 ;; http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
 
-(defvar hugo-content-dir &quot;~/github/zerOnepal/blog/org2blog/content/post/&quot;
+(defvar hugo-content-dir (getenv &quot;HUGO_CONTENT_PROJECT_DIR&quot;)
   &quot;Path to Hugo's content directory&quot;)
 </code></pre>
 
-<h1 id="the-next-two-functions-care-that-all-needed-property-drawers-exist-a-id-orgheadline2-a">The next two functions care that all needed property drawers exist<a id="orgheadline2"></a></h1>
+<p><a id="orgc713ccb"></a></p>
 
-<pre><code class="language-emacs-lisp">;; This is GPLv2. If you still don't know the details, read
+<h2 id="the-next-two-functions-care-that-all-needed-property-drawers-exist">The next two functions care that all needed property drawers exist</h2>
+
+<pre><code class="language-emacs-lisp">
+;; This is GPLv2. If you still don't know the details, read
 ;; http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
 
 (defun hugo-ensure-property (property)
@@ -171,14 +240,18 @@ Returns list of properties that still must be filled in&quot;
     first))
 </code></pre>
 
-<h1 id="github-flavoured-markdown-a-id-orgheadline3-a">Github flavoured markdown<a id="orgheadline3"></a></h1>
+<p><a id="orgc75fbdc"></a></p>
+
+<h2 id="github-flavoured-markdown">Github flavoured markdown</h2>
 
 <pre><code class="language-emacs-lisp">(use-package ox-gfm
   :config
   (require 'ox-gfm))
 </code></pre>
 
-<h1 id="hugo-function-to-blog-all-the-things-a-id-orgheadline4-a">Hugo function to blog all the things<a id="orgheadline4"></a></h1>
+<p><a id="orgd5edd5d"></a></p>
+
+<h2 id="hugo-function-to-blog-all-the-things">Hugo function to blog all the things</h2>
 
 <pre><code class="language-emacs-lisp">;; This is GPLv2. If you still don't know the details, read
 ;; http://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
@@ -220,7 +293,9 @@ Returns list of properties that still must be filled in&quot;
         ))))
 </code></pre>
 
-<h1 id="binding-the-key-a-id-orgheadline5-a">Binding the key<a id="orgheadline5"></a></h1>
+<p><a id="org94a7991"></a></p>
+
+<h2 id="binding-the-key">Binding the key</h2>
 
 <pre><code class="language-emacs-lisp">   (bind-key &quot;M-g h&quot; #'hugo)
 </code></pre>
