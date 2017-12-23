@@ -6,8 +6,286 @@
     <description>Recent content in Posts-rsses on org to web</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 04 Jul 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 23 Dec 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://thapakazi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>command line kungfu with zle</title>
+      <link>https://thapakazi.github.io/posts/command_line_kungfu_with_zle/</link>
+      <pubDate>Sat, 23 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thapakazi.github.io/posts/command_line_kungfu_with_zle/</guid>
+      <description>
+
+&lt;h1 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#org226f340&#34;&gt;Why this post&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#org82be879&#34;&gt;Before we begin  | BASIC GOOD TO KNOW&lt;/a&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#orga017274&#34;&gt;Readline&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#org8bbf164&#34;&gt;ZLE&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#org42e8437&#34;&gt;Making of our custom widget&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#org9448616&#34;&gt;My words to you dear friend&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#orgbbef4f2&#34;&gt;Refrences&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;a id=&#34;org226f340&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;why-this-post&#34;&gt;Why this post&lt;/h1&gt;
+
+&lt;p&gt;I was always wondering why many of emacs keybindings work in
+terminal. Being dependent on key combinations &lt;code&gt;ctrl+e&lt;/code&gt;, &lt;code&gt;ctrl+a&lt;/code&gt;,
+&lt;code&gt;alt+t&lt;/code&gt;, &lt;code&gt;ctrl+t&lt;/code&gt; (my favorite)&amp;#x2026; every time i am fooling around the
+terminal, it felt so bad👿 if someone is navigating around pressing arrow keys
+⬅️⬅️⬅️⬅️&amp;#x2026;so maaaaanyyyy times, swagging them these nifty shortcuts is so
+fun. Until my friend/&lt;a href=&#34;https://github.com/bnaysakya&#34;&gt;binaysakya 👨‍💻&lt;/a&gt; told me you should write about
+these things. I realized I know nothing what those bindings
+really meant 🤔
+That&amp;rsquo;s how this post happened.
+&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;next candidate post, Alt +w , Ctrl + y, Ctrl +w , Ctrl + K&lt;/p&gt;&amp;mdash; मिलन थापा (@thapakazi_) &lt;a href=&#34;https://twitter.com/thapakazi_/status/941178719871238144?ref_src=twsrc%5Etfw&#34;&gt;December 14, 2017&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;/p&gt;
+
+&lt;p&gt;I would sharing my learning below more aliened to ZLE. I have
+copied the lines from the reference links below 🙊🙈🙉&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&#34;org82be879&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;before-we-begin-basic-good-to-know&#34;&gt;Before we begin  | BASIC GOOD TO KNOW&lt;/h1&gt;
+
+&lt;p&gt;Here we would look good to know theory that this post revolves
+around, skip🚀 these theory at your risk.&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&#34;orga017274&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;readline-https-wiki-archlinux-org-index-php-readline&#34;&gt;&lt;a href=&#34;https://wiki.archlinux.org/index.php/readline&#34;&gt;Readline&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Its a library used by bash and many of CLI programs to
+edit/interact via command line. Readline uses &lt;code&gt;Emacs&lt;/code&gt; style
+shortcuts as default, that&amp;rsquo;s why your &lt;code&gt;Ctrl+a&lt;/code&gt;,
+&lt;code&gt;Ctrl+e&lt;/code&gt;&amp;#x2026; shortcuts works almost same in most of terminals, even the editors
+derivations like sublime respects🙇 the style. And yes, because of
+this it super easy to jump along the text interface with such a
+ease ☺️&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&#34;org8bbf164&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;zle-http-zshwiki-org-home-zle-start&#34;&gt;&lt;a href=&#34;http://zshwiki.org/home/zle/start&#34;&gt;ZLE&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;I have shifted to zsh like few years back, no speical reason still
+playing back and forth between bash and zsh. Just love the random
+theme from &lt;a href=&#34;https://github.com/robbyrussell/oh-my-zsh&#34;&gt;robbyrussell/oh-my-zsh&lt;/a&gt;.😄 till yesterday(22 dec 2017)
+when I found this thing called &lt;a href=&#34;http://zshwiki.org/home/zle/start&#34;&gt;zle&lt;/a&gt;(ZSH LINE EDITOR) then I was like
+oh my&amp;#x2026; its so 😍😍😍&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ZLE is a powerful line editor, what that means&amp;#x2026; ?&lt;/strong&gt;
+Every shell provides some kind of editing capability although it
+could be basic stuffs provided by os like enter character, delete
+line, delete word. ZLE extends your capability to interact with
+your shell with custom functions and custom key strokes, with
+ease(will share it how in section below ⬇️).&lt;/p&gt;
+
+&lt;p&gt;Example you want to change some text you just typed in terminal to &lt;code&gt;UPPER Case&lt;/code&gt;. What you
+can do with zle widget is just like in your editor:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;sample demo of both modes
+please play along with your shell while you are going via this 🗣&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://media.giphy.com/media/xULW8GUqMxfIZraLoQ/giphy.gif#floatright&#34; width=&#34;650px&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;VI&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Set your key-maps to vi with &lt;code&gt;bindkey -v&lt;/code&gt;, and now you can use
+your terminal like your vi &lt;code&gt;i&lt;/code&gt; :interactive mode and &lt;code&gt;ESC&lt;/code&gt; to command line mode&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;hello world&amp;quot; [ESC] [b] [b] [gUw] [w] [gUl] [Enter]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table border=&#34;2&#34; cellspacing=&#34;0&#34; cellpadding=&#34;6&#34; rules=&#34;groups&#34; frame=&#34;hsides&#34;&gt;
+    
+    
+&lt;colgroup&gt;
+&lt;col  class=&#34;org-left&#34; /&gt;
+    
+&lt;col  class=&#34;org-left&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class=&#34;org-left&#34;&gt;[ESC]&lt;/td&gt;
+&lt;td class=&#34;org-left&#34;&gt;: switch to cmd line mode&lt;/td&gt;
+&lt;/tr&gt;
+    
+    
+&lt;tr&gt;
+&lt;td class=&#34;org-left&#34;&gt;[b] [b]&lt;/td&gt;
+&lt;td class=&#34;org-left&#34;&gt;: jump back 2 words&lt;/td&gt;
+&lt;/tr&gt;
+    
+    
+&lt;tr&gt;
+&lt;td class=&#34;org-left&#34;&gt;[gUw]&lt;/td&gt;
+&lt;td class=&#34;org-left&#34;&gt;: where gU: activate to uppercase widget&lt;/td&gt;
+&lt;/tr&gt;
+    
+    
+&lt;tr&gt;
+&lt;td class=&#34;org-left&#34;&gt;&amp;#xa0;&lt;/td&gt;
+&lt;td class=&#34;org-left&#34;&gt;: w: apply to a word forward&lt;/td&gt;
+&lt;/tr&gt;
+    
+    
+&lt;tr&gt;
+&lt;td class=&#34;org-left&#34;&gt;[w]&lt;/td&gt;
+&lt;td class=&#34;org-left&#34;&gt;: jump a word forward&lt;/td&gt;
+&lt;/tr&gt;
+    
+    
+&lt;tr&gt;
+&lt;td class=&#34;org-left&#34;&gt;[gUl]&lt;/td&gt;
+&lt;td class=&#34;org-left&#34;&gt;: apply uppercase to a first char only&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;EMACS&lt;/strong&gt; (default):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ echo &amp;quot;hello world&amp;quot; [alt+b] [alt+b] [alt+u] [alt+c] [crtl+j]   
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;table border=&#34;2&#34; cellspacing=&#34;0&#34; cellpadding=&#34;6&#34; rules=&#34;groups&#34; frame=&#34;hsides&#34;&gt;
+    
+    
+&lt;colgroup&gt;
+&lt;col  class=&#34;org-left&#34; /&gt;
+    
+&lt;col  class=&#34;org-left&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class=&#34;org-left&#34;&gt;alt+b alt+b:&lt;/td&gt;
+&lt;td class=&#34;org-left&#34;&gt;jump back by 2 words&lt;/td&gt;
+&lt;/tr&gt;
+    
+    
+&lt;tr&gt;
+&lt;td class=&#34;org-left&#34;&gt;alt+u      :&lt;/td&gt;
+&lt;td class=&#34;org-left&#34;&gt;UPPERCASE hello&lt;/td&gt;
+&lt;/tr&gt;
+    
+    
+&lt;tr&gt;
+&lt;td class=&#34;org-left&#34;&gt;alt+c      :&lt;/td&gt;
+&lt;td class=&#34;org-left&#34;&gt;Uppercase W in world&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;ZLE in simple words:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ZLE is a bridge between you and your zsh shell&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:https-sgeb-io-posts-2014-04-zsh-zle-custom-widgets&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:https-sgeb-io-posts-2014-04-zsh-zle-custom-widgets&#34;&gt;0&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;ZLE provides a easy interface to extend the capability of zsh with our custom functions a.k.a &lt;code&gt;widgets&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;it&amp;rsquo;s scope is only within interactive shell&lt;/li&gt;
+&lt;li&gt;comes with tons of default keybindings, supports both emacs(default),vi ~keymaps~(modes of editing, collection of keystrokes and interaction mode)&lt;/li&gt;
+&lt;li&gt;comes with goodies like:
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;where-is&lt;/code&gt; which help us quick look about keymaps&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;zle -la&lt;/code&gt; : quick list all the widgets&lt;/li&gt;
+&lt;li&gt;I am still learning, i am liking many small things like &lt;code&gt;[alt+x]&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a id=&#34;org42e8437&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;making-of-our-custom-widget&#34;&gt;Making of our custom widget&lt;/h1&gt;
+
+&lt;p&gt;Lets write a widget to find the top 5 memory savages on my machine
+at this moment. you can simply copy paste the following on your
+running zsh or source it somewhere in your rc file.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;[step1]: To start with lets define a function, that invokes ps
+with necessary formatting.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;_exec_ps_top_5(){
+    echo &amp;quot;top 5 memory saveges on my machine...&amp;quot;
+    PS_FORMAT=%mem,pid,ppid,cmd,comm,etime ps -e|sort -r|head -6
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;[step2]: define a widget&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;zle -N _exec_ps_top_5             # define a new widget
+bindkey &#39;^@&#39; _exec_ps_top_5       # bind it to key ctrl+@
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;[step3]: execute the widget&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;first check if widget is available or not&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;zle -la|grep exec_ps
+[alt+x] where-is [enter] _exec_ps[tab]
+# expected output: _exec_ps_top_5 is on &amp;quot;^@&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;that means our widget is ready to use 😄&lt;/p&gt;
+
+&lt;p&gt;Just press &lt;code&gt;[ctrl+@]&lt;/code&gt;, you will see sth like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;top 5 memory saveges on my machine...
+%MEM   PID  PPID CMD                         COMMAND             ELAPSED
+ 4.1  1223   549 /opt/google/chrome/chrome - chrome                13:32
+ 3.2   415     1 /opt/google/chrome/chrome   chrome                13:41
+ 2.1   875   549 /opt/google/chrome/chrome - chrome                13:36
+ 1.9   618   415 /opt/google/chrome/chrome - chrome                13:37
+ 1.9  1743   549 /opt/google/chrome/chrome - chrome                13:18
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;🎉🎉🎉 Congrats, yeah that&amp;rsquo;s what it feels like 😌&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a id=&#34;org9448616&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;my-words-to-you-dear-friend&#34;&gt;My words to you dear friend&lt;/h1&gt;
+
+&lt;p&gt;Please go via the reference url below and explore for your self
+what awesome things we can do with our shell. ZLE is kinda
+simple&amp;amp;nice, lets make use of it to do tiny stuffs we repeatedly do
+in our daily like maybe look after logs like &lt;code&gt;tail -f log/*.log&lt;/code&gt;,
+start our docker containers, run our specs, yeah its could be
+anything, I have so many alias,&lt;a href=&#34;https://github.com/thapakazi/kutto_kodalo&#34;&gt;functions&lt;/a&gt; I depend on everyday, now
+I would have fun binding them to keystores of my choice 😉&lt;/p&gt;
+
+&lt;p&gt;Future Notes: maybe I would try write about readline in days to
+come, still lot to learn 😃&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&#34;orgbbef4f2&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;refrences&#34;&gt;Refrences&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;highly recomended: &lt;a href=&#34;https://sgeb.io/posts/2014/04/zsh-zle-custom-widgets/&#34;&gt;A closer look at the zsh line editor and creating custom widgets&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://zsh.sourceforge.net/Guide/zshguide04.html&#34;&gt;Chapter 4: The Z-Shell Line Editor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.archlinux.org/index.php/zsh#Key_bindings&#34;&gt;Arch wiki::ZSH&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/aspiers/shell-env&#34;&gt;Adam&amp;rsquo;s UNIX shell environment&lt;/a&gt; so many goodies to learn from&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Urja Bigyan (Energy Science) Learnings Gist</title>

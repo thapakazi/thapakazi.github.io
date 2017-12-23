@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title> command line kungfu with zle &middot; org to web </title>
+
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.13" />
+
+
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://thapakazi.github.io/css/nix.css">
+
+ 
+<link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Roboto|Montserrat|Concert+One" rel="stylesheet">
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'your_google_analytics_id', 'auto');
+	  ga('send', 'pageview');
+
+</script>
+
+
+	</head>
+
+	<body>
+		<header>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse font-header">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" id="green-terminal" href=https://thapakazi.github.io>thapakazi@virtualcosmos ~ $</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="https://thapakazi.github.io">/home/thapakazi</a>
+				</li>
+				
+				
+				<li >
+					<a href="/posts">~/posts</a>
+				</li>
+				
+				
+				<li >
+					<a href="/aboutme">~/ℹ️</a>
+				</li>
+				
+
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+		<div class="container wrapper">
+			<h1><a href="https://thapakazi.github.io/posts/command_line_kungfu_with_zle/">command line kungfu with zle</a></h1>
+			<span class="post-date">Dec 23, 2017 </span>
+			<div class="post-content">
+				
+
+<h1 id="table-of-contents">Table of Contents</h1>
+
+<ol>
+<li><a href="#org226f340">Why this post</a></li>
+<li><a href="#org82be879">Before we begin  | BASIC GOOD TO KNOW</a>
+
+<ol>
+<li><a href="#orga017274">Readline</a></li>
+<li><a href="#org8bbf164">ZLE</a></li>
+</ol></li>
+<li><a href="#org42e8437">Making of our custom widget</a></li>
+<li><a href="#org9448616">My words to you dear friend</a></li>
+<li><a href="#orgbbef4f2">Refrences</a></li>
+</ol>
+
+<p><a id="org226f340"></a></p>
+
+<h1 id="why-this-post">Why this post</h1>
+
+<p>I was always wondering why many of emacs keybindings work in
+terminal. Being dependent on key combinations <code>ctrl+e</code>, <code>ctrl+a</code>,
+<code>alt+t</code>, <code>ctrl+t</code> (my favorite)&#x2026; every time i am fooling around the
+terminal, it felt so bad👿 if someone is navigating around pressing arrow keys
+⬅️⬅️⬅️⬅️&#x2026;so maaaaanyyyy times, swagging them these nifty shortcuts is so
+fun. Until my friend/<a href="https://github.com/bnaysakya">binaysakya 👨‍💻</a> told me you should write about
+these things. I realized I know nothing what those bindings
+really meant 🤔
+That&rsquo;s how this post happened.
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">next candidate post, Alt +w , Ctrl + y, Ctrl +w , Ctrl + K</p>&mdash; मिलन थापा (@thapakazi_) <a href="https://twitter.com/thapakazi_/status/941178719871238144?ref_src=twsrc%5Etfw">December 14, 2017</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</p>
+
+<p>I would sharing my learning below more aliened to ZLE. I have
+copied the lines from the reference links below 🙊🙈🙉</p>
+
+<p><a id="org82be879"></a></p>
+
+<h1 id="before-we-begin-basic-good-to-know">Before we begin  | BASIC GOOD TO KNOW</h1>
+
+<p>Here we would look good to know theory that this post revolves
+around, skip🚀 these theory at your risk.</p>
+
+<p><a id="orga017274"></a></p>
+
+<h2 id="readline-https-wiki-archlinux-org-index-php-readline"><a href="https://wiki.archlinux.org/index.php/readline">Readline</a></h2>
+
+<p>Its a library used by bash and many of CLI programs to
+edit/interact via command line. Readline uses <code>Emacs</code> style
+shortcuts as default, that&rsquo;s why your <code>Ctrl+a</code>,
+<code>Ctrl+e</code>&#x2026; shortcuts works almost same in most of terminals, even the editors
+derivations like sublime respects🙇 the style. And yes, because of
+this it super easy to jump along the text interface with such a
+ease ☺️</p>
+
+<p><a id="org8bbf164"></a></p>
+
+<h2 id="zle-http-zshwiki-org-home-zle-start"><a href="http://zshwiki.org/home/zle/start">ZLE</a></h2>
+
+<p>I have shifted to zsh like few years back, no speical reason still
+playing back and forth between bash and zsh. Just love the random
+theme from <a href="https://github.com/robbyrussell/oh-my-zsh">robbyrussell/oh-my-zsh</a>.😄 till yesterday(22 dec 2017)
+when I found this thing called <a href="http://zshwiki.org/home/zle/start">zle</a>(ZSH LINE EDITOR) then I was like
+oh my&#x2026; its so 😍😍😍</p>
+
+<p><strong>ZLE is a powerful line editor, what that means&#x2026; ?</strong>
+Every shell provides some kind of editing capability although it
+could be basic stuffs provided by os like enter character, delete
+line, delete word. ZLE extends your capability to interact with
+your shell with custom functions and custom key strokes, with
+ease(will share it how in section below ⬇️).</p>
+
+<p>Example you want to change some text you just typed in terminal to <code>UPPER Case</code>. What you
+can do with zle widget is just like in your editor:</p>
+
+<ul>
+<li><p>sample demo of both modes
+please play along with your shell while you are going via this 🗣</p>
+
+
+<figure >
+    
+        <img src="https://media.giphy.com/media/xULW8GUqMxfIZraLoQ/giphy.gif#floatright" width="650px" />
+    
+    
+</figure>
+</li>
+
+<li><p><strong>VI</strong></p>
+
+<p>Set your key-maps to vi with <code>bindkey -v</code>, and now you can use
+your terminal like your vi <code>i</code> :interactive mode and <code>ESC</code> to command line mode</p>
+
+<pre><code>echo &quot;hello world&quot; [ESC] [b] [b] [gUw] [w] [gUl] [Enter]
+</code></pre>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+    
+    
+<colgroup>
+<col  class="org-left" />
+    
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">[ESC]</td>
+<td class="org-left">: switch to cmd line mode</td>
+</tr>
+    
+    
+<tr>
+<td class="org-left">[b] [b]</td>
+<td class="org-left">: jump back 2 words</td>
+</tr>
+    
+    
+<tr>
+<td class="org-left">[gUw]</td>
+<td class="org-left">: where gU: activate to uppercase widget</td>
+</tr>
+    
+    
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">: w: apply to a word forward</td>
+</tr>
+    
+    
+<tr>
+<td class="org-left">[w]</td>
+<td class="org-left">: jump a word forward</td>
+</tr>
+    
+    
+<tr>
+<td class="org-left">[gUl]</td>
+<td class="org-left">: apply uppercase to a first char only</td>
+</tr>
+</tbody>
+</table></li>
+
+<li><p><strong>EMACS</strong> (default):</p>
+
+<pre><code>$ echo &quot;hello world&quot; [alt+b] [alt+b] [alt+u] [alt+c] [crtl+j]   
+</code></pre>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+    
+    
+<colgroup>
+<col  class="org-left" />
+    
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">alt+b alt+b:</td>
+<td class="org-left">jump back by 2 words</td>
+</tr>
+    
+    
+<tr>
+<td class="org-left">alt+u      :</td>
+<td class="org-left">UPPERCASE hello</td>
+</tr>
+    
+    
+<tr>
+<td class="org-left">alt+c      :</td>
+<td class="org-left">Uppercase W in world</td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+
+<p><strong>ZLE in simple words:</strong></p>
+
+<ul>
+<li>ZLE is a bridge between you and your zsh shell<sup class="footnote-ref" id="fnref:https-sgeb-io-posts-2014-04-zsh-zle-custom-widgets"><a rel="footnote" href="#fn:https-sgeb-io-posts-2014-04-zsh-zle-custom-widgets">0</a></sup></li>
+<li>ZLE provides a easy interface to extend the capability of zsh with our custom functions a.k.a <code>widgets</code></li>
+<li>it&rsquo;s scope is only within interactive shell</li>
+<li>comes with tons of default keybindings, supports both emacs(default),vi ~keymaps~(modes of editing, collection of keystrokes and interaction mode)</li>
+<li>comes with goodies like:
+
+<ul>
+<li><code>where-is</code> which help us quick look about keymaps</li>
+<li><code>zle -la</code> : quick list all the widgets</li>
+<li>I am still learning, i am liking many small things like <code>[alt+x]</code></li>
+</ul></li>
+</ul>
+
+<p><a id="org42e8437"></a></p>
+
+<h1 id="making-of-our-custom-widget">Making of our custom widget</h1>
+
+<p>Lets write a widget to find the top 5 memory savages on my machine
+at this moment. you can simply copy paste the following on your
+running zsh or source it somewhere in your rc file.</p>
+
+<ul>
+<li><p>[step1]: To start with lets define a function, that invokes ps
+with necessary formatting.</p>
+
+<pre><code>_exec_ps_top_5(){
+    echo &quot;top 5 memory saveges on my machine...&quot;
+    PS_FORMAT=%mem,pid,ppid,cmd,comm,etime ps -e|sort -r|head -6
+}
+</code></pre></li>
+
+<li><p>[step2]: define a widget</p>
+
+<pre><code>zle -N _exec_ps_top_5             # define a new widget
+bindkey '^@' _exec_ps_top_5       # bind it to key ctrl+@
+</code></pre></li>
+
+<li><p>[step3]: execute the widget</p>
+
+<ul>
+<li><p>first check if widget is available or not</p>
+
+<pre><code>zle -la|grep exec_ps
+[alt+x] where-is [enter] _exec_ps[tab]
+# expected output: _exec_ps_top_5 is on &quot;^@&quot;
+</code></pre></li>
+
+<li><p>that means our widget is ready to use 😄</p>
+
+<p>Just press <code>[ctrl+@]</code>, you will see sth like this:</p>
+
+<pre><code>top 5 memory saveges on my machine...
+%MEM   PID  PPID CMD                         COMMAND             ELAPSED
+ 4.1  1223   549 /opt/google/chrome/chrome - chrome                13:32
+ 3.2   415     1 /opt/google/chrome/chrome   chrome                13:41
+ 2.1   875   549 /opt/google/chrome/chrome - chrome                13:36
+ 1.9   618   415 /opt/google/chrome/chrome - chrome                13:37
+ 1.9  1743   549 /opt/google/chrome/chrome - chrome                13:18
+</code></pre>
+
+<p>🎉🎉🎉 Congrats, yeah that&rsquo;s what it feels like 😌</p></li>
+</ul></li>
+</ul>
+
+<p><a id="org9448616"></a></p>
+
+<h1 id="my-words-to-you-dear-friend">My words to you dear friend</h1>
+
+<p>Please go via the reference url below and explore for your self
+what awesome things we can do with our shell. ZLE is kinda
+simple&amp;nice, lets make use of it to do tiny stuffs we repeatedly do
+in our daily like maybe look after logs like <code>tail -f log/*.log</code>,
+start our docker containers, run our specs, yeah its could be
+anything, I have so many alias,<a href="https://github.com/thapakazi/kutto_kodalo">functions</a> I depend on everyday, now
+I would have fun binding them to keystores of my choice 😉</p>
+
+<p>Future Notes: maybe I would try write about readline in days to
+come, still lot to learn 😃</p>
+
+<p><a id="orgbbef4f2"></a></p>
+
+<h1 id="refrences">Refrences</h1>
+
+<ul>
+<li>highly recomended: <a href="https://sgeb.io/posts/2014/04/zsh-zle-custom-widgets/">A closer look at the zsh line editor and creating custom widgets</a></li>
+<li><a href="http://zsh.sourceforge.net/Guide/zshguide04.html">Chapter 4: The Z-Shell Line Editor</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/zsh#Key_bindings">Arch wiki::ZSH</a></li>
+<li><a href="https://github.com/aspiers/shell-env">Adam&rsquo;s UNIX shell environment</a> so many goodies to learn from</li>
+</ul>
+
+			</div>
+			<div class="post-comments">
+				<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'thapakazi';
+    var disqus_identifier = 'https:\/\/thapakazi.github.io\/posts\/command_line_kungfu_with_zle\/';
+    var disqus_title = 'command line kungfu with zle';
+    var disqus_url = 'https:\/\/thapakazi.github.io\/posts\/command_line_kungfu_with_zle\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+			</div>
+			<div class="push"></div>
+		</div>
+		<footer class="footer text-center">
+<p>Copyright &copy; 2017  -
+<span class="credit">
+	Powered by 
+	<a target="_blank" href="https://gohugo.io">Hugo</a>
+	and 
+	<a target="_blank" href="https://github.com/LordMathis/hugo-theme-nix/">Nix</a> theme.
+</span>
+</p>
+</footer>
+
+	</body>
