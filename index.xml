@@ -60,8 +60,8 @@ Why this post I was always wondering why many of emacs keybindings work in termi
       
       <guid>https://thapakazi.github.io/info/tracking_the_digital_traces/</guid>
       <description>Contribs  Extension: [2019] Add queue sizes to the INFO stats on faktory pull#197
- Needed a feature, sneaked into codaebase, found it easy, added changes, test and made a PR 😅
- Learn about faktory, learnt to write tests :) in golang
+ Needed a feature, sneaked into codebase, found it easy, added changes, test and made a PR 😅
+ Learn about faktory, learned to write tests :) in golang
  Issue: [2015] Memory check in % rather than fixed value issue#11
  Needed a feature, asked for it, nobody cared, so made it and shared it 😅</description>
     </item>
