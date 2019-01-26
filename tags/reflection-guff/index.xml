@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>org to web</title>
-    <link>https://thapakazi.github.io/tags/reflection-guff/index.xml</link>
-    <description>Recent content on org to web</description>
+    <title>Reflection Guff on define: thapakazi</title>
+    <link>https://thapakazi.github.io/tags/reflection-guff/</link>
+    <description>Recent content in Reflection Guff on define: thapakazi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://thapakazi.github.io/tags/reflection-guff/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 19 May 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thapakazi.github.io/tags/reflection-guff/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>reflection with 4 earth revolutions @cloudfactory.com</title>
@@ -14,22 +17,8 @@
       <pubDate>Fri, 19 May 2017 00:00:00 +0000</pubDate>
       
       <guid>https://thapakazi.github.io/posts/reflection_4_earth_revloutions_back_in_time/</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;its 19May today&amp;#x2026; 4yrs ago it was a different story&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Being in a role: devops@cloudfactory for last ~4yrs of duration, I was able to learn and work with ruby (on rails), play with some 100s of ec2 servers with ansible, paged often about their health/stats(mostly ios), prometheus them &amp;amp; dash few (in clambering graphs), debug some zombies on production (during holidays weekend :/ ), collaborate with some awesome random open-source advocates(great learning times) and best, learned to realize how business directly maps to my tiny shell scripts or yaml files i indent on my editor Emacs. In gist, everyday of it is inspiring, challenging; the more I do it the more I feel good about it.&lt;/p&gt;
-
-&lt;p&gt;With this upbringing, seeking/longing to know more about technology, collaboration and different business needs from highly motivated, open mentors &amp;amp; team has been a habit.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;4 yrs ago&amp;#x2026;hehe&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;And now, I would like to explain my self as guy who love to play with terminals &lt;code&gt;they used to say, old habits die hard, it making more sense now&lt;/code&gt; and machines/stacks (&lt;code&gt;damn you containers, you freak me out&lt;/code&gt;), compose/deploy 🚢 them (&lt;code&gt;the laziest part of story, mostly&lt;/code&gt;), instrument them (&lt;code&gt;favourite one&lt;/code&gt;), secure 🛡 them and tinker with tools to automate it all.&lt;/p&gt;
-
-&lt;p&gt;Sounds all flashy 🛡, but old days of sed-awk burger wars is always missed. Good things I have a #emacs and #tmux gangs to guff on.&lt;/p&gt;
-</description>
+      <description>its 19May today&amp;#x2026; 4yrs ago it was a different story
+ Being in a role: devops@cloudfactory for last ~4yrs of duration, I was able to learn and work with ruby (on rails), play with some 100s of ec2 servers with ansible, paged often about their health/stats(mostly ios), prometheus them &amp;amp; dash few (in clambering graphs), debug some zombies on production (during holidays weekend :/ ), collaborate with some awesome random open-source advocates(great learning times) and best, learned to realize how business directly maps to my tiny shell scripts or yaml files i indent on my editor Emacs.</description>
     </item>
     
   </channel>

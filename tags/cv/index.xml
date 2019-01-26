@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cv on define: thapakazi</title>
+    <link>https://thapakazi.github.io/tags/cv/</link>
+    <description>Recent content in Cv on define: thapakazi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 26 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thapakazi.github.io/tags/cv/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My Resume</title>
+      <link>https://thapakazi.github.io/info/about_me/</link>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://thapakazi.github.io/info/about_me/</guid>
+      <description>involvements  jobs: Developer-Manager, devops Engineer @WhiteHatEngineering^ (current)
+past: ~5 yrs of work experience as devops engineer @cloudfactory.com^
+ academic: B.E. in Computer Engineering from Kathmandu University^
+  in gist I love  to automate all the things #lazyme knowledge sharing the easiest way possible  documentation (blogs, wikis, irc, slack, youtube) transparent communication via project management tools (in github/trello)  instrumentation &amp;amp; graphing on business/machine metrics/stats enhancing development workflow blending prudent efforts and tools implementing best practices for operational &amp;amp; development excellence  ops works I loved to do Automation || ops tasks like:  AWS-EC2 autoscaling based on primitive check metrics HA (replica/failover) for production services like: MongoDB, Redis, RabbitMQ</description>
+    </item>
+    
+  </channel>
+</rss>

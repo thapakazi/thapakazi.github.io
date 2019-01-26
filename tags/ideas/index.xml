@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>org to web</title>
-    <link>https://thapakazi.github.io/tags/ideas/index.xml</link>
-    <description>Recent content on org to web</description>
+    <title>Ideas on define: thapakazi</title>
+    <link>https://thapakazi.github.io/tags/ideas/</link>
+    <description>Recent content in Ideas on define: thapakazi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://thapakazi.github.io/tags/ideas/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Oct 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thapakazi.github.io/tags/ideas/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Random Ideas in my head I want to puddle</title>
@@ -14,75 +17,7 @@
       <pubDate>Fri, 14 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>https://thapakazi.github.io/posts/projects_list/</guid>
-      <description>
-
-&lt;h1 id=&#34;utility-a-id-orgheadline1-a&#34;&gt;Utility&lt;a id=&#34;orgheadline1&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
-
-&lt;table border=&#34;2&#34; cellspacing=&#34;0&#34; cellpadding=&#34;6&#34; rules=&#34;groups&#34; frame=&#34;hsides&#34;&gt;
-
-
-&lt;colgroup&gt;
-&lt;col  class=&#34;org-left&#34; /&gt;
-
-&lt;col  class=&#34;org-left&#34; /&gt;
-
-&lt;col  class=&#34;org-left&#34; /&gt;
-
-&lt;col  class=&#34;org-left&#34; /&gt;
-&lt;/colgroup&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th scope=&#34;col&#34; class=&#34;org-left&#34;&gt;project&lt;/th&gt;
-&lt;th scope=&#34;col&#34; class=&#34;org-left&#34;&gt;descriptions&lt;/th&gt;
-&lt;th scope=&#34;col&#34; class=&#34;org-left&#34;&gt;Purpose&lt;/th&gt;
-&lt;th scope=&#34;col&#34; class=&#34;org-left&#34;&gt;ideaof&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td class=&#34;org-left&#34;&gt;battigo&lt;/td&gt;
-&lt;td class=&#34;org-left&#34;&gt;batti in go (&lt;del&gt;no bash&lt;/del&gt;)&lt;/td&gt;
-&lt;td class=&#34;org-left&#34;&gt;learning go the hard way&lt;/td&gt;
-&lt;td class=&#34;org-left&#34;&gt;&amp;#xa0;&lt;/td&gt;
-&lt;/tr&gt;
-
-
-&lt;tr&gt;
-&lt;td class=&#34;org-left&#34;&gt;api.anubad.io&lt;/td&gt;
-&lt;td class=&#34;org-left&#34;&gt;anubad api version&lt;/td&gt;
-&lt;td class=&#34;org-left&#34;&gt;collaboration, scaling up words&lt;/td&gt;
-&lt;td class=&#34;org-left&#34;&gt;&amp;#xa0;&lt;/td&gt;
-&lt;/tr&gt;
-
-
-&lt;tr&gt;
-&lt;td class=&#34;org-left&#34;&gt;paledai&lt;/td&gt;
-&lt;td class=&#34;org-left&#34;&gt;a rest api listening to fire ansible&lt;/td&gt;
-&lt;td class=&#34;org-left&#34;&gt;for autoscaling&lt;/td&gt;
-&lt;td class=&#34;org-left&#34;&gt;&amp;#xa0;&lt;/td&gt;
-&lt;/tr&gt;
-
-
-&lt;tr&gt;
-&lt;td class=&#34;org-left&#34;&gt;codetree&lt;/td&gt;
-&lt;td class=&#34;org-left&#34;&gt;a tree view generator of a ROR app&lt;/td&gt;
-&lt;td class=&#34;org-left&#34;&gt;tree for code, #livepreview&lt;/td&gt;
-&lt;td class=&#34;org-left&#34;&gt;javanux&lt;/td&gt;
-&lt;/tr&gt;
-
-
-&lt;tr&gt;
-&lt;td class=&#34;org-left&#34;&gt;whoisshe&lt;/td&gt;
-&lt;td class=&#34;org-left&#34;&gt;a contact book manager&lt;/td&gt;
-&lt;td class=&#34;org-left&#34;&gt;a contact list manager&lt;/td&gt;
-&lt;td class=&#34;org-left&#34;&gt;&amp;#xa0;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h1 id=&#34;a-id-orgheadline2-a&#34;&gt;&lt;a id=&#34;orgheadline2&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
-</description>
+      <description> Utility     project descriptions Purpose ideaof     battigo batti in go (no bash) learning go the hard way &amp;#xa0;   api.anubad.io anubad api version collaboration, scaling up words &amp;#xa0;   paledai a rest api listening to fire ansible for autoscaling &amp;#xa0;   codetree a tree view generator of a ROR app tree for code, #livepreview javanux   whoisshe a contact book manager a contact list manager &amp;#xa0;     </description>
     </item>
     
   </channel>

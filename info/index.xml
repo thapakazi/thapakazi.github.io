@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Infos on define: thapakazi</title>
+    <link>https://thapakazi.github.io/info/</link>
+    <description>Recent content in Infos on define: thapakazi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 26 Jan 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thapakazi.github.io/info/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>My Resume</title>
+      <link>https://thapakazi.github.io/info/about_me/</link>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://thapakazi.github.io/info/about_me/</guid>
+      <description>involvements  jobs: Developer-Manager, devops Engineer @WhiteHatEngineering^ (current)
+past: ~5 yrs of work experience as devops engineer @cloudfactory.com^
+ academic: B.E. in Computer Engineering from Kathmandu University^
+  in gist I love  to automate all the things #lazyme knowledge sharing the easiest way possible  documentation (blogs, wikis, irc, slack, youtube) transparent communication via project management tools (in github/trello)  instrumentation &amp;amp; graphing on business/machine metrics/stats enhancing development workflow blending prudent efforts and tools implementing best practices for operational &amp;amp; development excellence  ops works I loved to do Automation || ops tasks like:  AWS-EC2 autoscaling based on primitive check metrics HA (replica/failover) for production services like: MongoDB, Redis, RabbitMQ</description>
+    </item>
+    
+    <item>
+      <title>Tracking Digital Traces(self)</title>
+      <link>https://thapakazi.github.io/info/tracking_the_digital_traces/</link>
+      <pubDate>Thu, 02 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://thapakazi.github.io/info/tracking_the_digital_traces/</guid>
+      <description>Contribs  Extension: [2019] Add queue sizes to the INFO stats on faktory pull#197
+ Needed a feature, sneaked into codaebase, found it easy, added changes, test and made a PR 😅
+ Learn about faktory, learnt to write tests :) in golang
+ Issue: [2015] Memory check in % rather than fixed value issue#11
+ Needed a feature, asked for it, nobody cared, so made it and shared it 😅</description>
+    </item>
+    
+    <item>
+      <title>my_config.yml</title>
+      <link>https://thapakazi.github.io/info/aboutme_old_yml/</link>
+      <pubDate>Sat, 08 Oct 2016 23:18:30 +0545</pubDate>
+      
+      <guid>https://thapakazi.github.io/info/aboutme_old_yml/</guid>
+      <description>Be the change you want to see in the world &amp;ndash; Gandi
+ It will be fun&amp;hellip; 😁 ---name:&amp;#39;Milan Thapa&amp;#39;they_used_to_call_me:&amp;#39;devops&amp;#39;details:📫:&amp;#39;milans dot thapa78 at the rate gmail dot com&amp;#39;📱:&amp;#39;+977 9841 715 750&amp;#39;i_use:editor:&amp;#39;emacs&amp;#39;browser:&amp;#39;firefox&amp;#39;os:&amp;#39;Archlinux&amp;#39;addicted_to:-&amp;#39;linux&amp;#39;-&amp;#39;org-mode&amp;#39;-&amp;#39;tmux&amp;#39;-&amp;#39;crontabs&amp;#39;-&amp;#39;typo&amp;#39;i_love:-&amp;#39;terminals&amp;#39;-&amp;#39;automation&amp;#39;-&amp;#39;visualising&amp;#39;-&amp;#39;debuging&amp;#39;-&amp;#39;tinkering pi/arudino&amp;#39;-&amp;#39;playing futsal&amp;#39;education:-&amp;#39;BE in computer from Kathmandu University&amp;#39;jobs_engaged:-current:&amp;#39;~1yr enlivit.com&amp;#39;-past:&amp;#39;~5yrs: cloudfactory.com&amp;#39;old_good_memories:-&amp;#39;Team Lipi #tourism Ncell App Challanges 2015&amp;#39;-&amp;#39;Team Haude #osm2threejs Leapfrog Hackathon 2015&amp;#39;recent_hangovers:-&amp;#39;prometheus&amp;#39;-&amp;#39;mongodb&amp;#39;-&amp;#39;blogging&amp;#39;
+Link to my old cv</description>
+    </item>
+    
+  </channel>
+</rss>

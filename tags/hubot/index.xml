@@ -1,146 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>org to web</title>
-    <link>https://thapakazi.github.io/tags/hubot/index.xml</link>
-    <description>Recent content on org to web</description>
+    <title>Hubot on define: thapakazi</title>
+    <link>https://thapakazi.github.io/tags/hubot/</link>
+    <description>Recent content in Hubot on define: thapakazi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://thapakazi.github.io/tags/hubot/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 08 Dec 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thapakazi.github.io/tags/hubot/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Playing with bots for some serious damage 😏</title>
-      <link>https://thapakazi.github.io/posts/tinkering%20hubot%20in%20old%20days/</link>
+      <link>https://thapakazi.github.io/posts/tinkering-hubot-in-old-days/</link>
       <pubDate>Tue, 08 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://thapakazi.github.io/posts/tinkering%20hubot%20in%20old%20days/</guid>
-      <description>
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;Motivation&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;How we nailed it.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;In gist:&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;motivation-a-id-orgheadline1-a&#34;&gt;Motivation&lt;a id=&#34;orgheadline1&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Adding ssh-keys of a developer,qas never been a fun work to do.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&#34;how-we-nailed-it-a-id-orgheadline2-a&#34;&gt;How we nailed it.&lt;a id=&#34;orgheadline2&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
-
-&lt;p&gt;In gist, we automate the whole process in 3 breakdowns:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;collect ips from our rails apps repo from github src code #kudoscflibs #kudooctokit&lt;/li&gt;
-&lt;li&gt;pulling &lt;a href=&#34;https://github.com/developer.keys&#34;&gt;public keys from github&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;pushing to authorized keys list for deploy user&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Ansible is awesome, so is github. &amp;#x2014;randomvoice&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Since our ec2-machines are tagged with roles, we have them all in our &lt;strong&gt;config/deploy/environment.rb&lt;/strong&gt; files. Remember the old legecy msg, &lt;code&gt;Public Key *Permission denied (publickey).*&lt;/code&gt; when deploying with &lt;a href=&#34;https://github.com/capistrano/capistrano&#34;&gt;capistrano&lt;/a&gt;. Ho tehi. 😜&lt;/p&gt;
-
-&lt;p&gt;So in details: &lt;code&gt;tl;dr&lt;/code&gt; Steps:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Requsting sinatra get ip of servers with ansible
-
-&lt;ul&gt;
-&lt;li&gt;Ansible hits sinatra endpoint &lt;strong&gt;/getroles&lt;/strong&gt;, pulled the roles first with github-api &lt;code&gt;#awesomeoctokitgem&lt;/code&gt; &lt;code&gt;#sinatraapiforansible&lt;/code&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;        - name: collet hostnames first
-          uri:
-            url: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;http://{{SINATRA_URI|default(&amp;#39;localhost:4567&amp;#39;)}}/getroles?repo_name={{REPO_NAME|default(&amp;#39;org/repo&amp;#39;)}}&amp;amp;environment={{ENVIRONMENT|default(&amp;#39;test&amp;#39;)}}&amp;quot;&lt;/span&gt;
-            register: registered_ips
-            tags:
-              - get_ips
-&lt;/pre&gt;&lt;/div&gt;
-
-    -   Fetch the ips from sinatra app as a json list&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;        &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# GET /getroles?repo_name=sprout/worker_paltform&amp;amp;environment=staging&lt;/span&gt;
-        get &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;/getroles&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
-          content_type &lt;span style=&#34;color: #B8860B&#34;&gt;:json&lt;/span&gt;
-          repo_name &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; params&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;:repo_name&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;org/repo&amp;quot;&lt;/span&gt;
-          environment &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; params&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;:environment&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;testing&amp;quot;&lt;/span&gt;
-          config_path &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; params&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;:config_path&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;config/deploy/&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; environment &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;.rb&amp;quot;&lt;/span&gt;
-          
-          &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#get a login, please get netrc gem first&lt;/span&gt;
-          client &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #880000&#34;&gt;Octokit&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #880000&#34;&gt;Client&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;new(&lt;span style=&#34;color: #B8860B&#34;&gt;:netrc&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #AA22FF&#34;&gt;true&lt;/span&gt;)
-          
-          &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#pull contents of file&lt;/span&gt;
-          file &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; client&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;content( repo_name, &lt;span style=&#34;color: #B8860B&#34;&gt;:path&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&amp;gt;&lt;/span&gt; config_path)
-        
-        
-          &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#decode and process&lt;/span&gt;
-          &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#thanks cmthakur, #theKing: https://github.com/cmthakur&lt;/span&gt;
-          content_array &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #880000&#34;&gt;Base64&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;decode64(file&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;content)&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;split(&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;)
-          ec2_roles &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; content_array&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;map &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;|&lt;/span&gt;content&lt;span style=&#34;color: #666666&#34;&gt;|&lt;/span&gt; 
-            &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; content&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;scan(&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;IFR&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;count &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;
-              content&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;scan(&lt;span style=&#34;color: #BB6688&#34;&gt;/(&amp;#39;(.*?)&amp;#39;|&amp;quot;(.*?)&amp;quot;)/&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;flatten&lt;span style=&#34;color: #666666&#34;&gt;[1]&lt;/span&gt;
-            &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
-          &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;flatten&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;uniq&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;compact
-          &lt;span style=&#34;color: #AA22FF&#34;&gt;puts&lt;/span&gt; ec2_roles
-          &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#{roles: ec2_roles}.to_json&lt;/span&gt;
-        
-        
-          &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#get ips, awesome cflibs&lt;/span&gt;
-          ec2_handle &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #880000&#34;&gt;CLOUDFACTORY&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #880000&#34;&gt;AWESOMELIBRARIES&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #880000&#34;&gt;AWSEC2&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;new
-          ec2_ips &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt;
-          ec2_roles&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;each &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;|&lt;/span&gt;role&lt;span style=&#34;color: #666666&#34;&gt;|&lt;/span&gt;
-            ec2_ips &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; ec2_handle&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;IFR(role)&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;map(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;:ipAddress&lt;/span&gt;)
-          &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
-          &lt;span style=&#34;color: #AA22FF&#34;&gt;puts&lt;/span&gt; ec2_ips&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;flatten
-          {&lt;span style=&#34;color: #B8860B&#34;&gt;ips&lt;/span&gt;: ec2_ips&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;flatten}&lt;span style=&#34;color: #666666&#34;&gt;.&lt;/span&gt;to_json
-        &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    -   Created dynamic inventory list with &lt;strong&gt;add&lt;sub&gt;hosts&lt;/sub&gt;&lt;/strong&gt; module&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;          - name: build strings
-            add_host:
-              hostname: &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;{{item}}&amp;quot;&lt;/span&gt;
-              groups: hosts_to_add_keys
-            with_items: registered_ips.json.ips
-            tags:
-              - get_ips
-&lt;/pre&gt;&lt;/div&gt;
-
--   Pushed public keys to those host with public key lookup &lt;strong&gt;with&lt;sub&gt;url&lt;/sub&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;    - hosts: hosts_to_add_keys
-      tasks:
-        - name: Set up authorized_keys for the deploy user
-          authorized_key:
-            user=&amp;quot;deploy&amp;quot;
-            key=&amp;quot;{{item}}&amp;quot;
-            state=&amp;quot;{{STATE|default(&amp;#39;present&amp;#39;)}}&amp;quot;
-          with_url:
-            - &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;https://github.com/{{GITHUB_USERNAME|default(&amp;#39;kajisaap&amp;#39;)}}.keys&amp;quot;&lt;/span&gt;
-          tags:
-            - web_lookup
-            
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h1 id=&#34;in-gist-a-id-orgheadline3-a&#34;&gt;In gist:&lt;a id=&#34;orgheadline3&#34;&gt;&lt;/a&gt;&lt;/h1&gt;
-
-&lt;p&gt;It was a nice weekend fun work saving a lot of time for me and my hangry deploying friends, making everyones happy.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cloud.githubusercontent.com/assets/1695906/19827082/990902b8-9dbd-11e6-9caf-027d622f99fc.png&#34; alt=&#34;keys on kneez boss :p&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;So everyonez lived and deployed/debuged the codebase happily after. 😄&lt;/p&gt;
-</description>
+      <guid>https://thapakazi.github.io/posts/tinkering-hubot-in-old-days/</guid>
+      <description>Motivation  How we nailed it. In gist:   Motivation  Adding ssh-keys of a developer,qas never been a fun work to do.
+ How we nailed it. In gist, we automate the whole process in 3 breakdowns:
+ collect ips from our rails apps repo from github src code #kudoscflibs #kudooctokit pulling public keys from github pushing to authorized keys list for deploy user   Ansible is awesome, so is github.</description>
     </item>
     
   </channel>

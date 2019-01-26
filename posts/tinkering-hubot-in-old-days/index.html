@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title> Playing with bots for some serious damage 😏 &middot; define: thapakazi </title>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.54-DEV" />
+
+
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://thapakazi.github.io/css/nix.css">
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Inconsolata%7COpen+Sans%7CConcert+One" rel="stylesheet">
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'your_google_analytics_id', 'auto');
+	  ga('send', 'pageview');
+
+</script>
+
+
+    </head>
+
+    <body>
+        <header>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse font-header">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" id="green-terminal" href=https://thapakazi.github.io>thapakazi@virtualcosmos ~ $</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="https://thapakazi.github.io">/home/thapakazi</a>
+				</li>
+				
+				
+				<li class="dropdown">
+                    
+            		<a href="/posts">~/posts</a>
+            		
+        		</li>
+        		
+				
+				<li class="dropdown">
+                    
+            		<a href="/info">~/ℹ</a>
+            		
+        		</li>
+        		
+
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+        <div class="container wrapper">
+            <h1><a href="https://thapakazi.github.io/posts/tinkering-hubot-in-old-days/">Playing with bots for some serious damage 😏</a></h1>
+            <span class="post-date">Dec 8, 2015 </span>
+            <div class="post-content">
+                
+
+<ul>
+<li><a href="#orgheadline1">Motivation</a>
+
+<ul>
+<li><a href="#orgheadline2">How we nailed it.</a></li>
+<li><a href="#orgheadline3">In gist:</a></li>
+</ul></li>
+</ul>
+
+<h1 id="motivation-a-id-orgheadline1-a">Motivation<a id="orgheadline1"></a></h1>
+
+<blockquote>
+<p>Adding ssh-keys of a developer,qas never been a fun work to do.</p>
+</blockquote>
+
+<h1 id="how-we-nailed-it-a-id-orgheadline2-a">How we nailed it.<a id="orgheadline2"></a></h1>
+
+<p>In gist, we automate the whole process in 3 breakdowns:</p>
+
+<ol>
+<li>collect ips from our rails apps repo from github src code #kudoscflibs #kudooctokit</li>
+<li>pulling <a href="https://github.com/developer.keys">public keys from github</a></li>
+<li>pushing to authorized keys list for deploy user</li>
+</ol>
+
+<blockquote>
+<p>Ansible is awesome, so is github. &#x2014;randomvoice</p>
+</blockquote>
+
+<p>Since our ec2-machines are tagged with roles, we have them all in our <strong>config/deploy/environment.rb</strong> files. Remember the old legecy msg, <code>Public Key *Permission denied (publickey).*</code> when deploying with <a href="https://github.com/capistrano/capistrano">capistrano</a>. Ho tehi. 😜</p>
+
+<p>So in details: <code>tl;dr</code> Steps:</p>
+
+<ul>
+<li>Requsting sinatra get ip of servers with ansible
+
+<ul>
+<li>Ansible hits sinatra endpoint <strong>/getroles</strong>, pulled the roles first with github-api <code>#awesomeoctokitgem</code> <code>#sinatraapiforansible</code>
+<br /></li>
+</ul></li>
+</ul>
+
+<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#bbb">        </span>-<span style="color:#bbb"> </span>name:<span style="color:#bbb"> </span>collet<span style="color:#bbb"> </span>hostnames<span style="color:#bbb"> </span>first<span style="color:#bbb">
+</span><span style="color:#bbb">          </span>uri:<span style="color:#bbb">
+</span><span style="color:#bbb">            </span>url:<span style="color:#bbb"> </span><span style="color:#b44">&#34;http://{{SINATRA_URI|default(&#39;localhost:4567&#39;)}}/getroles?repo_name={{REPO_NAME|default(&#39;org/repo&#39;)}}&amp;environment={{ENVIRONMENT|default(&#39;test&#39;)}}&#34;</span><span style="color:#bbb">
+</span><span style="color:#bbb">            </span>register:<span style="color:#bbb"> </span>registered_ips<span style="color:#bbb">
+</span><span style="color:#bbb">            </span>tags:<span style="color:#bbb">
+</span><span style="color:#bbb">              </span>-<span style="color:#bbb"> </span>get_ips</code></pre></div>
+    -   Fetch the ips from sinatra app as a json list</p>
+
+<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">        <span style="color:#080;font-style:italic"># GET /getroles?repo_name=sprout/worker_paltform&amp;environment=staging</span>
+        get <span style="color:#b44">&#39;/getroles&#39;</span> <span style="color:#a2f;font-weight:bold">do</span>
+          content_type <span style="color:#b8860b">:json</span>
+          repo_name <span style="color:#666">=</span> params<span style="color:#666">[</span><span style="color:#b8860b">:repo_name</span><span style="color:#666">]</span> <span style="color:#666">||</span> <span style="color:#b44">&#34;org/repo&#34;</span>
+          environment <span style="color:#666">=</span> params<span style="color:#666">[</span><span style="color:#b8860b">:environment</span><span style="color:#666">]</span> <span style="color:#666">||</span> <span style="color:#b44">&#34;testing&#34;</span>
+          config_path <span style="color:#666">=</span> params<span style="color:#666">[</span><span style="color:#b8860b">:config_path</span><span style="color:#666">]</span> <span style="color:#666">||</span> <span style="color:#b44">&#34;config/deploy/&#34;</span><span style="color:#666">+</span> environment <span style="color:#666">+</span><span style="color:#b44">&#34;.rb&#34;</span>
+          
+          <span style="color:#080;font-style:italic">#get a login, please get netrc gem first</span>
+          client <span style="color:#666">=</span> <span style="color:#800">Octokit</span><span style="color:#666">::</span><span style="color:#800">Client</span><span style="color:#666">.</span>new(<span style="color:#b8860b">:netrc</span> <span style="color:#666">=&gt;</span> <span style="color:#a2f">true</span>)
+          
+          <span style="color:#080;font-style:italic">#pull contents of file</span>
+          file <span style="color:#666">=</span> client<span style="color:#666">.</span>content( repo_name, <span style="color:#b8860b">:path</span> <span style="color:#666">=&gt;</span> config_path)
+        
+        
+          <span style="color:#080;font-style:italic">#decode and process</span>
+          <span style="color:#080;font-style:italic">#thanks cmthakur, #theKing: https://github.com/cmthakur</span>
+          content_array <span style="color:#666">=</span> <span style="color:#800">Base64</span><span style="color:#666">.</span>decode64(file<span style="color:#666">.</span>content)<span style="color:#666">.</span>split(<span style="color:#b44">&#34;</span><span style="color:#b62;font-weight:bold">\n</span><span style="color:#b44">&#34;</span>)
+          ec2_roles <span style="color:#666">=</span> content_array<span style="color:#666">.</span>map <span style="color:#a2f;font-weight:bold">do</span> <span style="color:#666">|</span>content<span style="color:#666">|</span> 
+            <span style="color:#a2f;font-weight:bold">if</span> content<span style="color:#666">.</span>scan(<span style="color:#b44">&#39;IFR&#39;</span>)<span style="color:#666">.</span>count <span style="color:#666">&gt;</span> <span style="color:#666">0</span>
+              content<span style="color:#666">.</span>scan(<span style="color:#b68">/(&#39;(.*?)&#39;|&#34;(.*?)&#34;)/</span>)<span style="color:#666">.</span>flatten<span style="color:#666">[</span><span style="color:#666">1</span><span style="color:#666">]</span>
+            <span style="color:#a2f;font-weight:bold">end</span>
+          <span style="color:#a2f;font-weight:bold">end</span><span style="color:#666">.</span>flatten<span style="color:#666">.</span>uniq<span style="color:#666">.</span>compact
+          <span style="color:#a2f">puts</span> ec2_roles
+          <span style="color:#080;font-style:italic">#{roles: ec2_roles}.to_json</span>
+        
+        
+          <span style="color:#080;font-style:italic">#get ips, awesome cflibs</span>
+          ec2_handle <span style="color:#666">=</span> <span style="color:#800">CLOUDFACTORY</span><span style="color:#666">::</span><span style="color:#800">AWESOMELIBRARIES</span><span style="color:#666">::</span><span style="color:#800">AWSEC2</span><span style="color:#666">.</span>new
+          ec2_ips <span style="color:#666">=</span> <span style="color:#666">[</span> <span style="color:#666">]</span>
+          ec2_roles<span style="color:#666">.</span>each <span style="color:#a2f;font-weight:bold">do</span> <span style="color:#666">|</span>role<span style="color:#666">|</span>
+            ec2_ips <span style="color:#666">&lt;&lt;</span> ec2_handle<span style="color:#666">.</span>IFR(role)<span style="color:#666">.</span>map(<span style="color:#666">&amp;</span><span style="color:#b8860b">:ipAddress</span>)
+          <span style="color:#a2f;font-weight:bold">end</span>
+          <span style="color:#a2f">puts</span> ec2_ips<span style="color:#666">.</span>flatten
+          {<span style="color:#b8860b">ips</span>: ec2_ips<span style="color:#666">.</span>flatten}<span style="color:#666">.</span>to_json
+        <span style="color:#a2f;font-weight:bold">end</span></code></pre></div>
+    -   Created dynamic inventory list with <strong>add<sub>hosts</sub></strong> module</p>
+
+<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#bbb">          </span>-<span style="color:#bbb"> </span>name:<span style="color:#bbb"> </span>build<span style="color:#bbb"> </span>strings<span style="color:#bbb">
+</span><span style="color:#bbb">            </span>add_host:<span style="color:#bbb">
+</span><span style="color:#bbb">              </span>hostname:<span style="color:#bbb"> </span><span style="color:#b44">&#34;{{item}}&#34;</span><span style="color:#bbb">
+</span><span style="color:#bbb">              </span>groups:<span style="color:#bbb"> </span>hosts_to_add_keys<span style="color:#bbb">
+</span><span style="color:#bbb">            </span>with_items:<span style="color:#bbb"> </span>registered_ips.json.ips<span style="color:#bbb">
+</span><span style="color:#bbb">            </span>tags:<span style="color:#bbb">
+</span><span style="color:#bbb">              </span>-<span style="color:#bbb"> </span>get_ips</code></pre></div>
+-   Pushed public keys to those host with public key lookup <strong>with<sub>url</sub></strong></p>
+
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#bbb">    </span>-<span style="color:#bbb"> </span>hosts:<span style="color:#bbb"> </span>hosts_to_add_keys<span style="color:#bbb">
+</span><span style="color:#bbb">      </span>tasks:<span style="color:#bbb">
+</span><span style="color:#bbb">        </span>-<span style="color:#bbb"> </span>name:<span style="color:#bbb"> </span>Set<span style="color:#bbb"> </span>up<span style="color:#bbb"> </span>authorized_keys<span style="color:#bbb"> </span>for<span style="color:#bbb"> </span>the<span style="color:#bbb"> </span>deploy<span style="color:#bbb"> </span>user<span style="color:#bbb">
+</span><span style="color:#bbb">          </span>authorized_key:<span style="color:#bbb">
+</span><span style="color:#bbb">            </span>user=<span style="color:#b44">&#34;deploy&#34;</span><span style="color:#bbb">
+</span><span style="color:#bbb">            </span>key=<span style="color:#b44">&#34;{{item}}&#34;</span><span style="color:#bbb">
+</span><span style="color:#bbb">            </span>state=<span style="color:#b44">&#34;{{STATE|default(&#39;present&#39;)}}&#34;</span><span style="color:#bbb">
+</span><span style="color:#bbb">          </span>with_url:<span style="color:#bbb">
+</span><span style="color:#bbb">            </span>-<span style="color:#bbb"> </span><span style="color:#b44">&#34;https://github.com/{{GITHUB_USERNAME|default(&#39;kajisaap&#39;)}}.keys&#34;</span><span style="color:#bbb">
+</span><span style="color:#bbb">          </span>tags:<span style="color:#bbb">
+</span><span style="color:#bbb">            </span>-<span style="color:#bbb"> </span>web_lookup<span style="color:#bbb">
+</span><span style="color:#bbb">            </span></code></pre></div>
+
+<h1 id="in-gist-a-id-orgheadline3-a">In gist:<a id="orgheadline3"></a></h1>
+
+<p>It was a nice weekend fun work saving a lot of time for me and my hangry deploying friends, making everyones happy.</p>
+
+<p><img src="https://cloud.githubusercontent.com/assets/1695906/19827082/990902b8-9dbd-11e6-9caf-027d622f99fc.png" alt="keys on kneez boss :p" /></p>
+
+<p>So everyonez lived and deployed/debuged the codebase happily after. 😄</p>
+
+            </div>
+            
+            <div class="post-comments">
+                <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "thapakazi" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+            
+            <div class="push"></div>
+        </div>
+        <footer class="footer text-center">
+<p>Copyright &copy; 2019 मेरो बारेमा -
+<span class="credit">
+	Powered by
+	<a target="_blank" href="https://gohugo.io">Hugo</a>
+	and
+	<a target="_blank" href="https://github.com/LordMathis/hugo-theme-nix/">Nix</a> theme.
+</span>
+</p>
+</footer>
+
+    </body>

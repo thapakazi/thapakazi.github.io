@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>org to web</title>
-    <link>https://thapakazi.github.io/tags/disk-setup/index.xml</link>
-    <description>Recent content on org to web</description>
+    <title>Disk Setup on define: thapakazi</title>
+    <link>https://thapakazi.github.io/tags/disk-setup/</link>
+    <description>Recent content in Disk Setup on define: thapakazi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://thapakazi.github.io/tags/disk-setup/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 08 Nov 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thapakazi.github.io/tags/disk-setup/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>lvm kungfu</title>
@@ -14,59 +17,11 @@
       <pubDate>Tue, 08 Nov 2016 00:00:00 +0000</pubDate>
       
       <guid>https://thapakazi.github.io/posts/lvm_with_raid_basics/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;[X] involves the lvm stuffs&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;[X] mdadm setup and command&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mdadm -v --create -c 256 /dev/md0 --level=0 --raid-devices=2 /dev/xvdf /dev/xvdg
-mdadm: chunk size defaults to 512K
-mdadm: Defaulting to version 1.2 metadata
-mdadm: array /dev/md0 started.
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;[X] next is physical volume&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pvcreate /dev/md0
-Physical volume &amp;quot;/dev/md0&amp;quot; successfully created
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;[X] Next is volume group&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;vgcreate vg0 /dev/md0
-Volume group &amp;quot;vg0&amp;quot; successfully created
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;[X] Next is logical volume&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;lvcreate -n data -l 100%FREE /dev/vg0 
-Logical volume &amp;quot;data&amp;quot; created
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;[X] format the disk, before using it&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mkfs.xfs /dev/vg0/data 
-log stripe unit (524288 bytes) is too large (maximum is 256KiB)
-log stripe unit adjusted to 32KiB
-meta-data=/dev/vg0/data          isize=256    agcount=16, agsize=8388480 blks
-=                       sectsz=512   attr=2, projid32bit=0
-data     =                       bsize=4096   blocks=134215680, imaxpct=25
-=                       sunit=128    swidth=256 blks
-naming   =version 2              bsize=4096   ascii-ci=0
-log      =internal log           bsize=4096   blocks=65536, version=2
-=                       sectsz=512   sunit=8 blks, lazy-count=1
-realtime =none                   extsz=4096   blocks=0, rtextents=0
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;[X] mount, fix permission and enjoy(warm up disk)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mount /dev/vg0/data /data/
-dd if=/dev/urandom | pv | dd of=/data/data.zero
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>[X] involves the lvm stuffs
+ [X] mdadm setup and command
+mdadm -v --create -c 256 /dev/md0 --level=0 --raid-devices=2 /dev/xvdf /dev/xvdg mdadm: chunk size defaults to 512K mdadm: Defaulting to version 1.2 metadata mdadm: array /dev/md0 started.  [X] next is physical volume
+pvcreate /dev/md0 Physical volume &amp;quot;/dev/md0&amp;quot; successfully created  [X] Next is volume group
+vgcreate vg0 /dev/md0 Volume group &amp;quot;vg0&amp;quot; successfully created  [X] Next is logical volume</description>
     </item>
     
   </channel>

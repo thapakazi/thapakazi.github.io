@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://thapakazi.github.io/</loc>
-    <lastmod>2017-12-23T00:00:00+00:00</lastmod>
+    <loc>https://thapakazi.github.io/info/about_me/</loc>
+    <lastmod>2019-01-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -22,12 +23,12 @@
   </url>
   
   <url>
-    <loc>https://thapakazi.github.io/posts/tracking_the_digital_traces/</loc>
+    <loc>https://thapakazi.github.io/info/tracking_the_digital_traces/</loc>
     <lastmod>2017-03-02T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://thapakazi.github.io/posts/autoscaling_the_servers_like_a_bo$$_%F0%9F%98%8E/</loc>
+    <loc>https://thapakazi.github.io/posts/autoscaling_the_servers_like_a_bo_/</loc>
     <lastmod>2016-12-10T00:00:00+00:00</lastmod>
   </url>
   
@@ -47,27 +48,227 @@
   </url>
   
   <url>
-    <loc>https://thapakazi.github.io/partial_publish/</loc>
-    <lastmod>2016-10-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://thapakazi.github.io/posts/partial_publish/</loc>
     <lastmod>2016-10-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://thapakazi.github.io/aboutme/</loc>
+    <loc>https://thapakazi.github.io/info/aboutme_old_yml/</loc>
     <lastmod>2016-10-08T23:18:30+05:45</lastmod>
   </url>
   
   <url>
-    <loc>https://thapakazi.github.io/posts/tinkering%20hubot%20in%20old%20days/</loc>
+    <loc>https://thapakazi.github.io/posts/tinkering-hubot-in-old-days/</loc>
     <lastmod>2015-12-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://thapakazi.github.io/changing_from_tinker_to_hugo/</loc>
+    <loc>https://thapakazi.github.io/tags/analog/</loc>
+    <lastmod>2017-07-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/ansible/</loc>
+    <lastmod>2016-12-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/automation/</loc>
+    <lastmod>2016-10-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/autoscaling/</loc>
+    <lastmod>2016-12-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/aws-ec2/</loc>
+    <lastmod>2016-12-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/blog/</loc>
+    <lastmod>2016-10-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/bools/</loc>
+    <lastmod>2016-10-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/cv/</loc>
+    <lastmod>2019-01-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/disk-setup/</loc>
+    <lastmod>2016-11-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/ditital-traces/</loc>
+    <lastmod>2017-03-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/emacs/</loc>
+    <lastmod>2016-10-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/hubot/</loc>
+    <lastmod>2015-12-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/hugo/</loc>
+    <lastmod>2016-10-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/ideas/</loc>
+    <lastmod>2016-10-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/categories/info/</loc>
+    <lastmod>2016-10-08T23:18:30+05:45</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/info/</loc>
+    <lastmod>2019-01-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/life-science/</loc>
+    <lastmod>2017-07-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/logging/</loc>
+    <lastmod>2017-03-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/lvm/</loc>
+    <lastmod>2016-11-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/categories/misc/</loc>
+    <lastmod>2016-10-08T23:18:30+05:45</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/posts/</loc>
+    <lastmod>2017-12-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/productivity/</loc>
+    <lastmod>2017-12-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/projects/</loc>
+    <lastmod>2016-10-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/reflection/</loc>
+    <lastmod>2017-03-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/reflection-guff/</loc>
+    <lastmod>2017-05-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/resume/</loc>
+    <lastmod>2019-01-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/self/</loc>
+    <lastmod>2019-01-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/shell/</loc>
+    <lastmod>2017-12-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/</loc>
+    <lastmod>2017-07-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/test/</loc>
+    <lastmod>2016-10-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/whishlist/</loc>
+    <lastmod>2016-10-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/zle/</loc>
+    <lastmod>2017-12-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/zsh/</loc>
+    <lastmod>2017-12-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/</loc>
+    <lastmod>2019-01-26T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>
