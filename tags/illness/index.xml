@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Reflection on define: thapakazi</title>
-    <link>https://thapakazi.github.io/tags/reflection/</link>
-    <description>Recent content in Reflection on define: thapakazi</description>
+    <title>Illness on define: thapakazi</title>
+    <link>https://thapakazi.github.io/tags/illness/</link>
+    <description>Recent content in Illness on define: thapakazi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 27 Jan 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://thapakazi.github.io/tags/reflection/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://thapakazi.github.io/tags/illness/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -23,19 +23,6 @@ if you find typo, comments are welcome
 tldr;
  It was dizzy, it was head-full, it was full of sweats and weakness. Like we accumulate our body and mind, I was doing opposite.
  if you are detail oriented;</description>
-    </item>
-    
-    <item>
-      <title>Tracking Digital Traces(self)</title>
-      <link>https://thapakazi.github.io/info/tracking_the_digital_traces/</link>
-      <pubDate>Thu, 02 Mar 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://thapakazi.github.io/info/tracking_the_digital_traces/</guid>
-      <description>Contribs  Extension: [2019] Add queue sizes to the INFO stats on faktory pull#197
- Needed a feature, sneaked into codebase, found it easy, added changes, test and made a PR 😅
- Learn about faktory, learned to write tests :) in golang
- Issue: [2015] Memory check in % rather than fixed value issue#11
- Needed a feature, asked for it, nobody cared, so made it and shared it 😅</description>
     </item>
     
   </channel>

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://thapakazi.github.io/posts/story-when_i_got_typhoid/</loc>
+    <lastmod>2019-01-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://thapakazi.github.io/info/about_me/</loc>
     <lastmod>2019-01-26T00:00:00+00:00</lastmod>
   </url>
@@ -152,6 +157,12 @@
   </url>
   
   <url>
+    <loc>https://thapakazi.github.io/tags/illness/</loc>
+    <lastmod>2019-01-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://thapakazi.github.io/categories/info/</loc>
     <lastmod>2016-10-08T23:18:30+05:45</lastmod>
     <priority>0</priority>
@@ -189,7 +200,7 @@
   
   <url>
     <loc>https://thapakazi.github.io/posts/</loc>
-    <lastmod>2017-12-23T00:00:00+00:00</lastmod>
+    <lastmod>2019-01-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -207,7 +218,7 @@
   
   <url>
     <loc>https://thapakazi.github.io/tags/reflection/</loc>
-    <lastmod>2017-03-02T00:00:00+00:00</lastmod>
+    <lastmod>2019-01-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -225,7 +236,7 @@
   
   <url>
     <loc>https://thapakazi.github.io/tags/self/</loc>
-    <lastmod>2019-01-26T00:00:00+00:00</lastmod>
+    <lastmod>2019-01-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -267,7 +278,7 @@
   
   <url>
     <loc>https://thapakazi.github.io/</loc>
-    <lastmod>2019-01-26T00:00:00+00:00</lastmod>
+    <lastmod>2019-01-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
