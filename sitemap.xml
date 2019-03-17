@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://thapakazi.github.io/posts/likes_and_dislikes/</loc>
+    <lastmod>2019-03-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://thapakazi.github.io/posts/story-when_i_got_typhoid/</loc>
     <lastmod>2019-01-27T00:00:00+00:00</lastmod>
   </url>
@@ -110,6 +115,12 @@
   </url>
   
   <url>
+    <loc>https://thapakazi.github.io/tags/braindump/</loc>
+    <lastmod>2019-03-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://thapakazi.github.io/categories/</loc>
     <priority>0</priority>
   </url>
@@ -129,6 +140,18 @@
   <url>
     <loc>https://thapakazi.github.io/tags/disk-setup/</loc>
     <lastmod>2016-11-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/dislikes/</loc>
+    <lastmod>2019-03-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/dump/</loc>
+    <lastmod>2019-03-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -181,6 +204,18 @@
   </url>
   
   <url>
+    <loc>https://thapakazi.github.io/tags/likes/</loc>
+    <lastmod>2019-03-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/listings/</loc>
+    <lastmod>2019-03-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://thapakazi.github.io/tags/logging/</loc>
     <lastmod>2017-03-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -200,7 +235,7 @@
   
   <url>
     <loc>https://thapakazi.github.io/posts/</loc>
-    <lastmod>2019-01-27T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -278,7 +313,7 @@
   
   <url>
     <loc>https://thapakazi.github.io/</loc>
-    <lastmod>2019-01-27T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

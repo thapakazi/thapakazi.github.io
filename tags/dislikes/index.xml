@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dislikes on define: thapakazi</title>
+    <link>https://thapakazi.github.io/tags/dislikes/</link>
+    <description>Recent content in Dislikes on define: thapakazi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 17 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thapakazi.github.io/tags/dislikes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Likes &amp; Dislikes</title>
+      <link>https://thapakazi.github.io/posts/likes_and_dislikes/</link>
+      <pubDate>Sun, 17 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://thapakazi.github.io/posts/likes_and_dislikes/</guid>
+      <description>my curated list of like and dislikes in a gist</description>
+    </item>
+    
+  </channel>
+</rss>
