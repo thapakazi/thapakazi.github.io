@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title> Kubernetes 101 over EKS with eksctl &middot; define: thapakazi </title>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.54-DEV" />
+
+
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://thapakazi.github.io/css/nix.css">
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Inconsolata%7COpen+Sans%7CConcert+One" rel="stylesheet">
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'your_google_analytics_id', 'auto');
+	  ga('send', 'pageview');
+
+</script>
+
+
+    </head>
+
+    <body>
+        <header>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse font-header">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" id="green-terminal" href=https://thapakazi.github.io>thapakazi@virtualcosmos ~ $</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="https://thapakazi.github.io">/home/thapakazi</a>
+				</li>
+				
+				
+				<li class="dropdown">
+                    
+            		<a href="/posts">~/posts</a>
+            		
+        		</li>
+        		
+				
+				<li class="dropdown">
+                    
+            		<a href="/info">~/ℹ</a>
+            		
+        		</li>
+        		
+
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+        <div class="container wrapper">
+            <h1><a href="https://thapakazi.github.io/posts/kubernetes_101_with_eks/">Kubernetes 101 over EKS with eksctl</a></h1>
+            <span class="post-date">Apr 23, 2019 </span>
+            <div class="post-content">
+                
+
+<ul>
+<li><a href="#org11b813d">Concepts</a>
+
+<ul>
+<li><a href="#orga263d84">Kubernetes Inernals</a></li>
+<li><a href="#org981d990">Initial Setup</a></li>
+<li><a href="#org96d1e3d">How to stuffs.</a></li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p>WIP&#x2026;</p>
+</blockquote>
+
+<p><a id="org11b813d"></a></p>
+
+<h1 id="concepts">Concepts</h1>
+
+<p>Please make sure you grab the initaial concepts, anywhere on world wide web. I found resource from <a href="https://container.training/kube-halfday.yml.html#87">container.training</a> one of the best resource available to learn the following.</p>
+
+<ul>
+<li>Cluster | control plane, data plane</li>
+<li>Nodes</li>
+<li>Namespace</li>
+<li>Labels, Selectors</li>
+<li>Pods</li>
+<li>Services</li>
+<li>Deployment (ReplicaSet)</li>
+<li>Secrets</li>
+<li>Ingress</li>
+<li>&#x2026;</li>
+</ul>
+
+<p><a id="orga263d84"></a></p>
+
+<h1 id="kubernetes-inernals">Kubernetes Inernals</h1>
+
+<p>Safely skipping these for now. There are bunch of components/concepts:</p>
+
+<ul>
+<li>Kubernetes API</li>
+<li>Scheduler</li>
+<li>ETCD or alternatives</li>
+<li>&#x2026;</li>
+</ul>
+
+<p>Which we are good to know if you want to dive deep, but could be safely skipped as <strong>take it as if granted</strong> stuffs. Recommended to learn these at your free will, I am still learn so better not write about them for now.</p>
+
+<p><a id="org981d990"></a></p>
+
+<h1 id="initial-setup">Initial Setup</h1>
+
+<p>Cluster Setup over EKS can be done in multiple ways. I found <strong>eksctl</strong> with just bunch of flags as one of the easiest option. Please explore more with <code>eksctl --help</code> options, it all well documented. Eg: the command to create a cluster with 3 nodes of type t3.medium.</p>
+
+<blockquote>
+<p>i am assuming you will go or have gone via eksctl setup on your own, if you are blocked on this, please let me know ;)</p>
+</blockquote>
+
+<pre><code class="language-bash">time eksctl create cluster \
+     --name myeks \
+     --region us-west-2 \
+     --ssh-access \
+     --nodes 3 \
+     --node-type t3.medium \
+     # --node-private-networking   #to use private subnets only
+</code></pre>
+
+<p>Above command will use cloudformation tempaltes (2 stacks):</p>
+
+<ul>
+<li><p>to create vpc:</p>
+
+<ul>
+<li>default VPC CIDR used by `eksctl` is `192.168.0.0/16`, divided into 8 (`/19`) subnets (3 private, 3 public &amp; 2 reserved).</li>
+<li>each of the EC2 instances in the initial nodegroup gets a public IP</li>
+</ul></li>
+
+<li><p>to bootup nodes:</p>
+
+<ul>
+<li>3 of EC2 instance of type t3.medium are used</li>
+<li>AMI image used by default is <strong>Amazon Linux 2</strong> with ec2-user as default user</li>
+<li>Initial nodegroup of 3 is create in public subnets, with SSH access disabled unless `&#x2013;ssh-access` is specified.</li>
+<li>All nodes will be brought up in Auto Scaling Group with all necessary tags in place</li>
+</ul></li>
+</ul>
+
+<p>Since node are all managed with cloudformation, in any case we missed to configure them properly, a fresh sets of node could be created and attached to cluster with simple command and flags like:</p>
+
+<pre><code class="language-bash">eksctl create nodegroup \
+  --cluster=myeks  \
+  --node-labels=&quot;autoscaling=enabled,purpose=sshaccess&quot; \
+  --asg-access --full-ecr-access \
+  --ssh-access \
+  --node-type t3.medium --nodes 2 \
+  --node-private-networking
+</code></pre>
+
+<p>And old set of node could be easily cleanup by either deleting the stack or using eksctl</p>
+
+<pre><code class="language-bash">   eksctl list nodegroup --cluster=myeks                     #list them first
+   eksctl delete nodegroup --cluster myeks --name ng-xxxxx   #delete at your ease
+</code></pre>
+
+<p>Once your cluster is ready, you might be able to play around with <code>kubectl</code> stuffs.</p>
+
+<p><a id="org96d1e3d"></a></p>
+
+<h1 id="how-to-stuffs">How to stuffs.</h1>
+
+<blockquote>
+<p>WIP..</p>
+</blockquote>
+
+            </div>
+            
+            <div class="post-comments">
+                <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "thapakazi" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+            
+            <div class="push"></div>
+        </div>
+        <footer class="footer text-center">
+<p>Copyright &copy; 2019 मेरो बारेमा -
+<span class="credit">
+	Powered by
+	<a target="_blank" href="https://gohugo.io">Hugo</a>
+	and
+	<a target="_blank" href="https://github.com/LordMathis/hugo-theme-nix/">Nix</a> theme.
+</span>
+</p>
+</footer>
+
+    </body>

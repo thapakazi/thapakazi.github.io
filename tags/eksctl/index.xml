@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Eksctl on define: thapakazi</title>
+    <link>https://thapakazi.github.io/tags/eksctl/</link>
+    <description>Recent content in Eksctl on define: thapakazi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 23 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://thapakazi.github.io/tags/eksctl/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kubernetes 101 over EKS with eksctl</title>
+      <link>https://thapakazi.github.io/posts/kubernetes_101_with_eks/</link>
+      <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://thapakazi.github.io/posts/kubernetes_101_with_eks/</guid>
+      <description>Concepts  Kubernetes Inernals Initial Setup How to stuffs.    WIP&amp;#x2026;
+ 
+Concepts Please make sure you grab the initaial concepts, anywhere on world wide web. I found resource from container.training one of the best resource available to learn the following.
+ Cluster | control plane, data plane Nodes Namespace Labels, Selectors Pods Services Deployment (ReplicaSet) Secrets Ingress &amp;#x2026;  
+Kubernetes Inernals Safely skipping these for now.</description>
+    </item>
+    
+  </channel>
+</rss>
