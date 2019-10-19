@@ -102,6 +102,15 @@
     </item>
     
     <item>
+      <title>Deployment</title>
+      <link>https://thapakazi.github.io/tags/deployment/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://thapakazi.github.io/tags/deployment/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Digital Traces</title>
       <link>https://thapakazi.github.io/tags/digital-traces/</link>
       <pubDate>Thu, 02 Mar 2017 00:00:00 +0000</pubDate>
@@ -165,6 +174,15 @@
     </item>
     
     <item>
+      <title>Gitlab</title>
+      <link>https://thapakazi.github.io/tags/gitlab/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://thapakazi.github.io/tags/gitlab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Hubot</title>
       <link>https://thapakazi.github.io/tags/hubot/</link>
       <pubDate>Tue, 08 Dec 2015 00:00:00 +0000</pubDate>
@@ -203,7 +221,7 @@
     <item>
       <title>Kubernetes</title>
       <link>https://thapakazi.github.io/tags/kubernetes/</link>
-      <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>https://thapakazi.github.io/tags/kubernetes/</guid>
       <description></description>
@@ -314,6 +332,15 @@
       <pubDate>Sat, 23 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>https://thapakazi.github.io/tags/shell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Terraform</title>
+      <link>https://thapakazi.github.io/tags/terraform/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://thapakazi.github.io/tags/terraform/</guid>
       <description></description>
     </item>
     

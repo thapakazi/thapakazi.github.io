@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title> node-3tier-application &middot; define: thapakazi </title>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.54-DEV" />
+
+
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://thapakazi.github.io/css/nix.css">
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Inconsolata%7COpen+Sans%7CConcert+One" rel="stylesheet">
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'your_google_analytics_id', 'auto');
+	  ga('send', 'pageview');
+
+</script>
+
+
+    </head>
+
+    <body>
+        <header>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse font-header">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" id="green-terminal" href=https://thapakazi.github.io>thapakazi@virtualcosmos ~ $</a>
+		</div>
+
+		
+		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="https://thapakazi.github.io">/home/thapakazi</a>
+				</li>
+				
+				
+				<li class="dropdown">
+                    
+            		<a href="/posts">~/posts</a>
+            		
+        		</li>
+        		
+				
+				<li class="dropdown">
+                    
+            		<a href="/info">~/ℹ</a>
+            		
+        		</li>
+        		
+
+			</ul>
+		</div>
+	</div>
+</nav>
+</header>
+
+        <div class="container wrapper">
+            <h1><a href="https://thapakazi.github.io/posts/node-3tier-application/">node-3tier-application</a></h1>
+            <span class="post-date">Oct 19, 2019 </span>
+            <div class="post-content">
+                
+
+<ul>
+<li><a href="#org8c8e1c3">About</a>
+
+<ul>
+<li><a href="#orgb14de2d">Info</a></li>
+<li><a href="#org42d697c">Everything is pushed to gitlab as:</a></li>
+<li><a href="#org240b46d">Infrastructure resources is defined at <a href="https://gitlab.com/node-3tier-application/infra">infra</a></a></li>
+<li><a href="#orge7bfff1">Deployment:</a></li>
+<li><a href="#orgebce83e">Instrumentation</a></li>
+<li><a href="#orgce1f850">Technologies Used</a></li>
+<li><a href="#orgd74d8e4">Directory Structure</a></li>
+</ul></li>
+</ul>
+
+<p><a id="org8c8e1c3"></a></p>
+
+<h1 id="about">About</h1>
+
+<p>This is a very simple 3 tier application written on nodejs, i,e.</p>
+
+<blockquote>
+<p><del>&mdash;&mdash;&mdash;-</del> <del>&mdash;&mdash;&mdash;&mdash;-</del> <del>&mdash;&mdash;&mdash;&ndash;</del></p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>frontend</td>
+<td>&lt;&#x2013;&gt;</td>
+<td>backend api</td>
+<td>&lt;&#x2013;&gt;</td>
+<td>database</td>
+</tr>
+</tbody>
+</table>
+
+<p><del>&mdash;&mdash;&mdash;-</del> <del>&mdash;&mdash;&mdash;&mdash;-</del> <del>&mdash;&mdash;&mdash;&ndash;</del></p>
+</blockquote>
+
+<p><a id="orgb14de2d"></a></p>
+
+<h1 id="info">Info</h1>
+
+<p>A live working url is hosted at: <a href="https://thisthing.works">https://thisthing.works</a></p>
+
+<p><img src="/images/node-3tier-application.png" alt="img" title="node-3tier-application" /></p>
+
+<p><a id="org42d697c"></a></p>
+
+<h1 id="everything-is-pushed-to-gitlab-as">Everything is pushed to gitlab as:</h1>
+
+<table>
+<thead>
+<tr>
+<th>repo</th>
+<th>url</th>
+<th>Remarks</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>api</td>
+<td><a href="https://gitlab.com/node-3tier-application/api">https://gitlab.com/node-3tier-application/api</a></td>
+<td>backend api that talks to db</td>
+</tr>
+
+<tr>
+<td>web</td>
+<td><a href="https://gitlab.com/node-3tier-application/web">https://gitlab.com/node-3tier-application/web</a></td>
+<td>frontend app that talks to api</td>
+</tr>
+
+<tr>
+<td>infra</td>
+<td><a href="https://gitlab.com/node-3tier-application/infra">https://gitlab.com/node-3tier-application/infra</a></td>
+<td>defines all gcp resources as code (IAC: terraform)</td>
+</tr>
+</tbody>
+</table>
+
+<p><a id="org240b46d"></a></p>
+
+<h1 id="infrastructure-resources-is-defined-at-infra-https-gitlab-com-node-3tier-application-infra">Infrastructure resources is defined at <a href="https://gitlab.com/node-3tier-application/infra">infra</a></h1>
+
+<ul>
+<li>Project is deployed to kubernetes (k8s) cluster on google cloud platform</li>
+<li>nodes (autoscaled defaults: min:1 and max:3, instance<sub>type</sub>: g1-small)</li>
+<li>database used is cloudsql(postgresql)
+
+<ul>
+<li>deployed with private ip only</li>
+<li>terraform runbooks is written HA enabled, replica and backup (to save money, demo; those flags are turned off on the app)</li>
+</ul></li>
+</ul>
+
+<p><img src="/images/terraform_plan.png" alt="img" title="terraform&lt;sub&gt;plan&lt;/sub&gt;" /></p>
+
+<p><a id="orge7bfff1"></a></p>
+
+<h1 id="deployment">Deployment:</h1>
+
+<ul>
+<li>trigger: every commit pushed on gitlab triggers a deployment pipeline <em>(lint- build-deploy)</em>
+
+<ul>
+<li>web: <a href="https://gitlab.com/node-3tier-application/web/pipelines">https://gitlab.com/node-3tier-application/web/pipelines</a></li>
+<li>api: <a href="https://gitlab.com/node-3tier-application/api/pipelines">https://gitlab.com/node-3tier-application/api/pipelines</a></li>
+</ul></li>
+
+<li><p>notification: is sent to a telegram room: <a href="https://t.me/node_3tier_application">https://t.me/node_3tier_application</a></p>
+
+<p><img src="/images/gitlab_notification.png" alt="img" title="gitlab&lt;sub&gt;notification&lt;/sub&gt;" /></p></li>
+
+<li><p><strong><a href="https://gitlab.com/node-3tier-application/web/pipelines">pipeline</a></strong>: gitlab-ci.yml on both web and api has 3 stages:</p>
+
+<ul>
+<li><strong>lint</strong>: to check if developers are following proper lint practises (In real world we run CI test there)</li>
+<li><strong>build</strong>: gitlab ci runner(free) is authenticated to publish build to CloudBuild on gcp</li>
+
+<li><p><strong>deploy</strong>: gitlab ci runner is also authenticated to trigger deployment of container built on build step earlier.</p>
+
+<p><img src="/images/gitlab_pipeline.png" alt="img" title="gitlab&lt;sub&gt;pipeline&lt;/sub&gt;" /></p></li>
+</ul></li>
+
+<li><p>If all these pipeline steps completes, then we have new changes deployed to k8s cluster with a roll out policy as:</p>
+
+<pre><code class="language-yaml">        strategy:
+          rollingUpdate:
+            maxSurge: 25%          #max num of pods that could be created over desired num of pods =&gt; 125%
+            maxUnavailable: 25%    #max num of pods that could be unavailable during update =&gt; 75%
+          type: RollingUpdate
+</code></pre></li>
+</ul>
+
+<p><a id="orgebce83e"></a></p>
+
+<h1 id="instrumentation">Instrumentation</h1>
+
+<ul>
+<li>prometheus operator chart is deployed using helm</li>
+<li>sample grafana dashboard to dash custom metrics</li>
+</ul>
+
+<p><img src="/images/grafana.png" alt="img" title="grafana" /></p>
+
+<p><a id="orgce1f850"></a></p>
+
+<h1 id="technologies-used">Technologies Used</h1>
+
+<table>
+<thead>
+<tr>
+<th>items</th>
+<th>remarks</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>GKE</td>
+<td><strong>free</strong> (300$ credits) and more mature than EKS</td>
+</tr>
+
+<tr>
+<td>terraform</td>
+<td>easier to build cluster from code, test it and nuke it later</td>
+</tr>
+
+<tr>
+<td>Makefile</td>
+<td>easier to prepare and streamline the demo</td>
+</tr>
+
+<tr>
+<td>cloudsql</td>
+<td>avoid dealing with persistent state onk8s cluster and other HA configuration</td>
+</tr>
+
+<tr>
+<td>gitlab-ci</td>
+<td>easy and straight forward ci/cd also free for demo</td>
+</tr>
+
+<tr>
+<td>CloudBuild</td>
+<td>to build the container images</td>
+</tr>
+
+<tr>
+<td>stackdriver</td>
+<td>log the error on application</td>
+</tr>
+
+<tr>
+<td>Google CDN</td>
+<td>caching the static resources</td>
+</tr>
+
+<tr>
+<td>prometheus</td>
+<td>with grafana to instrument/graph metrics</td>
+</tr>
+
+<tr>
+<td><del>loki</del></td>
+<td>just for tryout, its simple straight forward logging solution</td>
+</tr>
+</tbody>
+</table>
+
+<p><a id="orgd74d8e4"></a></p>
+
+<h1 id="directory-structure">Directory Structure</h1>
+
+<p>The directory structure application is:</p>
+
+<p><img src="/images/tree.png" alt="img" title="tree" /></p>
+
+            </div>
+            
+            <div class="post-comments">
+                <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "thapakazi" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+            
+            <div class="push"></div>
+        </div>
+        <footer class="footer text-center">
+<p>Copyright &copy; 2019 मेरो बारेमा -
+<span class="credit">
+	Powered by
+	<a target="_blank" href="https://gohugo.io">Hugo</a>
+	and
+	<a target="_blank" href="https://github.com/LordMathis/hugo-theme-nix/">Nix</a> theme.
+</span>
+</p>
+</footer>
+
+    </body>

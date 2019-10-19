@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kubernetes on define: thapakazi</title>
-    <link>https://thapakazi.github.io/tags/kubernetes/</link>
-    <description>Recent content in Kubernetes on define: thapakazi</description>
+    <title>Gitlab on define: thapakazi</title>
+    <link>https://thapakazi.github.io/tags/gitlab/</link>
+    <description>Recent content in Gitlab on define: thapakazi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 19 Oct 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://thapakazi.github.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://thapakazi.github.io/tags/gitlab/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -23,19 +23,6 @@ About This is a very simple 3 tier application written on nodejs, i,e.
             frontend &amp;lt;&amp;#x2013;&amp;gt; backend api &amp;lt;&amp;#x2013;&amp;gt; database    &amp;mdash;&amp;mdash;&amp;mdash;- &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;- &amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash;
  
 Info A live working url is hosted at: https://thisthing.</description>
-    </item>
-    
-    <item>
-      <title>Kubernetes 101 over EKS with eksctl</title>
-      <link>https://thapakazi.github.io/posts/kubernetes_101_with_eks/</link>
-      <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://thapakazi.github.io/posts/kubernetes_101_with_eks/</guid>
-      <description>Concepts  Kubernetes Inernals Initial Setup How to stuffs.    WIP&amp;#x2026;
- 
-Concepts Please make sure you grab the initaial concepts, anywhere on world wide web. I found resource from container.training one of the best resource available to learn the following.
- Cluster | control plane, data plane Nodes Namespace Labels, Selectors Pods Services Deployment (ReplicaSet) Secrets Ingress &amp;#x2026;  
-Kubernetes Inernals Safely skipping these for now.</description>
     </item>
     
   </channel>

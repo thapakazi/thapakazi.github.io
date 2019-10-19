@@ -6,10 +6,24 @@
     <description>Recent content in Posts on define: thapakazi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 23 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 19 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://thapakazi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>node-3tier-application</title>
+      <link>https://thapakazi.github.io/posts/node-3tier-application/</link>
+      <pubDate>Sat, 19 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://thapakazi.github.io/posts/node-3tier-application/</guid>
+      <description>About  Info Everything is pushed to gitlab as: Infrastructure resources is defined at infra Deployment: Instrumentation Technologies Used Directory Structure   
+About This is a very simple 3 tier application written on nodejs, i,e.
+ &amp;mdash;&amp;mdash;&amp;mdash;- &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;- &amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash;
+            frontend &amp;lt;&amp;#x2013;&amp;gt; backend api &amp;lt;&amp;#x2013;&amp;gt; database    &amp;mdash;&amp;mdash;&amp;mdash;- &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;- &amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash;
+ 
+Info A live working url is hosted at: https://thisthing.</description>
+    </item>
     
     <item>
       <title>Kubernetes 101 over EKS with eksctl</title>

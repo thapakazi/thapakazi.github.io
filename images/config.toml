@@ -1,0 +1,31 @@
+languageCode = "en-us"
+baseurl = "https://thapakazi.github.io"
+title = "define: thapakazi"
+theme = "hugo-theme-nix"
+pygmentsstyle="emacs"
+disqusShortname = "thapakazi"
+[params]
+  GithubID = "thapakazi"
+  TwitterID = "thapakazi_"
+  GitlabId = "thapakazi"
+  TelegramID = "thapakazi" 
+  # LinkedInID = "thapakazi"
+  # FacebookID = "thapakazi.org"
+  HeaderUsername = "thapakazi"
+  HeaderHostname = "virtualcosmos"
+  Name="मेरो बारेमा"
+  Email = "milans.thapa78@gmail.com"
+  About = "a simple random energy in this cosmos"
+  ProfilePicture = "https://avatars1.githubusercontent.com/u/1695906?v=3&s=400"
+  GoogleAnalytics = "your_google_analytics_id"
+  disqusShortname = "thapakazi"
+
+[menu]
+  [[menu.header]]
+    name = "posts"
+    weight = 0
+    url = "/posts"
+  [[menu.header]]
+    name = "ℹ"
+    weight = 0
+    url = "/info"
