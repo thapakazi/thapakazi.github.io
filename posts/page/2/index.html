@@ -97,6 +97,36 @@ ga('create', 'your_google_analytics_id', 'auto');
 				<li>
 					<div class="post-list-item">
 						<div class="post-header">
+							<h4 class="post-link"><a href="https://thapakazi.github.io/posts/lvm_with_raid_basics/">lvm kungfu</a></h4>
+							<h4 class="post-date">Nov 8, 2016</h4>
+						</div>
+						<div class="post-summary"><p>[X] involves the lvm stuffs
+ [X] mdadm setup and command
+mdadm -v --create -c 256 /dev/md0 --level=0 --raid-devices=2 /dev/xvdf /dev/xvdg mdadm: chunk size defaults to 512K mdadm: Defaulting to version 1.2 metadata mdadm: array /dev/md0 started.  [X] next is physical volume
+pvcreate /dev/md0 Physical volume &quot;/dev/md0&quot; successfully created  [X] Next is volume group
+vgcreate vg0 /dev/md0 Volume group &quot;vg0&quot; successfully created  [X] Next is logical volume</p></div>
+						<div class="post-list-footer text-center">
+							<a href="https://thapakazi.github.io/posts/lvm_with_raid_basics/">Read More</a>
+						</div>
+					</div>
+				</li>
+			
+				<li>
+					<div class="post-list-item">
+						<div class="post-header">
+							<h4 class="post-link"><a href="https://thapakazi.github.io/posts/ansible_bools_are_awesome/">Lets spin the server inside vpc</a></h4>
+							<h4 class="post-date">Oct 14, 2016</h4>
+						</div>
+						<div class="post-summary"><p>- name: test boolean hosts: all vars: SPIN_IN_VPC: false connection: local tasks: - shell: xcowsay 'spinnning in vpc' when: SPIN_IN_VPC|bool - shell: xcowsay 'spinnning in classic world :(' when: not SPIN_IN_VPC|bool  </p></div>
+						<div class="post-list-footer text-center">
+							<a href="https://thapakazi.github.io/posts/ansible_bools_are_awesome/">Read More</a>
+						</div>
+					</div>
+				</li>
+			
+				<li>
+					<div class="post-list-item">
+						<div class="post-header">
 							<h4 class="post-link"><a href="https://thapakazi.github.io/posts/projects_list/">Random Ideas in my head I want to puddle</a></h4>
 							<h4 class="post-date">Oct 14, 2016</h4>
 						</div>
@@ -174,7 +204,7 @@ Recovering my broken blog gen As time passed by, I was left with my broken emacs
 			<div class="push"></div>
 		</div>
 		<footer class="footer text-center">
-<p>Copyright &copy; 2019 मेरो बारेमा -
+<p>Copyright &copy; 2019  -
 <span class="credit">
 	Powered by
 	<a target="_blank" href="https://gohugo.io">Hugo</a>

@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://thapakazi.github.io/posts/looking_for_a_opportunity/</loc>
+    <lastmod>2019-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/posts/ashorya_bigyan_gist/</loc>
+    <lastmod>2019-12-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://thapakazi.github.io/posts/node-3tier-application/</loc>
     <lastmod>2019-10-19T00:00:00+00:00</lastmod>
   </url>
@@ -84,13 +94,19 @@
   
   <url>
     <loc>https://thapakazi.github.io/tags/analog/</loc>
-    <lastmod>2017-07-04T00:00:00+00:00</lastmod>
+    <lastmod>2019-12-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://thapakazi.github.io/tags/ansible/</loc>
     <lastmod>2016-12-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/ask-for-help/</loc>
+    <lastmod>2019-12-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -245,7 +261,7 @@
   
   <url>
     <loc>https://thapakazi.github.io/tags/life-science/</loc>
-    <lastmod>2017-07-04T00:00:00+00:00</lastmod>
+    <lastmod>2019-12-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -281,7 +297,7 @@
   
   <url>
     <loc>https://thapakazi.github.io/posts/</loc>
-    <lastmod>2019-10-19T00:00:00+00:00</lastmod>
+    <lastmod>2019-12-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -294,6 +310,12 @@
   <url>
     <loc>https://thapakazi.github.io/tags/projects/</loc>
     <lastmod>2016-10-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://thapakazi.github.io/tags/quest/</loc>
+    <lastmod>2019-12-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -329,7 +351,7 @@
   
   <url>
     <loc>https://thapakazi.github.io/tags/</loc>
-    <lastmod>2017-07-04T00:00:00+00:00</lastmod>
+    <lastmod>2019-12-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -365,7 +387,7 @@
   
   <url>
     <loc>https://thapakazi.github.io/</loc>
-    <lastmod>2019-10-19T00:00:00+00:00</lastmod>
+    <lastmod>2019-12-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
